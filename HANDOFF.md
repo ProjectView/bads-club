@@ -153,6 +153,115 @@ Pour qu'Adelin puisse bosser pleinement :
 
 ---
 
+## Guide pratique : comment refondre une page
+
+### Le principe
+
+L'app actuelle a un design volontairement neutre. Adelin va y greffer la **vraie identité Bad's Club** : photos du club, typographies finalisées, ambiance lounge sportive, charte couleur définitive.
+
+Trois niveaux d'intervention possibles, du plus simple au plus radical :
+
+#### Niveau 1 — Ajuster les design tokens (1 min, impact partout)
+
+Dans [`app/globals.css`](./app/globals.css), tu trouves les variables CSS qui pilotent toute l'app :
+
+```css
+--color-lime: #d6ff3e;       /* accent principal — change pour orange, bleu, rouge club… */
+--color-ink: #0b0f1a;        /* fond — navy actuel, peut devenir noir, anthracite… */
+--font-display: "Instrument Serif", serif;  /* titres — peut devenir Playfair, Tasa, etc. */
+```
+
+Tu changes une variable → **toutes les pages** (vitrine + résa + admin) prennent la nouvelle couleur. C'est ce qui garantit la cohérence entre la partie marketing et l'app fonctionnelle.
+
+#### Niveau 2 — Refondre une page publique (1-3h par page)
+
+Tu ouvres par exemple [`app/page.tsx`](./app/page.tsx) (homepage) et tu réécris le JSX/Tailwind. Tu peux :
+- Remplacer des sections entières
+- Importer tes nouveaux composants depuis [`components/marketing/`](./components/marketing/)
+- Utiliser `next/image` pour des photos optimisées (sortie sous `public/photos/…`)
+- Ajouter des animations CSS dans `globals.css` ou via Framer Motion (à installer si besoin, prévenir Bernard)
+
+Les pages que tu peux refondre librement :
+
+| Page | Fichier | Note |
+|---|---|---|
+| Homepage | `app/page.tsx` | C'est la priorité absolue |
+| Tarifs | `app/tarifs/page.tsx` | Garde les données (zones Rouge/Bleue/Verte) qui viennent de `lib/booking/config` |
+| Actualités (liste) | `app/actualites/page.tsx` | Les articles sont dans `lib/mock.ts`, tu peux en ajouter |
+| Évènements (liste) | `app/evenements/page.tsx` | Les évènements sont dans `lib/mock.ts`, idem |
+| Mentions, CGU, RGPD | `app/(legal)/*` | Layout libre via le composant `LegalPage` |
+| Footer | `app/layout.tsx` (fonction `Footer`) | Peut tout refaire |
+
+#### Niveau 3 — Site vitrine radicalement différent (si nécessaire)
+
+Si tu veux un **design vitrine très différent** du design de l'app (par exemple un site très éditorial/magazine pour le marketing vs une app très fonctionnelle pour la résa), on peut isoler via les Next.js Route Groups :
+
+```
+app/
+├── (marketing)/        ← TON terrain de jeu
+│   ├── layout.tsx      ← layout marketing (nav simplifiée, ton propre footer)
+│   ├── page.tsx        ← homepage
+│   ├── tarifs/
+│   ├── actualites/
+│   └── evenements/
+└── (app)/              ← le back de Bernard
+    ├── layout.tsx      ← layout app avec nav complète, cloche notifs
+    ├── reservation/
+    ├── communaute/
+    ├── mon-compte/
+    └── admin/
+```
+
+C'est une réorganisation 30 min côté Bernard, fais-moi signe quand tu en auras besoin. Pour démarrer, garde la structure actuelle — la cohérence via les variables CSS suffit dans 90 % des cas.
+
+---
+
+## Workflow visuel (Figma → code)
+
+Si Adelin travaille sur Figma (ou autre outil) avant de coder :
+
+1. **Maquette Figma** validée avec le client (ou avec Bernard pour itération)
+2. **Tu crées une branche** : `git checkout -b front/home-redesign`
+3. **Tu codes section par section** :
+   - Crée le composant dans `components/marketing/section-xxx.tsx`
+   - Importe-le dans `app/page.tsx`
+   - Vérifie sur localhost
+4. **Tu pushes** → Vercel génère une URL preview
+5. **Tu partages l'URL au client** dans le commentaire de la PR
+6. **Validation client** → merge dans `dev` puis `main`
+
+L'URL preview Vercel est **persistante** tant que la PR est ouverte : pratique pour des allers-retours sans avoir à redéployer manuellement.
+
+---
+
+## Comment NE PAS casser le back de Bernard
+
+### Règle d'or : si tu touches un fichier hors de ta zone, ouvre une PR séparée
+
+Tout est dans le tableau "Zone Bernard" plus haut. Si tu as besoin de :
+- Changer la nav (ajouter/retirer un lien) → ping Bernard, on fait ça ensemble
+- Renommer une route (`/reservation` → `/booking`) → ping Bernard
+- Ajouter une dépendance (Framer Motion, GSAP…) → ping Bernard
+- Modifier `app/layout.tsx` (au-delà du footer) → ping Bernard
+
+### Vérifications à faire avant de pusher
+
+```bash
+npm run build         # build prod doit passer
+npm run dev           # vérifie sur localhost que les pages back marchent toujours
+```
+
+Si tu modifies `globals.css` (couleurs, fonts), navigue sur ces pages pour t'assurer que tout reste lisible :
+- `/reservation` (grille planning)
+- `/mon-compte` (dashboard membre)
+- `/admin` (dashboard admin) — login `admin@badsclub.com` / `admin`
+
+### GitHub CODEOWNERS
+
+Le fichier [`.github/CODEOWNERS`](./.github/CODEOWNERS) assigne automatiquement Bernard en reviewer dès que tu touches à un fichier critique. Tu n'as rien à faire, c'est GitHub qui s'en occupe.
+
+---
+
 ## Premier objectif Adelin (suggestion)
 
 Sprint 1 — 3 à 5 jours :
