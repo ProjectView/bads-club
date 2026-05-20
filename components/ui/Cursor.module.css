@@ -1,0 +1,28 @@
+.cursor {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, background 0.2s, width 0.2s, height 0.2s;
+}
+
+.cursor.expand {
+  width: 48px;
+  height: 48px;
+  background: rgba(189, 164, 26, 0.18);
+}
+
+.dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
