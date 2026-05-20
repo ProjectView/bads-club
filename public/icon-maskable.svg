@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0b0f1a"/>
+  <!-- Safe area : zone centrale 80% pour les masques iOS/Android adaptifs -->
+  <circle cx="256" cy="256" r="150" stroke="#d6ff3e" stroke-width="16" fill="none"/>
+  <path d="M256 106 L256 406 M106 256 L406 256 M150 150 L362 362 M362 150 L150 362"
+        stroke="#d6ff3e" stroke-width="8" opacity="0.5"/>
+  <circle cx="256" cy="256" r="32" fill="#d6ff3e"/>
+</svg>

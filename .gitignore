@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+.DS_Store
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Local artifacts (utilitaires de capture / preview PDF)
+capture.mjs
+offer/preview/
+offer/screens/
+/tmp/
+
+# Build artifacts générés
+*.log
+

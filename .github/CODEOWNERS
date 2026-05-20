@@ -1,0 +1,23 @@
+# Code owners — utilisé par GitHub pour assigner automatiquement les reviewers sur les PR.
+# Format : <pattern> <owner1> <owner2>
+# Le dernier pattern matché gagne.
+
+# Par défaut, Bernard review tout
+*                                       @bernard
+
+# Adelin owne le design / front / contenu visuel
+/app/page.tsx                           @adelin
+/app/actualites/                        @adelin
+/app/tarifs/                            @adelin
+/app/evenements/page.tsx                @adelin
+/app/(legal)/                           @adelin
+/app/globals.css                        @adelin
+/public/                                @adelin
+/components/demo-banner.tsx             @adelin
+/components/install-prompt.tsx          @adelin
+
+# Co-review sur les zones partagées
+/app/layout.tsx                         @bernard @adelin
+/components/nav.tsx                     @bernard @adelin
+/lib/mock.ts                            @bernard @adelin
+/package.json                           @bernard @adelin

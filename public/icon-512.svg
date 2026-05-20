@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0b0f1a"/>
+  <circle cx="256" cy="256" r="200" stroke="#d6ff3e" stroke-width="20" fill="none"/>
+  <path d="M256 56 L256 456 M56 256 L456 256 M113 113 L399 399 M399 113 L113 399"
+        stroke="#d6ff3e" stroke-width="10" opacity="0.5"/>
+  <circle cx="256" cy="256" r="42" fill="#d6ff3e"/>
+  <text x="256" y="490" font-family="Georgia, serif" font-style="italic" font-size="36" fill="#f4ede0" text-anchor="middle">Bad's</text>
+</svg>
