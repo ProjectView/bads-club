@@ -17,3 +17,7 @@ offer/screens/
 # Build artifacts générés
 *.log
 
+# Bases SQLite locales (outillage interne)
+*.db
+*.db-journal
+
