@@ -139,7 +139,7 @@ export default function AdminNotificationsPage() {
 
       <div className="mt-8 rounded-2xl border border-dashed border-white/10 p-5 text-xs text-[var(--color-muted)] font-mono">
         <div className="text-[10px] uppercase tracking-widest text-[var(--color-lime)] mb-2">prod · à configurer</div>
-        Variable d'env <code>N8N_NOTIF_WEBHOOK</code> sur Vercel ⇒ chaque <code>emit()</code> POST vers ce webhook.
+        Variable d'env <code>N8N_NOTIF_WEBHOOK</code> sur Netlify ⇒ chaque <code>emit()</code> POST vers ce webhook.
         Le cron de rappel 30 min sera une Cloud Function Firebase (cf. <code>docs/notifications.md</code>).
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Confidentialite() {
           <li><strong>Firebase</strong> (Google) — authentification et base de données, région Europe</li>
           <li><strong>Brevo</strong> — envoi d&apos;emails et SMS transactionnels</li>
           <li><strong>Stripe</strong> — traitement des paiements (conforme PCI-DSS)</li>
-          <li><strong>Vercel</strong> — hébergement de l&apos;application</li>
+          <li><strong>Netlify</strong> — hébergement de l&apos;application</li>
         </ul>
       </Section>
 

@@ -2,7 +2,7 @@
 
 Refonte digitale du Bad's Club par **ProjectView** : site vitrine + réservation + communauté + paiement + notifications + automatisation contenu.
 
-🌍 **Démo en ligne** : [bads-club.vercel.app](https://bads-club.vercel.app)
+🌍 **Démo en ligne** : [bads-club.netlify.app](https://bads-club.netlify.app)
 
 ---
 
@@ -23,7 +23,7 @@ Login démo : `lea@example.com` / `demo` (membre) ou `admin@badsclub.com` / `adm
 
 ## Pour Bernard (back & infra)
 
-Stack cible : **Next.js + Firebase + Brevo + Vercel + Stripe + N8N**.
+Stack cible : **Next.js + Firebase + Brevo + Netlify + Crédit Mutuel + N8N**.
 
 Docs :
 - [docs/firestore.md](./docs/firestore.md) — modèle de données + security rules + Cloud Functions
@@ -73,7 +73,7 @@ docs/                Docs techniques
 - **Tailwind v4 beta**
 - **TypeScript 5**
 
-Déployé sur Vercel.
+Déployé sur Netlify.
 
 ---
 

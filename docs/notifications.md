@@ -16,7 +16,7 @@ App Next.js  ──POST JSON──►  N8N webhook  ──►  email · SMS · S
 
 ## Variable d'env
 
-Sur Vercel (Settings → Environment Variables), ajouter :
+Sur Netlify (Site configuration → Environment Variables), ajouter :
 
 ```
 N8N_NOTIF_WEBHOOK = https://n8n.projectview.fr/webhook/bads-notif
@@ -113,7 +113,7 @@ Mêmes infos que les events membre, plus `bookedBy` / `cancelledBy` (qui a fait 
 | **Email** | **Brevo** | **0€** jusqu'à 9000/mois | ~10s | Templates dans Brevo, déclencheur API via N8N |
 | **SMS** | **Brevo** (même API que l'email) | ~0,045€/SMS · pack min. 100 | Instant | Réservé au rappel 30 min critique sans push dispo |
 
-**Stack finale = 3 services** : Firebase (auth + data + FCM) · Brevo (email + SMS unifiés) · Vercel (hosting).
+**Stack finale = 3 services** : Firebase (auth + data + FCM) · Brevo (email + SMS unifiés) · Netlify (hosting).
 
 Telegram, WhatsApp et consorts ont été écartés : la PWA + email + SMS Brevo couvrent 99% des besoins pour un coût marginal. WhatsApp Business reste activable plus tard via le même nœud Brevo si le client veut booster l'adoption.
 
@@ -144,7 +144,7 @@ Telegram, WhatsApp et consorts ont été écartés : la PWA + email + SMS Brevo 
 ### Firebase Cloud Messaging (Web Push)
 
 1. Console Firebase → Cloud Messaging → Web configuration → générer une VAPID key
-2. Ajouter dans Vercel : `NEXT_PUBLIC_FIREBASE_VAPID_KEY`
+2. Ajouter dans Netlify (env vars du site) : `NEXT_PUBLIC_FIREBASE_VAPID_KEY`
 3. Le client (composant `notif-preferences.tsx`) appelle `getToken()` de `firebase/messaging` et POST le token sur `/api/notif/register-fcm`
 4. Le token est stocké dans `/users/{uid}/fcmTokens/{token}`
 5. Quand un event `booking.*` est émis, une Cloud Function lit tous les tokens du destinataire et appelle `messaging.send()` pour chaque
@@ -153,7 +153,7 @@ Telegram, WhatsApp et consorts ont été écartés : la PWA + email + SMS Brevo 
 ### Brevo (Email + SMS unifiés)
 
 1. Créer un compte Brevo gratuit, générer une **clé API v3**
-2. Ajouter dans Vercel : `BREVO_API_KEY`
+2. Ajouter dans Netlify (env vars du site) : `BREVO_API_KEY`
 3. **Email** : créer les templates dans Brevo
    - `tmpl_booking_confirmed`, `tmpl_booking_cancelled`, `tmpl_reminder`, `tmpl_waitlist`, `tmpl_admin_notify`
    - Variables : `{{ booking.sportLabel }}`, `{{ booking.courtLabel }}`, `{{ booking.startsAt }}`, etc.

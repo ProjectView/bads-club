@@ -74,7 +74,7 @@ Pour éviter de se marcher dessus, on découpe le repo en zones de responsabilit
 
 ### Branches
 
-- **`main`** : production · déployée sur **bads-club.vercel.app** · pas de push direct
+- **`main`** : production · déployée sur **bads-club.netlify.app** · pas de push direct
 - **`dev`** : branche d'intégration · merge des feature branches
 - **`front/*`** : branches d'Adelin (ex. `front/home-redesign`, `front/footer-photos`)
 - **`back/*`** : branches de Bernard (ex. `back/firebase-wiring`, `back/stripe-webhook`)
@@ -95,7 +95,7 @@ git commit -m "front: nouveau hero homepage avec photos club"
 
 # Push et ouvre une Pull Request
 git push -u origin front/home-redesign
-# → Vercel génère automatiquement une URL preview
+# → Netlify génère automatiquement une URL deploy preview
 # → Bernard review la PR
 # → Merge dans dev quand validé
 ```
@@ -106,17 +106,17 @@ Bernard merge `dev` → `main` une fois par semaine ou à la demande, après val
 
 ---
 
-## Vercel & déploiements
+## Netlify & déploiements
 
-Une fois le repo connecté à Vercel (cf. setup en bas) :
+Une fois le repo connecté à Netlify (cf. setup en bas) :
 
 | Action | Résultat |
 |---|---|
-| Push sur `main` | Deploy **production** → bads-club.vercel.app |
-| Push sur `dev` | Deploy preview stable → `bads-club-dev-project-view.vercel.app` |
+| Push sur `main` | Deploy **production** → bads-club.netlify.app |
+| Push sur `dev` | Deploy preview stable → `deploy-preview-N--bads-club.netlify.app` |
 | Open PR | Deploy preview unique → URL postée en commentaire du PR |
 
-Adelin n'a **pas besoin** d'avoir un accès Vercel direct — il bosse sur Git, Vercel fait le reste.
+Adelin n'a **pas besoin** d'avoir un accès Netlify direct — il bosse sur Git, Netlify fait le reste.
 
 ---
 
@@ -147,7 +147,7 @@ Pour qu'Adelin puisse bosser pleinement :
 | Service | Demande à | Quoi |
 |---|---|---|
 | **GitHub** | Bernard | Invitation au repo en `Write` |
-| **Vercel** | Bernard (optionnel) | Lecture du dashboard `project-view` pour voir les déploiements |
+| **Netlify** | Bernard (optionnel) | Lecture du dashboard Netlify ProjectView pour voir les déploiements |
 | **Figma / drive design** | Adelin lui-même | À mettre en place si besoin |
 | **Photos / brand assets Bad's Club** | Le client | Recevoir photos club, charte si elle existe |
 
@@ -226,11 +226,11 @@ Si Adelin travaille sur Figma (ou autre outil) avant de coder :
    - Crée le composant dans `components/marketing/section-xxx.tsx`
    - Importe-le dans `app/page.tsx`
    - Vérifie sur localhost
-4. **Tu pushes** → Vercel génère une URL preview
+4. **Tu pushes** → Netlify génère une URL deploy preview
 5. **Tu partages l'URL au client** dans le commentaire de la PR
 6. **Validation client** → merge dans `dev` puis `main`
 
-L'URL preview Vercel est **persistante** tant que la PR est ouverte : pratique pour des allers-retours sans avoir à redéployer manuellement.
+L'URL deploy preview Netlify est **persistante** tant que la PR est ouverte : pratique pour des allers-retours sans avoir à redéployer manuellement.
 
 ---
 

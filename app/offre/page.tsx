@@ -7,10 +7,11 @@ const SECTIONS: TocItem[] = [
   { id: "contexte", label: "Contexte & enjeux" },
   { id: "vision", label: "La solution proposée" },
   { id: "demo", label: "La démo en ligne" },
-  { id: "comparatif", label: "Doinsport vs Bad's" },
+  { id: "comparatif", label: "WinSport vs Bad's" },
   { id: "architecture", label: "Architecture technique" },
   { id: "planning", label: "Planning par phases" },
-  { id: "tarification", label: "Tarification" },
+  { id: "tarification", label: "Tarification & ROI" },
+  { id: "quickwins", label: "Quick wins associés" },
   { id: "ip", label: "Propriété & code" },
   { id: "next", label: "Prochaines étapes" },
 ];
@@ -33,9 +34,10 @@ export default function OffrePage() {
                 <em className="text-[var(--color-lime)]">Bad&apos;s Club.</em>
               </h1>
               <p className="mt-6 text-lg lg:text-xl text-[var(--color-cream-dim)] max-w-2xl leading-relaxed">
-                Une application web et mobile sur mesure pour remplacer Doinsport
-                et porter l&apos;identité Bad&apos;s : réservation, communauté,
-                paiement, communication automatisée.
+                Une application web et mobile sur mesure pour remplacer WinSport,
+                récupérer <strong className="text-[var(--color-lime)]">12 000 € par an</strong> sur
+                les commissions de paiement, et porter l&apos;identité Bad&apos;s :
+                réservation, communauté, paiement direct, communication automatisée.
               </p>
             </div>
             <div className="col-span-12 lg:col-span-3 lg:pb-2">
@@ -54,10 +56,10 @@ export default function OffrePage() {
 
           {/* Key numbers strip */}
           <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+            <KeyNumber k="12 000 €/an" l="Économie commissions" sub="vs Stripe WinSport actuel" />
             <KeyNumber k="3 000 €" l="Setup one-shot" sub="à la signature" />
-            <KeyNumber k="500 €/mois" l="Hébergement & maintenance" sub="à partir du 2ème mois" />
-            <KeyNumber k="10–11 sem." l="Mise en production" sub="du kick-off au go-live" />
-            <KeyNumber k="100 %" l="Code à Bad's Club" sub="zéro dépendance prestataire" />
+            <KeyNumber k="500 €/mois" l="Hébergement & maintenance" sub="évolutions incluses" />
+            <KeyNumber k="< 6 mois" l="Retour sur investissement" sub="setup + 12 mois d'abo amortis" />
           </div>
         </div>
       </section>
@@ -77,6 +79,7 @@ export default function OffrePage() {
             <Architecture />
             <Planning />
             <Tarification />
+            <QuickWins />
             <Ip />
             <Next />
           </div>
@@ -136,21 +139,43 @@ function Contexte() {
     <Section id="contexte" eyebrow="Pourquoi ce projet" title={<>Le <em className="text-[var(--color-lime)]">contexte</em>.</>}>
       <Lead>
         Le Bad&apos;s Club est installé depuis 1999 dans le 7ème arrondissement de Lyon : 13 terrains
-        (badminton, squash, pétanque), tennis de table, simulateur baseball, bar-restaurant lounge,
-        plus de 420 adhérents actifs.
+        (badminton, squash, pétanque), tennis de table, simulateur baseball, bar-restaurant lounge.
+        <strong className="text-[var(--color-cream)]"> 20 000 clients en base, ~1 500 transactions
+        par mois, jusqu&apos;à 100 % d&apos;occupation le week-end</strong> — une activité dense
+        qui mérite un outil à sa hauteur.
       </Lead>
       <Lead>
-        La gestion des réservations et de la communication passe aujourd&apos;hui par Doinsport,
-        outil mutualisé qui répond aux besoins de base mais ne porte ni l&apos;identité Bad&apos;s,
-        ni les fonctionnalités différenciantes qu&apos;un club historique mérite : groupes thématiques,
-        communication automatisée, expérience mobile native, marque cohérente.
+        La gestion passe aujourd&apos;hui par WinSport (depuis 3 ans, après une première migration
+        depuis ExtraClub). L&apos;outil fait le job sur les bases — réservation, caisse, app mobile —
+        mais bloque sur plusieurs points qui pèsent sur l&apos;exploitation au quotidien.
       </Lead>
+
+      <div className="grid md:grid-cols-2 gap-3 mt-4">
+        <Limit title="Commissions paiement" body="Stripe via WinSport ~2 % refacturés sans transparence · estimation 20-30 k€/an. Le Crédit Mutuel propose 0,6 % en direct → 12 k€/an d'économie potentielle." />
+        <Limit title="Liste d'attente supprimée" body="Fonctionnalité présente sur ExtraClub, retirée par WinSport. Génère des appels clients pour expliquer les places libérées." />
+        <Limit title="Facturation manuelle" body="Pas de génération auto. Gestion en parallèle via Zervent. Problématique entreprises et remboursements." />
+        <Limit title="Délais de paiement" body="10 jours de décalage côté WinSport, contre 24-48h avant. Impact direct sur la trésorerie." />
+        <Limit title="Branding générique" body="Interface WinSport mutualisée. Le branding Bad's est de surface, pas natif." />
+        <Limit title="Roadmap subie" body="WinSport refuse d'ajouter d'autres moyens de paiement et d'autres APIs. Les évolutions dépendent d'un éditeur tiers." />
+      </div>
+
       <Lead>
         Cette offre propose de construire — avec Bad&apos;s Club et pour Bad&apos;s Club — une
-        application web et mobile sur mesure, capable de remplacer Doinsport et d&apos;ouvrir de
-        nouveaux leviers de fidélisation et de communication.
+        application sur mesure qui adresse ces 6 points de friction, branchée à votre nouvelle
+        relation Crédit Mutuel, sans perdre les acquis de WinSport (intégration possible via API si
+        utile en transition).
       </Lead>
     </Section>
+  );
+}
+
+function Limit({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-2xl border border-[var(--color-amber)]/20 bg-[var(--color-amber)]/5 p-4">
+      <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-amber)] mb-1">⚠ Limitation</div>
+      <div className="font-medium text-sm mb-1">{title}</div>
+      <div className="text-xs text-[var(--color-cream-dim)] leading-relaxed">{body}</div>
+    </div>
   );
 }
 
@@ -202,7 +227,7 @@ function DemoSection() {
       <div className="rounded-2xl border border-[var(--color-lime)]/30 bg-[var(--color-lime)]/5 p-5 flex items-center justify-between gap-4 flex-wrap">
         <div>
           <div className="font-mono text-xs uppercase tracking-widest text-[var(--color-lime)] mb-1">Lien démo</div>
-          <div className="font-display text-2xl">bads-club.vercel.app</div>
+          <div className="font-display text-2xl">bads-club.netlify.app</div>
           <div className="text-xs text-[var(--color-cream-dim)] mt-1">
             Comptes test visibles dans le bandeau « Comptes test » en haut du site
           </div>
@@ -230,31 +255,33 @@ function DemoSection() {
 }
 
 function Comparatif() {
-  const rows: { critere: string; doinsport: string; bads: string }[] = [
-    { critere: "Branding", doinsport: "Interface générique Doinsport · logo Bad's en surimpression", bads: "Identité Bad's 100% · typo, couleurs et ton de marque cohérents" },
-    { critere: "Réservation terrain", doinsport: "Fonctionnelle · 5 sports · grille tarifaire par zone", bads: "Reprise complète · UX plus rapide · multi-créneaux · live multi-utilisateurs" },
-    { critere: "Communauté / groupes", doinsport: "Module \"Matchs\" limité (pas de chat, pas de groupes thématiques)", bads: "Groupes thématiques · chat temps réel · récurrence automatique · réservation collective" },
-    { critere: "Paiement", doinsport: "Carnets de séances pré-payés", bads: "Stripe pay-as-you-go + remboursement automatique sur annulation" },
-    { critere: "Notifications", doinsport: "Email basique, pas de push", bads: "Push (PWA) + email + SMS Brevo · liste d'attente automatique sur annulation" },
-    { critere: "Communication marketing", doinsport: "Aucun outil intégré", bads: "Studio article · IA reformate pour Instagram / Facebook / LinkedIn · publication programmée" },
-    { critere: "App mobile", doinsport: "App store + web · double maintenance", bads: "PWA installable depuis le site · pas de store · notifications push natives" },
-    { critere: "Évolutivité", doinsport: "Dépendant du roadmap Doinsport", bads: "Code propre à Bad's · évolutions à la demande" },
+  const rows: { critere: string; winsport: string; bads: string }[] = [
+    { critere: "Commissions paiement", winsport: "Stripe via WinSport · ~2 % refacturés · 20–30 k€/an", bads: "Crédit Mutuel direct · 0,6–0,7 % CB perso · 1,2 % CB pro · 12 k€/an récupérés" },
+    { critere: "Délai d'encaissement", winsport: "10 jours de décalage", bads: "24–48h · cash-flow restauré" },
+    { critere: "Liste d'attente", winsport: "Supprimée depuis migration WinSport", bads: "Automatique · notification + résa auto au premier en file" },
+    { critere: "Facturation", winsport: "Manuelle via Zervent · pas de génération auto", bads: "Factures auto à chaque résa · export comptable" },
+    { critere: "Branding", winsport: "Interface mutualisée · logo Bad's en surimpression", bads: "Identité Bad's 100 % · typo, couleurs et ton de marque cohérents" },
+    { critere: "Communauté / groupes", winsport: "Aucun module communauté ou chat", bads: "Groupes thématiques · chat temps réel · récurrence · résa collective" },
+    { critere: "Notifications", winsport: "Email basique, pas de push", bads: "Push (PWA) + email + SMS Brevo · alerte place libérée auto" },
+    { critere: "Communication marketing", winsport: "Aucun outil intégré · articles gérés à la main", bads: "Studio article · IA reformate pour Instagram / Facebook / LinkedIn" },
+    { critere: "App mobile", winsport: "App store iOS + Android · double maintenance", bads: "PWA installable depuis le site · pas de store · push natives" },
+    { critere: "Évolutivité", winsport: "WinSport refuse d'ajouter de nouveaux moyens de paiement / API", bads: "Code propre à Bad's · évolutions à la demande" },
   ];
   return (
-    <Section id="comparatif" eyebrow="Diagnostic et bénéfices" title={<>Doinsport <em className="text-[var(--color-muted)]">vs</em> solution Bad&apos;s.</>}>
+    <Section id="comparatif" eyebrow="Diagnostic et bénéfices" title={<>WinSport <em className="text-[var(--color-muted)]">vs</em> solution Bad&apos;s.</>}>
       <Lead>
-        L&apos;objectif n&apos;est pas de remplacer pour remplacer : c&apos;est d&apos;apporter de la
-        valeur sur les fonctionnalités qui font la différence — marque, communauté, communication,
-        expérience mobile.
+        L&apos;objectif n&apos;est pas de remplacer pour remplacer : c&apos;est d&apos;adresser les
+        points de friction identifiés à l&apos;audit (paiement, listes d&apos;attente, facturation,
+        branding) et de libérer 12 000 € de commissions par an.
       </Lead>
       <div className="rounded-2xl border border-white/10 overflow-hidden">
         <div className="grid grid-cols-12 gap-px bg-white/10 text-sm">
           <Cell head className="col-span-3">Critère</Cell>
-          <Cell head className="col-span-5">Doinsport (actuel)</Cell>
+          <Cell head className="col-span-5">WinSport (actuel)</Cell>
           <Cell head className="col-span-4 text-[var(--color-lime)]">App Bad&apos;s sur mesure</Cell>
           {rows.flatMap(r => [
             <Cell key={r.critere + "-c"} className="col-span-3 font-medium">{r.critere}</Cell>,
-            <Cell key={r.critere + "-d"} className="col-span-5 text-[var(--color-cream-dim)]">{r.doinsport}</Cell>,
+            <Cell key={r.critere + "-w"} className="col-span-5 text-[var(--color-cream-dim)]">{r.winsport}</Cell>,
             <Cell key={r.critere + "-b"} className="col-span-4">{r.bads}</Cell>,
           ])}
         </div>
@@ -274,10 +301,11 @@ function Cell({ head, className, children }: { head?: boolean; className?: strin
 function Architecture() {
   const stack = [
     { name: "Firebase", role: "Auth · base temps réel (Firestore) · stockage · notifications push (FCM) · fonctions serveur", cost: "0 € jusqu'à 50k utilisateurs/mois" },
+    { name: "Crédit Mutuel", role: "Paiement CB direct, sans intermédiaire · convention monétique négociée par Bad's", cost: "0,6–0,7 % CB perso · 1,2 % CB pro · sans commission fixe ni minimum" },
     { name: "Brevo", role: "Emails transactionnels + SMS via une seule API et un seul dashboard", cost: "0 € email jusqu'à 9 000/mois · SMS à 0,045 €/pièce" },
-    { name: "Vercel", role: "Hébergement Next.js (front + API) · CDN mondial · preview à chaque déploiement", cost: "0 € Hobby · ~20 €/mois Pro selon usage" },
-    { name: "Stripe", role: "Paiement CB, Apple Pay, Google Pay · remboursements automatiques", cost: "1,5 % + 0,25 € par transaction CB EU" },
-    { name: "N8N", role: "Orchestration notifications · automatisation publication réseaux sociaux", cost: "0 € (instance ProjectView)" },
+    { name: "Netlify", role: "Hébergement Next.js (front + API) · CDN mondial · preview à chaque déploiement · CI Git", cost: "0 € Starter · ~19 €/mois Pro selon usage" },
+    { name: "N8N", role: "Orchestration notifications · automatisation publication réseaux sociaux · chatbot inscription", cost: "0 € (instance ProjectView)" },
+    { name: "WinSport API", role: "Intégration optionnelle pour bascule progressive · synchronisation base clients existante", cost: "À évaluer selon documentation API" },
   ];
   return (
     <Section id="architecture" eyebrow="Choix techno et coûts services" title={<>L&apos;architecture <em className="text-[var(--color-lime)]">technique</em>.</>}>
@@ -378,8 +406,9 @@ function Tarification() {
           <div>
             <div className="font-medium">Services tiers (refacturés au coût réel)</div>
             <div className="text-[var(--color-cream-dim)] text-xs mt-1">
-              Firebase gratuit jusqu&apos;à 50k utilisateurs · Brevo gratuit jusqu&apos;à 9 000 emails/mois · Stripe 1,5 % + 0,25 € par paiement · SMS Brevo 0,045 € pièce.
-              <strong className="text-[var(--color-cream)] block mt-1">Estimé : 5 à 15 € HT/mois.</strong>
+              Firebase gratuit jusqu&apos;à 50k utilisateurs · Brevo gratuit jusqu&apos;à 9 000 emails/mois ·
+              Crédit Mutuel 0,6–1,2 % par paiement (versé à Bad&apos;s, pas à ProjectView) · SMS Brevo 0,045 € pièce.
+              <strong className="text-[var(--color-cream)] block mt-1">Frais récurrents ProjectView : 5 à 15 € HT/mois.</strong>
             </div>
           </div>
           <div>
@@ -392,12 +421,19 @@ function Tarification() {
         </div>
       </div>
 
+      {/* ROI block */}
       <div className="rounded-2xl border-l-2 border-[var(--color-lime)] bg-[var(--color-lime)]/5 p-6">
-        <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-lime)] mb-2">Économie attendue</div>
+        <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-lime)] mb-3">ROI estimé</div>
+        <div className="grid sm:grid-cols-3 gap-4 mb-4">
+          <RoiCell label="Économie commissions / an" value="≈ 12 000 €" sub="Stripe 2 % → CM 0,7 %" />
+          <RoiCell label="Coût ProjectView / an" value="≈ 9 000 €" sub="500 €/mois × 12 + setup amorti" />
+          <RoiCell label="Bénéfice net dès l'année 1" value="≈ + 3 000 €" sub="hors valeur ajoutée fonctionnelle" />
+        </div>
         <p className="text-sm leading-relaxed">
-          En remplaçant Doinsport, Bad&apos;s Club récupère le <strong>contrôle total</strong> de
-          sa relation client, de sa marque et de sa donnée — sans pénalité financière puisque l&apos;abonnement
-          mensuel de 500 € HT couvre l&apos;ensemble des coûts récurrents (hors transactions Stripe et SMS marginaux).
+          La seule économie sur les commissions de paiement <strong>finance l&apos;abonnement annuel</strong>
+          et laisse un bénéfice net dès la première année. Toutes les fonctionnalités ajoutées
+          (communauté, listes d&apos;attente, automatisation marketing, facturation, délais d&apos;encaissement
+          divisés par 5) sont en plus.
         </p>
       </div>
     </Section>
@@ -415,6 +451,73 @@ function PriceCard({ label, when, price, unit, desc, accent }: { label: string; 
       </div>
       <p className="text-sm text-[var(--color-cream-dim)] leading-relaxed">{desc}</p>
     </div>
+  );
+}
+
+function RoiCell({ label, value, sub }: { label: string; value: string; sub: string }) {
+  return (
+    <div>
+      <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)] mb-1">{label}</div>
+      <div className="font-display text-3xl text-[var(--color-lime)]">{value}</div>
+      <div className="text-[10px] font-mono text-[var(--color-muted)] mt-1">{sub}</div>
+    </div>
+  );
+}
+
+function QuickWins() {
+  const wins = [
+    {
+      tag: "Chatbot",
+      title: "Réduire les appels répétitifs",
+      body: "Un chatbot disponible 24/7 répond aux questions récurrentes : « suis-je bien inscrit ? », « comment payer ? », « est-ce que ma résa est passée ? ». Soulage l'accueil sans dégrader la qualité de service.",
+    },
+    {
+      tag: "Marketing IA",
+      title: "Articles + posts automatisés",
+      body: "Vous rédigez un article (tournoi, nouveauté, recrutement coach) → l'IA crée automatiquement 3 versions Instagram, Facebook, LinkedIn adaptées à chaque audience. Publication programmée incluse.",
+    },
+    {
+      tag: "BtoB",
+      title: "Mailing entreprises locales",
+      body: "Campagnes ciblées Orange, RTE, Foto et autres entreprises du secteur. Pack after-work + restauration · 15-25 couverts actuels, capacité 60 = forte marge de croissance.",
+    },
+    {
+      tag: "SEO",
+      title: "Optimisation référencement",
+      body: "Site WordPress actuel à moderniser. Migration vers Next.js + balisage SEO + structure éditoriale. Objectif : capter la recherche locale « badminton Lyon 7 », « squash Lyon ».",
+    },
+    {
+      tag: "Avis Google",
+      title: "Acquisition d'avis automatique",
+      body: "Note actuelle 4,2/5 plombée par d'anciens avis hérités d'ExtraClub. Sollicitation auto post-résa → relèvement note rapide → meilleure visibilité Google Maps.",
+    },
+    {
+      tag: "Aménagement",
+      title: "+2 terrains badminton",
+      body: "Le projet de remplacer la pétanque par 2 terrains badminton supplémentaires sera supporté nativement par l'app : ajout d'un terrain = 1 ligne de configuration, sans devoir attendre WinSport.",
+    },
+  ];
+  return (
+    <Section id="quickwins" eyebrow="Au-delà du paiement" title={<>Les <em className="text-[var(--color-lime)]">quick wins</em> identifiés à l&apos;audit.</>}>
+      <Lead>
+        Plusieurs opportunités d&apos;optimisation sont ressorties de l&apos;audit du 20 mai 2026.
+        L&apos;app peut servir de socle pour les adresser progressivement, en post phase 3, sans
+        nouveau prestataire et sans engager un re-build.
+      </Lead>
+      <div className="grid md:grid-cols-2 gap-3">
+        {wins.map(w => (
+          <div key={w.title} className="rounded-2xl border border-white/10 bg-[var(--color-ink-2)] p-5 lift">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-lime)] mb-2">{w.tag}</div>
+            <div className="font-display text-xl mb-1">{w.title}</div>
+            <div className="text-sm text-[var(--color-cream-dim)] leading-relaxed">{w.body}</div>
+          </div>
+        ))}
+      </div>
+      <p className="text-sm text-[var(--color-muted)]">
+        Ces quick wins sont en option, devisés au cas par cas et facturés au temps passé (TJM 500 € HT).
+        Ils ne sont pas inclus dans le forfait setup ou l&apos;abonnement.
+      </p>
+    </Section>
   );
 }
 

@@ -13,7 +13,7 @@ export default function MentionsLegales() {
       </Section>
 
       <Section title="Hébergement">
-        <p><strong>Vercel Inc.</strong> — 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
+        <p><strong>Netlify, Inc.</strong> — 44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA</p>
         <p>Données stockées dans la région Europe (Paris) sur Firebase (Google Cloud).</p>
       </Section>
 
