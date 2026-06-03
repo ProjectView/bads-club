@@ -93,6 +93,69 @@
     .pillar-title { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; }
     .pillar p { margin: 8px 0 0; font-size: 15px; }
 
+    /* Livrables avant/après */
+    .livrables { display: grid; gap: 32px; }
+    .livrable {
+      background: var(--ink-soft); border: 1px solid var(--border);
+      padding: 32px;
+    }
+    .livrable-head {
+      display: grid; grid-template-columns: 100px 1fr; gap: 24px;
+      padding-bottom: 24px; border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      align-items: start;
+    }
+    .livrable-num {
+      font-family: var(--font-display); font-size: 84px;
+      color: var(--gold); line-height: 0.9;
+    }
+    .livrable-tag {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 6px;
+    }
+    .livrable-title {
+      font-family: var(--font-display); font-size: 32px;
+      text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05;
+    }
+    .livrable-sub {
+      font-family: var(--font-mono); font-size: 12px; color: var(--cream-dim);
+      margin-top: 6px; letter-spacing: 0.05em;
+    }
+    .ba-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 760px) { .ba-grid { grid-template-columns: 1fr; } }
+    .ba { padding: 20px; border: 1px solid var(--border); background: var(--ink); }
+    .ba-before { border-left: 3px solid var(--danger); }
+    .ba-after { border-left: 3px solid var(--gold); background: var(--gold-soft); }
+    .ba-label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .ba-before .ba-label { color: var(--danger); }
+    .ba-after .ba-label { color: var(--gold); }
+    .ba p { margin: 0; font-size: 14px; color: var(--cream-dim); line-height: 1.55; }
+    .ba-after p { color: var(--cream); }
+    .meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    @media (max-width: 760px) { .meta-grid { grid-template-columns: 1fr; } }
+    .meta {
+      padding: 14px 18px; background: var(--ink);
+      border: 1px solid var(--border);
+      font-size: 14px; color: var(--cream-dim); line-height: 1.55;
+    }
+    .meta-tag {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-right: 12px;
+      padding: 2px 8px; border: 1px solid var(--gold); border-radius: 2px;
+      vertical-align: middle;
+    }
+    .meta strong { color: var(--gold); }
+
     .compare { border: 1px solid var(--border); overflow: hidden; }
     .compare-row { display: grid; grid-template-columns: 1fr 1.6fr 1.4fr; border-bottom: 1px solid var(--border); }
     .compare-row:last-child { border-bottom: 0; }
@@ -205,13 +268,14 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="hero-eyebrow">Mai 2026 · Validité 30 jours</div>
-    <h1>Suez la sueur.<br><em>On vous rend 12 000 €.</em></h1>
-    <div class="hero-tag">RÉSERVATION · COMMUNAUTÉ · PAIEMENT DIRECT · <span>BAD'S</span></div>
+    <div class="hero-eyebrow">Mai 2026 · Validité 30 jours · Plateforme Pulse</div>
+    <h1>Sortir de WinSport.<br><em>Entrer dans Pulse.</em></h1>
+    <div class="hero-tag">PLATEFORME · APP PWA · PAIEMENT DIRECT · CHATBOT · IA · <span>BAD'S</span></div>
     <p class="hero-lead">
-      Une application web et mobile sur mesure pour <strong>remplacer WinSport</strong>,
-      récupérer 12 000 € par an de commissions de paiement, et porter l'identité Bad's :
-      réservation temps réel, communauté, paiement Crédit Mutuel direct, communication automatisée.
+      <strong>Pulse</strong> est la plateforme que ProjectView construit pour le Bad's :
+      site vitrine, app de réservation, messagerie communautaire, paiement Crédit Mutuel direct,
+      chatbot 24/7 et automatisation marketing. Six livrables pour remplacer WinSport et
+      récupérer 12 000 € de commissions par an.
     </p>
 
     <div class="kpis">
@@ -221,17 +285,17 @@
         <div class="kpi-sub">Stripe 2 % → CM 0,7 %</div>
       </div>
       <div class="kpi">
-        <div class="kpi-value">3 000 €</div>
+        <div class="kpi-value">4 000 €</div>
         <div class="kpi-label">Setup one-shot</div>
-        <div class="kpi-sub">À la signature</div>
+        <div class="kpi-sub">6 livrables · à la signature</div>
       </div>
       <div class="kpi">
         <div class="kpi-value">500 €/mois</div>
-        <div class="kpi-label">Maintenance</div>
-        <div class="kpi-sub">Évolutions incluses</div>
+        <div class="kpi-label">Loyer Pulse</div>
+        <div class="kpi-sub">Hébergement + maintenance</div>
       </div>
       <div class="kpi">
-        <div class="kpi-value">&lt; 6 mois</div>
+        <div class="kpi-value">&lt; 7 mois</div>
         <div class="kpi-label">Retour sur invest.</div>
         <div class="kpi-sub">Setup + abo amortis</div>
       </div>
@@ -284,54 +348,177 @@
   </div>
 </section>
 
-<section class="bloc" id="solution">
+<section class="bloc" id="pulse">
   <div class="wrap">
-    <div class="eyebrow">La solution</div>
-    <h2>Une app.<br><em>5 piliers.</em></h2>
+    <div class="eyebrow">Notre proposition · plateforme Pulse</div>
+    <h2>6 livrables.<br><em>1 plateforme.</em></h2>
     <p class="lead">
-      ProjectView construit — avec Bad's et pour Bad's — une application sur mesure qui
-      adresse les 6 frictions identifiées et porte enfin l'identité du club.
+      Pulse couvre tout l'écosystème digital du Bad's. Pour chaque livrable, voici la
+      situation actuelle avec WinSport et la situation proposée — avec les avantages
+      techniques et les bénéfices business correspondants.
     </p>
 
-    <div class="pillars" style="margin-top:32px">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <div>
-          <div class="pillar-title">Site vitrine modernisé</div>
-          <p>Identité Bad's assumée, en cohérence avec le sport-lounge et la marque historique.</p>
+    <div class="livrables" style="margin-top:48px">
+
+      <!-- 01 - Plateforme Pulse -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">01</div>
+          <div>
+            <div class="livrable-tag">Front + Back</div>
+            <div class="livrable-title">Plateforme Pulse</div>
+            <div class="livrable-sub">Site vitrine, page événementiel, page tarifs · back-office complet</div>
+          </div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <div>
-          <div class="pillar-title">Réservation temps réel</div>
-          <p>Multi-créneaux, multi-utilisateurs, anti-conflit garanti. Paiement Crédit Mutuel direct.</p>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">⚠ Situation actuelle · WinSport</div>
+            <p>Interface mutualisée. Logo Bad's en surimpression sur un template générique. Aucune page événementiel native. Dashboard standard pas adapté à l'organisation du club.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">✓ Situation proposée · Pulse</div>
+            <p><strong>Front</strong> : site vitrine 100 % Bad's, page événementiel avec inscription, page tarifs dynamique. <strong>Back</strong> : gestion des réservations terrains, messagerie communautaire, dashboard sur mesure.</p>
+          </div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <div>
-          <div class="pillar-title">Communauté d'adhérents</div>
-          <p>Groupes thématiques (double mixte du jeudi, squash after-work), chat intégré, sessions récurrentes.</p>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Identité brand 100 %, dashboard adapté aux process Bad's, évolutions à la demande, séparation propre des rôles admin / membre.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Image de marque renforcée, attraction de nouveaux adhérents, gain de temps administratif (moins de double-saisie), différenciation vs autres clubs.</div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">04</div>
-        <div>
-          <div class="pillar-title">Paiement direct</div>
-          <p>CB, Apple Pay, Google Pay via Crédit Mutuel. Factures auto. Remboursements automatiques.</p>
+      </article>
+
+      <!-- 02 - Paiement en ligne -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">02</div>
+          <div>
+            <div class="livrable-tag">Paiement Crédit Mutuel direct</div>
+            <div class="livrable-title">Réservation + Bar</div>
+            <div class="livrable-sub">CB · Apple Pay · Google Pay · factures automatiques</div>
+          </div>
         </div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">05</div>
-        <div>
-          <div class="pillar-title">Studio communication</div>
-          <p>Éditeur d'articles avec reformatage IA pour Instagram, Facebook, LinkedIn. Publication programmée.</p>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">⚠ Situation actuelle · WinSport</div>
+            <p>Stripe via WinSport ~2 % refacturés sans transparence (20-30 k€/an). Délai d'encaissement 10 jours. Aucun paiement bar intégré (gestion caisse séparée). Facturation manuelle via Zervent.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">✓ Situation proposée · Pulse</div>
+            <p>Convention monétique Crédit Mutuel négociée par Bad's : <strong>0,6-0,7 % CB perso · 1,2 % CB pro</strong>, sans commission fixe. Encaissement 24-48 h. Paiement bar par QR code à table. Factures auto générées.</p>
+          </div>
         </div>
-      </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Commission divisée par 3, cash-flow accéléré, factures conformes générées auto, paiement bar intégré au compte membre.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span><strong>+12 000 €/an</strong> récupérés, trésorerie restaurée, augmentation du panier moyen bar (paiement sans friction), comptabilité simplifiée.</div>
+        </div>
+      </article>
+
+      <!-- 03 - Chatbot -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">03</div>
+          <div>
+            <div class="livrable-tag">Service client 24/7</div>
+            <div class="livrable-title">Chatbot</div>
+            <div class="livrable-sub">Réponses immédiates aux questions récurrentes</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">⚠ Situation actuelle · WinSport</div>
+            <p>L'accueil reçoit en permanence les mêmes appels : « suis-je bien inscrit ? », « comment payer ? », « ma résa est-elle confirmée ? ». L'équipe perd du temps sur du téléphonique répétitif au détriment du service en salle.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">✓ Situation proposée · Pulse</div>
+            <p>Chatbot disponible 24/7 sur le site et l'app. Connecté aux données réelles (réservations, paiements, événements). Répond instantanément aux 80 % de questions récurrentes. Bascule vers humain si besoin complexe.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Disponibilité 24/7, désengorge le standard, réponses contextuelles (chaque user voit ses propres données), apprend des nouvelles questions.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Moins d'appels (gain de temps accueil), meilleure satisfaction adhérent (réponse immédiate), équipe disponible pour le service de qualité en salle.</div>
+        </div>
+      </article>
+
+      <!-- 04 - App réservation + messagerie + base users -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">04</div>
+          <div>
+            <div class="livrable-tag">Expérience membre</div>
+            <div class="livrable-title">App de réservation, messagerie, base utilisateurs filtrable</div>
+            <div class="livrable-sub">Groupes thématiques · chat live · segmentation admin</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">⚠ Situation actuelle · WinSport</div>
+            <p>App basique : réservation et c'est tout. Aucun module communauté. Listes d'attente supprimées depuis la migration. Base de 20 000 clients non segmentable. Pas d'outil pour relancer / cibler.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">✓ Situation proposée · Pulse</div>
+            <p>Réservation multi-créneaux + file d'attente auto. <strong>Groupes thématiques</strong> (double mixte du jeudi, squash after-work). <strong>Chat live</strong> par groupe. <strong>Base users filtrable</strong> (formule, fréquence, ancienneté, sport pratiqué, dernière résa).</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Fidélisation par la communauté, événements organisés par les membres eux-mêmes, segmentation fine pour relances ciblées, file d'attente automatique.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Engagement adhérent renforcé, occupation des créneaux creux (membres qui se trouvent entre eux), ambassadeurs naturels, campagnes plus efficaces (-50 % des emails sans valeur).</div>
+        </div>
+      </article>
+
+      <!-- 05 - Automatisation marketing -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">05</div>
+          <div>
+            <div class="livrable-tag">Marketing IA</div>
+            <div class="livrable-title">Rédaction d'articles + publication réseaux sociaux</div>
+            <div class="livrable-sub">1 article rédigé → 3 posts IG / FB / LinkedIn publiés</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">⚠ Situation actuelle · WinSport</div>
+            <p>Aucun outil marketing intégré. Articles gérés à la main par Jonathan. Prestataire vidéo externe pour les contenus. Publication manuelle sur chaque réseau, format adapté à chaque fois. Beaucoup de friction.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">✓ Situation proposée · Pulse</div>
+            <p>Éditeur d'articles dans le back-office. À chaque publication, <strong>l'IA reformate automatiquement pour Instagram, Facebook et LinkedIn</strong> (ton, longueur, hashtags adaptés). Programmation horaire incluse. Validation 1-clic.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>1 article = 3 posts sans travail supplémentaire, ton adapté par réseau, programmation à la bonne heure, statistiques de portée intégrées.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Présence digitale renforcée, SEO amélioré, capture d'audience BtoB (Orange, RTE, Foto), libération du temps de Jonathan, image plus pro.</div>
+        </div>
+      </article>
+
+      <!-- 06 - App PWA -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">06</div>
+          <div>
+            <div class="livrable-tag">Application mobile</div>
+            <div class="livrable-title">Progressive Web App (PWA)</div>
+            <div class="livrable-sub">Installable depuis le navigateur · pas de store</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">⚠ Situation actuelle · WinSport</div>
+            <p>App native iOS + Android. Double maintenance, dépendance aux stores Apple et Google. Délai de validation (1-2 semaines) à chaque mise à jour. Adhérents qui ne l'installent pas (friction d'installation depuis le store).</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">✓ Situation proposée · Pulse</div>
+            <p>Progressive Web App : installable en 2 clics depuis le site (bouton « Ajouter à l'écran d'accueil »). Notifications push natives. Fonctionne hors-ligne. Une seule codebase. Mises à jour instantanées sans store.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Une codebase à maintenir, déploiement instantané, pas de validation Apple / Google, économies stores, install ultra-rapide pour l'utilisateur.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Mises à jour des features visibles immédiatement, taux d'adoption élevé (95 %+ chez clubs comparables), pas de cycle de release contraint, moins de support technique.</div>
+        </div>
+      </article>
+
     </div>
 
-    <div style="margin-top:40px; padding:24px; background:var(--ink-soft); border:1px solid var(--gold); display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;">
+    <div style="margin-top:48px; padding:24px; background:var(--ink-soft); border:1px solid var(--gold); display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;">
       <div>
         <div class="card-tag" style="margin-bottom:4px;">Démo en ligne</div>
         <div class="card-title" style="margin:0;">bads-club.netlify.app</div>
@@ -418,15 +605,15 @@
     <div class="price-duo" style="margin-top:32px">
       <div class="price">
         <div class="price-when">One-shot · à la signature</div>
-        <div class="price-label">Setup initial</div>
-        <div><span class="price-amount">3 000 €</span><span class="price-unit">HT</span></div>
-        <p>Conception, développement, intégration, mise en ligne, formation, bascule depuis WinSport, migration des 20 000 clients existants.</p>
+        <div class="price-label">Setup Pulse</div>
+        <div><span class="price-amount">4 000 €</span><span class="price-unit">HT</span></div>
+        <p>Couvre les 6 livrables : plateforme Pulse (front + back), paiement Crédit Mutuel direct (terrains + bar), chatbot 24/7, app de réservation + messagerie + base users filtrable, automatisation marketing IA, application mobile PWA. Inclus : conception, développement, mise en ligne, formation, bascule depuis WinSport, migration des 20 000 clients.</p>
       </div>
       <div class="price featured">
         <div class="price-when">À partir du 2ème mois</div>
-        <div class="price-label">Abonnement mensuel</div>
+        <div class="price-label">Loyer Pulse</div>
         <div><span class="price-amount">500 €</span><span class="price-unit">HT / mois</span></div>
-        <p>Hébergement, maintenance corrective, mises à jour sécurité, évolutions mineures (jusqu'à 4 h/mois), support email sous 48 h.</p>
+        <p>Hébergement Netlify, maintenance corrective, mises à jour sécurité, supervision chatbot, évolutions mineures (jusqu'à 4 h/mois), support email sous 48 h ouvrées.</p>
       </div>
     </div>
 
@@ -439,21 +626,22 @@
           <div class="roi-cell-sub">Stripe 2 % → CM 0,7 %</div>
         </div>
         <div>
-          <div class="roi-cell-label">Coût ProjectView / an</div>
-          <div class="roi-cell-value">−9 000 €</div>
-          <div class="roi-cell-sub">Setup amorti + 12 mois d'abo</div>
+          <div class="roi-cell-label">Coût Pulse · an 1</div>
+          <div class="roi-cell-value">−10 000 €</div>
+          <div class="roi-cell-sub">4 000 € setup + 12 × 500 €</div>
         </div>
         <div>
           <div class="roi-cell-label">Bénéfice net dès l'an 1</div>
-          <div class="roi-cell-value">+3 000 €</div>
+          <div class="roi-cell-value">+2 000 €</div>
           <div class="roi-cell-sub">Hors valeur fonctionnelle</div>
         </div>
       </div>
       <p>
-        <strong>La seule économie sur les commissions de paiement finance l'abonnement annuel</strong>
-        et laisse un bénéfice net dès la première année. Communauté, listes d'attente,
-        facturation auto, automatisation marketing, délais d'encaissement divisés par 5 :
-        tout cela est <em style="color:var(--gold); font-style:normal;">en plus</em>.
+        <strong>La seule économie sur les commissions de paiement finance l'investissement
+        de la 1ère année</strong> et laisse un bénéfice net. Dès l'année 2, le ROI est de
+        <em style="color:var(--gold); font-style:normal;">+6 000 €/an</em> (12 000 € d'économie - 6 000 € de loyer Pulse).
+        Et tout le reste — communauté, listes d'attente, facturation auto, marketing IA, chatbot,
+        cash-flow restauré — est <em style="color:var(--gold); font-style:normal;">en plus</em>.
       </p>
     </div>
   </div>
@@ -527,16 +715,6 @@
 
     <div class="cards" style="margin-top:32px">
       <div class="card">
-        <div class="card-tag">Chatbot</div>
-        <div class="card-title">Réduire les appels répétitifs</div>
-        <p>Réponses 24/7 aux questions « suis-je bien inscrit ? », « comment payer ? », « est-ce que ma résa est passée ? ». Soulage l'accueil sans dégrader le service.</p>
-      </div>
-      <div class="card">
-        <div class="card-tag">Marketing IA</div>
-        <div class="card-title">Articles + posts automatisés</div>
-        <p>Vous rédigez un article → l'IA crée 3 versions Instagram, Facebook, LinkedIn adaptées à chaque audience. Publication programmée incluse.</p>
-      </div>
-      <div class="card">
         <div class="card-tag">BtoB</div>
         <div class="card-title">Mailing entreprises locales</div>
         <p>Campagnes ciblées Orange, RTE, Foto. Pack after-work + restauration · 15-25 couverts actuels pour 60 places = forte marge de croissance.</p>
@@ -544,7 +722,7 @@
       <div class="card">
         <div class="card-tag">SEO</div>
         <div class="card-title">Référencement local</div>
-        <p>Site WordPress actuel modernisé. Migration vers Next.js + SEO + structure éditoriale. Objectif : capter « badminton Lyon 7 », « squash Lyon ».</p>
+        <p>Site WordPress actuel modernisé. Migration vers Next.js + balisage SEO + structure éditoriale. Objectif : capter « badminton Lyon 7 », « squash Lyon ».</p>
       </div>
       <div class="card">
         <div class="card-tag">Avis Google</div>
@@ -554,7 +732,7 @@
       <div class="card">
         <div class="card-tag">Aménagement</div>
         <div class="card-title">+2 terrains badminton</div>
-        <p>Remplacement pétanque → 2 terrains badminton supportés nativement par l'app. Ajout d'un terrain = 1 ligne de configuration, sans attendre WinSport.</p>
+        <p>Remplacement pétanque → 2 terrains badminton supportés nativement par Pulse. Ajout d'un terrain = 1 ligne de configuration, sans attendre WinSport.</p>
       </div>
     </div>
 
@@ -685,7 +863,7 @@
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-info">
-    <span>3 000 €</span> + <span>500 €/mois</span> · <span>+ 12 000 €/an</span>
+    <span>4 000 €</span> + <span>500 €/mois</span> · Pulse récupère <span>+ 12 000 €/an</span>
   </div>
   <a class="btn btn-gold" href="#next">Valider l'offre →</a>
 </div>
