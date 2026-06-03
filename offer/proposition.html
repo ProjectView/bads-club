@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bad's Club × ProjectView — Proposition commerciale</title>
+  <meta name="description" content="Refonte digitale du Bad's Club : application web et mobile sur mesure pour remplacer WinSport et récupérer 12 000 € de commissions par an." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #080808;
+      --ink-soft: #1a1a1a;
+      --cream: #f5f0e8;
+      --cream-dim: #c4bfb8;
+      --gold: #bda41a;
+      --gold-soft: #bda41a1f;
+      --muted: #f5f0e866;
+      --border: #f5f0e81a;
+      --danger: #c14d2a;
+      --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+      --font-mono: "Space Mono", ui-monospace, monospace;
+      --font-body: Georgia, "Times New Roman", serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--ink); color: var(--cream);
+      font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+    header.top {
+      border-bottom: 1px solid var(--border); padding: 18px 0;
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(8, 8, 8, 0.92); backdrop-filter: blur(12px);
+    }
+    .top-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--gold); position: relative; }
+    .brand-mark::after { content: ""; position: absolute; inset: 8px; background: var(--gold); border-radius: 50%; }
+    .brand-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.03em; }
+    .brand-x { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+    .ref { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+
+    .hero { padding: 96px 0 64px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; background: var(--gold); opacity: 0.08;
+      filter: blur(120px); border-radius: 50%; pointer-events: none;
+    }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 32px; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(56px, 9vw, 132px); line-height: 0.92; letter-spacing: 0.01em; margin: 0 0 24px; text-transform: uppercase; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-tag { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.25em; color: var(--cream-dim); text-transform: uppercase; margin-bottom: 32px; }
+    .hero-tag span { color: var(--gold); }
+    .hero-lead { font-size: 19px; line-height: 1.6; color: var(--cream-dim); max-width: 720px; margin: 0 0 56px; }
+    .hero-lead strong { color: var(--gold); font-weight: 700; }
+
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+    .kpi { background: var(--ink); padding: 28px 24px; }
+    .kpi-value { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); color: var(--gold); line-height: 1; }
+    .kpi-label { font-size: 14px; margin-top: 8px; color: var(--cream); }
+    .kpi-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
+
+    section.bloc { padding: 96px 0; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    h2 { font-family: var(--font-display); font-size: clamp(44px, 6vw, 88px); line-height: 0.92; letter-spacing: 0.01em; margin: 0 0 40px; text-transform: uppercase; }
+    h2 em { color: var(--gold); font-style: normal; }
+    p { margin: 0 0 18px; color: var(--cream-dim); }
+    p.lead { font-size: 19px; color: var(--cream-dim); max-width: 780px; }
+    p strong { color: var(--cream); }
+
+    .cards { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+    .card { background: var(--ink-soft); border: 1px solid var(--border); padding: 28px; transition: border-color .2s ease, transform .2s ease; }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    .card.warn .card-tag { color: var(--danger); }
+    .card-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 8px; }
+    .card p { margin: 0; font-size: 15px; }
+
+    .pillars { display: grid; gap: 12px; }
+    .pillar { display: grid; grid-template-columns: 80px 1fr; gap: 20px; padding: 24px; background: var(--ink-soft); border: 1px solid var(--border); }
+    .pillar-num { font-family: var(--font-display); font-size: 56px; color: var(--gold); line-height: 1; }
+    .pillar-title { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; }
+    .pillar p { margin: 8px 0 0; font-size: 15px; }
+
+    .compare { border: 1px solid var(--border); overflow: hidden; }
+    .compare-row { display: grid; grid-template-columns: 1fr 1.6fr 1.4fr; border-bottom: 1px solid var(--border); }
+    .compare-row:last-child { border-bottom: 0; }
+    .compare-row > div { padding: 18px 20px; }
+    .compare-head { background: var(--ink-soft); }
+    .compare-head > div { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em; color: var(--cream); text-transform: uppercase; }
+    .compare-head > div:last-child { color: var(--gold); }
+    .compare-row > div:first-child { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .compare-row > div:nth-child(2) { color: var(--cream-dim); font-size: 14px; border-left: 1px solid var(--border); }
+    .compare-row > div:last-child { color: var(--cream); font-size: 14px; border-left: 1px solid var(--border); }
+    @media (max-width: 760px) {
+      .compare-row { grid-template-columns: 1fr; }
+      .compare-row > div { border-left: 0 !important; border-top: 1px solid var(--border); }
+      .compare-row > div:first-child { background: var(--ink-soft); border-top: 0; }
+    }
+
+    .roi { border: 2px solid var(--gold); padding: 40px; background: radial-gradient(circle at 100% 0%, var(--gold-soft) 0%, transparent 60%), var(--ink-soft); }
+    .roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 24px; }
+    @media (max-width: 720px) { .roi-grid { grid-template-columns: 1fr; } }
+    .roi-cell-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+    .roi-cell-value { font-family: var(--font-display); font-size: 56px; color: var(--gold); line-height: 1; }
+    .roi-cell-sub { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 6px; }
+    .roi p { margin: 0; color: var(--cream); }
+
+    .price-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    @media (max-width: 720px) { .price-duo { grid-template-columns: 1fr; } }
+    .price { background: var(--ink-soft); border: 1px solid var(--border); padding: 32px; }
+    .price.featured { border-color: var(--gold); background: linear-gradient(135deg, var(--gold-soft), transparent); }
+    .price-when { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+    .price-label { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 18px; }
+    .price-amount { font-family: var(--font-display); font-size: 80px; color: var(--cream); line-height: 1; }
+    .price.featured .price-amount { color: var(--gold); }
+    .price-unit { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-left: 6px; }
+    .price p { margin: 18px 0 0; font-size: 14px; }
+
+    .phases { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 720px) { .phases { grid-template-columns: 1fr; } }
+    .phase { background: var(--ink-soft); border: 1px solid var(--border); padding: 28px; }
+    .phase-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+    .phase-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; }
+    .phase-duration { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+    .phase-title { font-family: var(--font-display); font-size: 26px; text-transform: uppercase; letter-spacing: 0.02em; margin: 6px 0 16px; }
+    .phase ul { margin: 0; padding: 0; list-style: none; }
+    .phase li { padding: 6px 0; font-size: 14px; color: var(--cream-dim); border-top: 1px solid var(--border); }
+    .phase li:first-child { border-top: 0; }
+    .phase li::before { content: "→ "; color: var(--gold); }
+
+    .ip-row { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 0; border-bottom: 1px solid var(--border); }
+    .ip-row:last-child { border-bottom: 0; }
+    .ip-row > div { padding: 18px 20px; }
+    .ip-head { background: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cream); }
+    .ip-row > div:nth-child(2) { color: var(--gold); font-family: var(--font-display); letter-spacing: 0.03em; text-transform: uppercase; font-size: 18px; }
+    .ip-row > div:nth-child(3) { color: var(--cream-dim); font-size: 14px; border-left: 1px solid var(--border); }
+    .ip-row > div:first-child { color: var(--cream); font-size: 14px; border-right: 1px solid var(--border); }
+    @media (max-width: 760px) {
+      .ip-row { grid-template-columns: 1fr; }
+      .ip-row > div { border: 0 !important; border-top: 1px solid var(--border) !important; }
+    }
+
+    .steps { list-style: none; padding: 0; margin: 0; }
+    .step { display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); }
+    .step:last-child { border-bottom: 1px solid var(--border); }
+    .step-num { font-family: var(--font-display); font-size: 44px; color: var(--gold); line-height: 1; }
+    .step-title { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .step p { margin: 6px 0 0; font-size: 15px; }
+
+    .cta { background: radial-gradient(circle at 0% 100%, var(--gold-soft) 0%, transparent 60%), var(--ink-soft); border: 1px solid var(--gold); padding: 56px 40px; margin-top: 40px; }
+    .cta-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(40px, 5vw, 72px); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 20px; }
+    .cta-title em { color: var(--gold); font-style: normal; }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; text-decoration: none; font-family: var(--font-display); font-size: 18px; letter-spacing: 0.05em; text-transform: uppercase; transition: transform .2s ease, box-shadow .2s ease; }
+    .btn-gold { background: var(--gold); color: var(--ink); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px var(--gold); }
+    .btn-ghost { border: 1px solid var(--cream-dim); color: var(--cream); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    footer { padding: 56px 0; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(8, 8, 8, 0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--gold); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; z-index: 40; transform: translateY(110%); transition: transform .4s ease; }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta-info { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }
+    .sticky-cta-info span { color: var(--gold); }
+    .sticky-cta .btn { padding: 12px 22px; font-size: 15px; }
+    @media (max-width: 640px) { .sticky-cta-info { display: none; } }
+
+    @media print {
+      body { background: white; color: black; }
+      .sticky-cta, .top { display: none; }
+      h2, .hero h1, .cta-title { color: black; }
+      h2 em, .hero h1 em, .cta-title em { color: var(--gold); }
+      .card, .pillar, .phase, .price, .roi { background: #fafafa; border-color: #e0e0e0; color: black; }
+      p, p.lead { color: #333; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">BAD'S × PROJECTVIEW</div>
+      <div class="brand-x">Proposition commerciale</div>
+    </div>
+    <div class="ref">Réf. PV-BADS-2026-001</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">Mai 2026 · Validité 30 jours</div>
+    <h1>Suez la sueur.<br><em>On vous rend 12 000 €.</em></h1>
+    <div class="hero-tag">RÉSERVATION · COMMUNAUTÉ · PAIEMENT DIRECT · <span>BAD'S</span></div>
+    <p class="hero-lead">
+      Une application web et mobile sur mesure pour <strong>remplacer WinSport</strong>,
+      récupérer 12 000 € par an de commissions de paiement, et porter l'identité Bad's :
+      réservation temps réel, communauté, paiement Crédit Mutuel direct, communication automatisée.
+    </p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-value">12 000 €</div>
+        <div class="kpi-label">Économie par an</div>
+        <div class="kpi-sub">Stripe 2 % → CM 0,7 %</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">3 000 €</div>
+        <div class="kpi-label">Setup one-shot</div>
+        <div class="kpi-sub">À la signature</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">500 €/mois</div>
+        <div class="kpi-label">Maintenance</div>
+        <div class="kpi-sub">Évolutions incluses</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">&lt; 6 mois</div>
+        <div class="kpi-label">Retour sur invest.</div>
+        <div class="kpi-sub">Setup + abo amortis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="defi">
+  <div class="wrap">
+    <div class="eyebrow">Le défi · audit du 20 mai 2026</div>
+    <h2>WinSport fait le job.<br><em>Pas plus.</em></h2>
+    <p class="lead">
+      Depuis 3 ans, WinSport gère les réservations, la caisse et l'app mobile du Bad's.
+      20 000 clients en base, ~1 500 transactions par mois, jusqu'à 100 % d'occupation le week-end —
+      l'activité est dense, mais 6 frictions identifiées à l'audit pèsent sur l'exploitation.
+    </p>
+
+    <div class="cards" style="margin-top:32px">
+      <div class="card warn">
+        <div class="card-tag">⚠ Frein business</div>
+        <div class="card-title">Commissions paiement</div>
+        <p>Stripe via WinSport ~2 % refacturés sans transparence. Estimé 20 à 30 k€/an. Le Crédit Mutuel propose 0,6 % en direct, négocié par le club.</p>
+      </div>
+      <div class="card warn">
+        <div class="card-tag">⚠ Trésorerie</div>
+        <div class="card-title">Délais d'encaissement</div>
+        <p>10 jours côté WinSport, contre 24 à 48 h avant. Impact direct sur le cash-flow du Bad's.</p>
+      </div>
+      <div class="card warn">
+        <div class="card-tag">⚠ Service client</div>
+        <div class="card-title">Listes d'attente supprimées</div>
+        <p>Présentes sur ExtraClub, retirées par WinSport. Génère des appels téléphoniques pour expliquer les places libérées.</p>
+      </div>
+      <div class="card warn">
+        <div class="card-tag">⚠ Compta</div>
+        <div class="card-title">Facturation manuelle</div>
+        <p>Pas de génération auto. Gestion en parallèle via Zervent. Problématique entreprises et remboursements.</p>
+      </div>
+      <div class="card warn">
+        <div class="card-tag">⚠ Branding</div>
+        <div class="card-title">Identité diluée</div>
+        <p>Interface WinSport mutualisée. Le branding Bad's est de surface, pas natif. Vous n'êtes pas chez vous.</p>
+      </div>
+      <div class="card warn">
+        <div class="card-tag">⚠ Roadmap</div>
+        <div class="card-title">Évolutions subies</div>
+        <p>WinSport refuse d'ajouter d'autres moyens de paiement, d'autres APIs. Vous dépendez d'un éditeur tiers sur tous les nouveaux besoins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="solution">
+  <div class="wrap">
+    <div class="eyebrow">La solution</div>
+    <h2>Une app.<br><em>5 piliers.</em></h2>
+    <p class="lead">
+      ProjectView construit — avec Bad's et pour Bad's — une application sur mesure qui
+      adresse les 6 frictions identifiées et porte enfin l'identité du club.
+    </p>
+
+    <div class="pillars" style="margin-top:32px">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="pillar-title">Site vitrine modernisé</div>
+          <p>Identité Bad's assumée, en cohérence avec le sport-lounge et la marque historique.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="pillar-title">Réservation temps réel</div>
+          <p>Multi-créneaux, multi-utilisateurs, anti-conflit garanti. Paiement Crédit Mutuel direct.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="pillar-title">Communauté d'adhérents</div>
+          <p>Groupes thématiques (double mixte du jeudi, squash after-work), chat intégré, sessions récurrentes.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <div class="pillar-title">Paiement direct</div>
+          <p>CB, Apple Pay, Google Pay via Crédit Mutuel. Factures auto. Remboursements automatiques.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">05</div>
+        <div>
+          <div class="pillar-title">Studio communication</div>
+          <p>Éditeur d'articles avec reformatage IA pour Instagram, Facebook, LinkedIn. Publication programmée.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; padding:24px; background:var(--ink-soft); border:1px solid var(--gold); display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;">
+      <div>
+        <div class="card-tag" style="margin-bottom:4px;">Démo en ligne</div>
+        <div class="card-title" style="margin:0;">bads-club.netlify.app</div>
+        <p style="margin:6px 0 0; font-size:14px;">Maquette navigable · cliquez partout, tout fonctionne · comptes test visibles dans le bandeau</p>
+      </div>
+      <a class="btn btn-gold" href="https://bads-club.netlify.app/" target="_blank" rel="noopener">Ouvrir la démo →</a>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="comparatif">
+  <div class="wrap">
+    <div class="eyebrow">Diagnostic et bénéfices</div>
+    <h2>WinSport <em>vs</em> Bad's.</h2>
+    <p class="lead">
+      L'objectif n'est pas de remplacer pour remplacer. C'est d'adresser les points de friction
+      identifiés à l'audit et de libérer 12 000 € de commissions par an.
+    </p>
+
+    <div class="compare" style="margin-top:32px">
+      <div class="compare-row compare-head">
+        <div>Critère</div>
+        <div>WinSport (actuel)</div>
+        <div>App Bad's</div>
+      </div>
+      <div class="compare-row">
+        <div>Commissions paiement</div>
+        <div>Stripe via WinSport · ~2 % · 20-30 k€/an</div>
+        <div>Crédit Mutuel direct · 0,6-0,7 % CB perso · 1,2 % CB pro</div>
+      </div>
+      <div class="compare-row">
+        <div>Délai d'encaissement</div>
+        <div>10 jours de décalage</div>
+        <div>24-48 h · cash-flow restauré</div>
+      </div>
+      <div class="compare-row">
+        <div>Liste d'attente</div>
+        <div>Supprimée depuis migration</div>
+        <div>Automatique · notification + résa auto</div>
+      </div>
+      <div class="compare-row">
+        <div>Facturation</div>
+        <div>Manuelle via Zervent</div>
+        <div>Auto à chaque résa · export comptable</div>
+      </div>
+      <div class="compare-row">
+        <div>Branding</div>
+        <div>Interface mutualisée · logo en surimpression</div>
+        <div>Identité Bad's 100 %</div>
+      </div>
+      <div class="compare-row">
+        <div>Communauté / groupes</div>
+        <div>Aucun module</div>
+        <div>Groupes, chat, récurrence, résa collective</div>
+      </div>
+      <div class="compare-row">
+        <div>Notifications</div>
+        <div>Email basique</div>
+        <div>Push PWA + email + SMS · alerte place libérée</div>
+      </div>
+      <div class="compare-row">
+        <div>App mobile</div>
+        <div>Stores iOS + Android</div>
+        <div>PWA installable depuis le site · push natives</div>
+      </div>
+      <div class="compare-row">
+        <div>Évolutivité</div>
+        <div>WinSport refuse les évolutions externes</div>
+        <div>Code propre à Bad's · évolutions à la demande</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="tarification">
+  <div class="wrap">
+    <div class="eyebrow">Transparent et prévisible</div>
+    <h2>La tarification.</h2>
+    <p class="lead">
+      Un coût unique de mise en service, puis un abonnement mensuel fixe couvrant
+      l'hébergement et la maintenance. Aucun frais caché.
+    </p>
+
+    <div class="price-duo" style="margin-top:32px">
+      <div class="price">
+        <div class="price-when">One-shot · à la signature</div>
+        <div class="price-label">Setup initial</div>
+        <div><span class="price-amount">3 000 €</span><span class="price-unit">HT</span></div>
+        <p>Conception, développement, intégration, mise en ligne, formation, bascule depuis WinSport, migration des 20 000 clients existants.</p>
+      </div>
+      <div class="price featured">
+        <div class="price-when">À partir du 2ème mois</div>
+        <div class="price-label">Abonnement mensuel</div>
+        <div><span class="price-amount">500 €</span><span class="price-unit">HT / mois</span></div>
+        <p>Hébergement, maintenance corrective, mises à jour sécurité, évolutions mineures (jusqu'à 4 h/mois), support email sous 48 h.</p>
+      </div>
+    </div>
+
+    <div class="roi" style="margin-top:32px">
+      <div class="eyebrow" style="margin-bottom:24px;">Retour sur investissement</div>
+      <div class="roi-grid">
+        <div>
+          <div class="roi-cell-label">Économie commissions / an</div>
+          <div class="roi-cell-value">+12 000 €</div>
+          <div class="roi-cell-sub">Stripe 2 % → CM 0,7 %</div>
+        </div>
+        <div>
+          <div class="roi-cell-label">Coût ProjectView / an</div>
+          <div class="roi-cell-value">−9 000 €</div>
+          <div class="roi-cell-sub">Setup amorti + 12 mois d'abo</div>
+        </div>
+        <div>
+          <div class="roi-cell-label">Bénéfice net dès l'an 1</div>
+          <div class="roi-cell-value">+3 000 €</div>
+          <div class="roi-cell-sub">Hors valeur fonctionnelle</div>
+        </div>
+      </div>
+      <p>
+        <strong>La seule économie sur les commissions de paiement finance l'abonnement annuel</strong>
+        et laisse un bénéfice net dès la première année. Communauté, listes d'attente,
+        facturation auto, automatisation marketing, délais d'encaissement divisés par 5 :
+        tout cela est <em style="color:var(--gold); font-style:normal;">en plus</em>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="planning">
+  <div class="wrap">
+    <div class="eyebrow">3 phases · 10 à 11 semaines</div>
+    <h2>Le planning.</h2>
+    <p class="lead">
+      Chaque phase est livrée et validée en démo avant la suivante. Vous conservez la
+      possibilité d'arrêter le projet entre deux phases.
+    </p>
+
+    <div class="phases" style="margin-top:32px">
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Phase 1</div><div class="phase-duration">4-5 semaines</div></div>
+        <div class="phase-title">MVP en ligne</div>
+        <ul>
+          <li>Site vitrine refondu</li>
+          <li>Auth membre / admin</li>
+          <li>Réservation temps réel + paiement Crédit Mutuel</li>
+          <li>Notifications email + push</li>
+          <li>Espace membre + admin</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Phase 2</div><div class="phase-duration">3 semaines</div></div>
+        <div class="phase-title">Communauté</div>
+        <ul>
+          <li>Groupes thématiques</li>
+          <li>Chat temps réel</li>
+          <li>Récurrence des sessions</li>
+          <li>File d'attente automatique</li>
+          <li>Réservation collective</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Phase 3</div><div class="phase-duration">2 semaines</div></div>
+        <div class="phase-title">Studio comm'</div>
+        <ul>
+          <li>Éditeur d'articles</li>
+          <li>Reformatage IA pour IG / FB / LinkedIn</li>
+          <li>Publication automatique</li>
+          <li>Journal public</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Go-live</div><div class="phase-duration">1 semaine</div></div>
+        <div class="phase-title">Migration & bascule</div>
+        <ul>
+          <li>Migration des données WinSport</li>
+          <li>Domaine custom</li>
+          <li>Communication adhérents</li>
+          <li>Formation admin</li>
+          <li>Bascule en parallèle 1 semaine</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="quickwins">
+  <div class="wrap">
+    <div class="eyebrow">Au-delà du paiement</div>
+    <h2>Quick wins<br><em>identifiés.</em></h2>
+    <p class="lead">
+      Plusieurs opportunités sont ressorties de l'audit du 20 mai. L'app peut servir de socle
+      pour les adresser progressivement, sans nouveau prestataire.
+    </p>
+
+    <div class="cards" style="margin-top:32px">
+      <div class="card">
+        <div class="card-tag">Chatbot</div>
+        <div class="card-title">Réduire les appels répétitifs</div>
+        <p>Réponses 24/7 aux questions « suis-je bien inscrit ? », « comment payer ? », « est-ce que ma résa est passée ? ». Soulage l'accueil sans dégrader le service.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Marketing IA</div>
+        <div class="card-title">Articles + posts automatisés</div>
+        <p>Vous rédigez un article → l'IA crée 3 versions Instagram, Facebook, LinkedIn adaptées à chaque audience. Publication programmée incluse.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">BtoB</div>
+        <div class="card-title">Mailing entreprises locales</div>
+        <p>Campagnes ciblées Orange, RTE, Foto. Pack after-work + restauration · 15-25 couverts actuels pour 60 places = forte marge de croissance.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">SEO</div>
+        <div class="card-title">Référencement local</div>
+        <p>Site WordPress actuel modernisé. Migration vers Next.js + SEO + structure éditoriale. Objectif : capter « badminton Lyon 7 », « squash Lyon ».</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Avis Google</div>
+        <div class="card-title">Acquisition automatique</div>
+        <p>Note 4,2/5 plombée par d'anciens avis hérités d'ExtraClub. Sollicitation auto post-résa → relèvement rapide → meilleure visibilité Maps.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Aménagement</div>
+        <div class="card-title">+2 terrains badminton</div>
+        <p>Remplacement pétanque → 2 terrains badminton supportés nativement par l'app. Ajout d'un terrain = 1 ligne de configuration, sans attendre WinSport.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:32px; font-family:var(--font-mono); font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.2em;">
+      Ces quick wins sont en option, devisés au cas par cas. TJM 500 € HT. Non inclus dans le forfait.
+    </p>
+  </div>
+</section>
+
+<section class="bloc" id="ip">
+  <div class="wrap">
+    <div class="eyebrow">Le club est propriétaire</div>
+    <h2>Propriété<br><em>intellectuelle.</em></h2>
+    <p class="lead">
+      Bad's Club est intégralement propriétaire de la solution livrée : code, design, données,
+      comptes des services tiers. ProjectView ne conserve aucune dépendance bloquante.
+    </p>
+
+    <div class="compare" style="margin-top:32px">
+      <div class="ip-row ip-head">
+        <div>Élément</div>
+        <div>Propriétaire</div>
+        <div>Conditions</div>
+      </div>
+      <div class="ip-row">
+        <div>Code source applicatif</div>
+        <div>Bad's Club</div>
+        <div>Dépôt Git transféré · licence d'exploitation perpétuelle</div>
+      </div>
+      <div class="ip-row">
+        <div>Design, maquettes, identité visuelle</div>
+        <div>Bad's Club</div>
+        <div>Cession totale des droits patrimoniaux au règlement final</div>
+      </div>
+      <div class="ip-row">
+        <div>Comptes services tiers (Firebase, Brevo, Netlify, Crédit Mutuel)</div>
+        <div>Bad's Club</div>
+        <div>Créés au nom de Bad's, ProjectView en administrateur délégué</div>
+      </div>
+      <div class="ip-row">
+        <div>Données utilisateurs et données métier</div>
+        <div>Bad's Club</div>
+        <div>Responsable de traitement RGPD · export libre à tout moment</div>
+      </div>
+      <div class="ip-row">
+        <div>Templates email / SMS / posts réseaux</div>
+        <div>Bad's Club</div>
+        <div>Modifiables librement par le client après livraison</div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px; font-size:15px;">
+      <strong style="color:var(--cream);">En clair :</strong> si Bad's Club décide à terme de changer de prestataire,
+      vous partez avec le code, la donnée et les comptes. Aucune relocation, aucune renégociation, aucun verrouillage.
+    </p>
+  </div>
+</section>
+
+<section class="bloc" id="next" style="border-bottom:0;">
+  <div class="wrap">
+    <div class="eyebrow">Prochaines étapes</div>
+    <h2>Et <em>après</em> ?</h2>
+
+    <ol class="steps">
+      <li class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Validation de l'offre</div>
+          <p>Retour de Bad's Club sur cette proposition — signature ou demande d'ajustements.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Création des comptes services</div>
+          <p>Bad's Club crée les comptes Firebase, Brevo et active la convention monétique Crédit Mutuel. ProjectView assiste sur chaque étape.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Kick-off projet</div>
+          <p>Réunion de lancement, finalisation des derniers points : tarifs Tennis de table / Baseball, choix du sous-domaine, export données WinSport, désignation des admins.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Démarrage Phase 1</div>
+          <p>Wiring Firebase, intégration paiement Crédit Mutuel, mise en place des notifications. Démo intermédiaire à mi-parcours.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">05</div>
+        <div>
+          <div class="step-title">Mise en production</div>
+          <p>Bascule en parallèle de WinSport pendant 1 semaine, communication adhérents, formation des admins, puis arrêt de WinSport.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="cta">
+      <div class="cta-eyebrow">On y va ?</div>
+      <div class="cta-title">Prêts à remplacer<br><em>WinSport.</em></div>
+      <p>
+        Si l'offre vous convient, un mail suffit pour démarrer. On vous prépare ensuite le bon
+        de commande et les accès aux services tiers.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="mailto:bernard@projectview.fr?subject=Validation%20de%20l'offre%20Bad's%20Club%20%C3%97%20ProjectView&body=Bonjour%20Bernard%2C%0A%0AOn%20valide%20l'offre%20telle%20que%20pr%C3%A9sent%C3%A9e.%20Quelle%20est%20la%20suite%20concr%C3%A8te%20%3F%0A%0A%E2%80%94%20Bad's%20Club">
+          Valider par email →
+        </a>
+        <a class="btn btn-ghost" href="tel:0472715050">04 72 71 50 50</a>
+      </div>
+      <p style="margin-top:24px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.25em; color:var(--muted); text-transform:uppercase;">
+        Proposition valable 30 jours · Tous montants HT · Conditions générales sur demande
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Bad's Club × ProjectView · Mai 2026</div>
+    <div>Bernard Nguyen · Adelin · Lyon</div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-info">
+    <span>3 000 €</span> + <span>500 €/mois</span> · <span>+ 12 000 €/an</span>
+  </div>
+  <a class="btn btn-gold" href="#next">Valider l'offre →</a>
+</div>
+
+<script>
+  const stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) stickyCta.classList.add('visible');
+    else stickyCta.classList.remove('visible');
+  }, { passive: true });
+</script>
+
+</body>
+</html>
