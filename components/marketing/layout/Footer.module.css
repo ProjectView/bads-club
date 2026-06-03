@@ -1,0 +1,13 @@
+.footer {
+  padding: 3rem;
+  border-top: 1px solid rgba(245, 240, 232, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.3);
+  position: relative;
+  z-index: 1;
+}

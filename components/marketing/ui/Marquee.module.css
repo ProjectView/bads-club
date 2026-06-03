@@ -1,0 +1,42 @@
+.wrap {
+  background: var(--gold);
+  padding: 0.8rem 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 18s linear infinite;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+.item {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  padding: 0 2rem;
+  color: var(--black);
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.item::after {
+  content: '✦';
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .item {
+    font-size: 1.2rem;
+    padding: 0 1.25rem;
+    gap: 1.25rem;
+  }
+}

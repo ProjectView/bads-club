@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+/* ── Variables marketing (utilisées par les CSS Modules) ── */
+:root {
+  --black: #080808;
+  --white: #f2ede4;
+  --gold: #bda41a;
+  --yellow: #e8d06a;
+  --gray: #141414;
+  --gold-dim: #8a7612;
+}
+
 @theme {
   --color-ink: #0b0f1a;
   --color-ink-2: #141a2b;
