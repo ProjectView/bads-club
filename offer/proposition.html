@@ -300,6 +300,7 @@
     .compare-row > div:first-child { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; }
     .compare-row > div:nth-child(2) { color: var(--cream-dim); font-size: 14px; border-left: 1px solid var(--border); }
     .compare-row > div:last-child { color: var(--cream); font-size: 14px; border-left: 1px solid var(--border); }
+    .compare-row > div:last-child strong { color: var(--gold); font-weight: 700; }
     @media (max-width: 760px) {
       .compare-row { grid-template-columns: 1fr; }
       .compare-row > div { border-left: 0 !important; border-top: 1px solid var(--border); }
@@ -402,7 +403,7 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="hero-eyebrow">Mai 2026 · Validité 30 jours · Plateforme Pulse</div>
+    <div class="hero-eyebrow">8 juin 2026 · Validité 30 jours · Plateforme Pulse</div>
     <h1>Une plateforme.<br><em>À l'image du Bad's.</em></h1>
     <div class="hero-tag">PLATEFORME · APP PWA · PAIEMENT DIRECT · CHATBOT · IA · <span>BAD'S</span></div>
     <p class="hero-lead">
@@ -430,7 +431,7 @@
         <div class="kpi-sub">Base Doing Sport reprise intégralement</div>
       </div>
       <div class="kpi">
-        <div class="kpi-value">10-11 sem.</div>
+        <div class="kpi-value">8-10 sem.</div>
         <div class="kpi-label">Mise en production</div>
         <div class="kpi-sub">Du kick-off au go-live</div>
       </div>
@@ -685,55 +686,127 @@
       <div class="compare-row">
         <div>Commissions paiement</div>
         <div>Stripe via Doing Sport · ~3,3 % effectif · 30 000 €+/an</div>
-        <div>Crédit Mutuel direct · 0,6-0,7 % CB perso · 1,2 % CB pro</div>
+        <div>Crédit Mutuel direct · <strong>0,6-0,7 % CB perso · 1,2 % CB pro</strong></div>
       </div>
       <div class="compare-row">
         <div>Délai d'encaissement</div>
         <div>10 jours de décalage</div>
-        <div>24-48 h · cash-flow restauré</div>
+        <div><strong>24-48 h</strong> · cash-flow restauré</div>
       </div>
       <div class="compare-row">
         <div>Liste d'attente</div>
         <div>Supprimée depuis migration</div>
-        <div>Automatique · notification + résa auto</div>
+        <div><strong>Automatique</strong> · notification + résa auto au 1er en file</div>
       </div>
       <div class="compare-row">
         <div>Facturation</div>
         <div>Manuelle via Zervent</div>
-        <div>Auto à chaque résa · export comptable</div>
+        <div><strong>Auto à chaque résa</strong> · export comptable</div>
       </div>
       <div class="compare-row">
         <div>Branding</div>
         <div>Interface mutualisée · logo en surimpression</div>
-        <div>Identité Bad's 100 %</div>
+        <div><strong>Identité Bad's 100 %</strong> · typo, couleurs, ton sur mesure</div>
       </div>
       <div class="compare-row">
         <div>Communauté / groupes</div>
         <div>Aucun module</div>
-        <div>Groupes, chat, récurrence, résa collective</div>
+        <div><strong>Groupes thématiques · chat · récurrence · résa collective</strong></div>
       </div>
       <div class="compare-row">
         <div>Notifications</div>
         <div>Email basique</div>
-        <div>Push PWA + email + SMS · alerte place libérée</div>
+        <div>Push PWA + email + SMS · <strong>alerte place libérée auto</strong></div>
       </div>
       <div class="compare-row">
         <div>App mobile</div>
         <div>Stores iOS + Android</div>
-        <div>PWA installable depuis le site · push natives</div>
+        <div><strong>PWA installable</strong> directement depuis le site · push natives</div>
+      </div>
+      <div class="compare-row">
+        <div>Marketing / contenus</div>
+        <div>Outils externes manuels</div>
+        <div><strong>Studio article · IA reformate</strong> pour Instagram / Facebook / LinkedIn</div>
+      </div>
+      <div class="compare-row">
+        <div>Chatbot</div>
+        <div>Aucun · appels accueil pour questions récurrentes</div>
+        <div><strong>Chatbot 24/7</strong> connecté aux données réelles du membre</div>
       </div>
       <div class="compare-row">
         <div>Évolutivité</div>
         <div>Périmètre défini par la roadmap commune Doing Sport</div>
-        <div>Code propre à Bad's · évolutions à la demande</div>
+        <div>Code propre à Bad's · <strong>évolutions à la demande</strong></div>
       </div>
+    </div>
+
+    <!-- Zoom facturation : Zervent vs Pulse -->
+    <div style="margin-top:48px;">
+      <div class="eyebrow" style="margin-bottom:16px;">Zoom · système de facturation</div>
+      <h3 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); text-transform:uppercase; letter-spacing:0.02em; margin:0 0 16px; color:var(--cream);">
+        Zervent <span style="color:var(--muted);">vs</span> Pulse.
+      </h3>
+      <p style="color:var(--cream-dim); margin-bottom:24px;">
+        Aujourd'hui, la facturation est gérée à part dans Zervent, en saisie manuelle.
+        Pulse l'intègre nativement à chaque réservation pour supprimer les doubles saisies
+        et accélérer le traitement entreprises / remboursements.
+      </p>
+
+      <div class="compare" style="border:1px solid var(--border);">
+        <div class="compare-row compare-head">
+          <div>Étape</div>
+          <div>Aujourd'hui · Zervent</div>
+          <div>Avec Pulse</div>
+        </div>
+        <div class="compare-row">
+          <div>Génération facture</div>
+          <div>Manuelle, créée à la demande dans Zervent après la résa</div>
+          <div><strong>Automatique</strong> à chaque résa confirmée</div>
+        </div>
+        <div class="compare-row">
+          <div>Numéro / série</div>
+          <div>Attribué à la main, risque de doublon ou de saut</div>
+          <div><strong>Séquence auto incrémentée</strong>, conforme aux exigences fiscales</div>
+        </div>
+        <div class="compare-row">
+          <div>Envoi au client</div>
+          <div>Téléchargement + email manuel (ou impression)</div>
+          <div><strong>Email auto</strong> avec PDF joint dès la confirmation de paiement</div>
+        </div>
+        <div class="compare-row">
+          <div>Factures entreprises</div>
+          <div>Saisie complète des coordonnées à chaque facture</div>
+          <div><strong>Profil entreprise</strong> mémorisé · SIRET, TVA, adresse pré-remplis</div>
+        </div>
+        <div class="compare-row">
+          <div>Remboursements (annulations)</div>
+          <div>Avoir manuel à émettre dans Zervent + remboursement via Stripe</div>
+          <div><strong>Avoir + remboursement Crédit Mutuel</strong> émis en 1 clic depuis Pulse</div>
+        </div>
+        <div class="compare-row">
+          <div>Export comptable</div>
+          <div>Export CSV depuis Zervent, retraitement avant import</div>
+          <div><strong>Export comptable</strong> formaté pour Sage / Cegid / Quadratus</div>
+        </div>
+        <div class="compare-row">
+          <div>Recherche d'une facture</div>
+          <div>Recherche dans Zervent à part de la résa</div>
+          <div><strong>Liée à la fiche membre et à la réservation</strong>, accès direct admin</div>
+        </div>
+      </div>
+
+      <p style="margin-top:16px; font-size:14px; color:var(--cream-dim);">
+        <strong style="color:var(--cream);">À noter :</strong> si Bad's souhaite conserver Zervent pour la comptabilité,
+        Pulse peut continuer à pousser les factures vers Zervent via son API (selon disponibilité).
+        L'objectif n'est pas de tuer Zervent mais de supprimer la double saisie côté équipe Bad's.
+      </p>
     </div>
   </div>
 </section>
 
 <section class="bloc" id="planning">
   <div class="wrap">
-    <div class="eyebrow">3 phases · 10 à 11 semaines</div>
+    <div class="eyebrow">3 phases · 8 à 10 semaines</div>
     <h2>Le planning.</h2>
     <p class="lead">
       Chaque phase est livrée et validée en démo avant la suivante. Vous conservez la
@@ -742,7 +815,7 @@
 
     <div class="phases" style="margin-top:32px">
       <div class="phase">
-        <div class="phase-head"><div class="phase-tag">Phase 1</div><div class="phase-duration">4-5 semaines</div></div>
+        <div class="phase-head"><div class="phase-tag">Phase 1</div><div class="phase-duration">3-4 semaines</div></div>
         <div class="phase-title">MVP en ligne</div>
         <ul>
           <li>Site vitrine refondu</li>
@@ -753,7 +826,7 @@
         </ul>
       </div>
       <div class="phase">
-        <div class="phase-head"><div class="phase-tag">Phase 2</div><div class="phase-duration">3 semaines</div></div>
+        <div class="phase-head"><div class="phase-tag">Phase 2</div><div class="phase-duration">2-3 semaines</div></div>
         <div class="phase-title">Communauté</div>
         <ul>
           <li>Groupes thématiques</li>
@@ -790,18 +863,21 @@
 
 <section class="bloc" id="quickwins">
   <div class="wrap">
-    <div class="eyebrow">Au-delà du paiement</div>
-    <h2>Quick wins<br><em>identifiés.</em></h2>
+    <div class="eyebrow">Au-delà des 6 livrables</div>
+    <h2>Autres points<br><em>d'optimisation.</em></h2>
     <p class="lead">
-      Plusieurs opportunités sont ressorties de l'audit du 20 mai. L'app peut servir de socle
-      pour les adresser progressivement, sans nouveau prestataire.
+      Au-delà du périmètre du setup, plusieurs pistes peuvent être adressées progressivement
+      sur Pulse — issues de l'audit du 20 mai et de notre lecture du marché Lyon. Voici les
+      idées de développements futurs que nous pourrions construire ensemble.
     </p>
 
-    <div class="cards" style="margin-top:32px">
+    <!-- Bloc 1 : pistes issues de l'audit -->
+    <div class="eyebrow" style="margin-top:48px; margin-bottom:12px;">Identifiées à l'audit du 20 mai</div>
+    <div class="cards">
       <div class="card">
         <div class="card-tag">BtoB</div>
         <div class="card-title">Mailing entreprises locales</div>
-        <p>Campagnes ciblées Orange, RTE, Foto. Pack after-work + restauration · 15-25 couverts actuels pour 60 places = forte marge de croissance.</p>
+        <p>Campagnes ciblées Orange, RTE, Foto. Pack after-work + restauration. 15-25 couverts actuels pour 60 places de capacité au lounge = forte marge de croissance.</p>
       </div>
       <div class="card">
         <div class="card-tag">SEO</div>
@@ -811,12 +887,57 @@
       <div class="card">
         <div class="card-tag">Avis Google Business</div>
         <div class="card-title">Incitation post-séance</div>
-        <p>Après chaque séance jouée, Pulse envoie une notification au membre l'invitant à laisser un avis sur la fiche Google Business du Bad's. Possibilité d'incentive (boisson offerte au 1er avis, par exemple). <strong style="color:var(--cream);">But</strong> : noyer les anciens avis négatifs hérités d'ExtraClub qui plombent la note actuelle (4,2/5), faire remonter la moyenne et la fiche dans les résultats Google Maps / Google Search local — meilleure acquisition de nouveaux membres sans dépenser en pub.</p>
+        <p>Après chaque séance jouée, Pulse envoie une notification au membre l'invitant à laisser un avis sur la fiche Google Business du Bad's. Possibilité d'incentive (boisson offerte au 1er avis). <strong style="color:var(--cream);">But</strong> : noyer les anciens avis négatifs hérités d'ExtraClub (4,2/5), faire remonter la note et la visibilité Google Maps.</p>
+      </div>
+    </div>
+
+    <!-- Bloc 2 : idées de développements -->
+    <div class="eyebrow" style="margin-top:48px; margin-bottom:12px;">Idées de développements futurs</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tag">Fidélité</div>
+        <div class="card-title">Programme de fidélisation</div>
+        <p>Système de points par résa, badges (10ᵉ session, 100ᵉ session, ambassadeur), récompenses (boisson, séance offerte, accès tournoi VIP). Augmente la fréquence de venue et l'engagement émotionnel.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Sponsoring</div>
+        <div class="card-title">Module partenaires & sponsors</div>
+        <p>Gestion des partenariats (visibilité, contreparties, factures sponsoring auto). Mise en avant des partenaires sur l'app et le site. Tracking des engagements et des renouvellements.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Compétition</div>
+        <div class="card-title">Tournois & interclubs FFBaD</div>
+        <p>Module dédié aux compétitions homologuées : inscriptions tableaux, classements live, brackets, scores en direct. Centralise ce qui est aujourd'hui géré sur des outils tiers ou en Excel.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Lounge</div>
+        <div class="card-title">Réservation tables bar-restaurant</div>
+        <p>Étendre la réservation à la restauration : créneaux table de 2, 4 ou 8 personnes, pré-commande optionnelle. Synchronisé avec les résa terrain (pack sport + apéro en 1 clic).</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Coaching</div>
+        <div class="card-title">Cours coachs particuliers</div>
+        <p>Planning individuel par coach (cours collectifs, perfectionnement, cours enfants). Réservation + paiement directs membre ↔ coach, revenus partagés selon convention club.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Comptabilité</div>
+        <div class="card-title">Intégration Sage / Cegid / Quadratus</div>
+        <p>Export comptable formaté automatique vers le logiciel comptable du club, en complément de Zervent. Économise des heures de retraitement chaque mois pour l'équipe administrative.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Analytics</div>
+        <div class="card-title">Dashboard analytique avancé</div>
+        <p>Cohortes membres, taux d'occupation par terrain et créneau, panier moyen, lifetime value adhérent, prédiction de churn. Aide à la décision sur les tarifs, les créneaux et les campagnes.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Multi-langue</div>
+        <div class="card-title">EN / FR pour clientèle internationale</div>
+        <p>Version anglaise pour cibler les expatriés et entreprises internationales lyonnaises. Réservation, communication et facturation en 2 langues, switch automatique selon le profil.</p>
       </div>
     </div>
 
     <p style="margin-top:32px; font-family:var(--font-mono); font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.2em;">
-      Ces quick wins sont en option, devisés au cas par cas. TJM 500 € HT. Non inclus dans le forfait.
+      Ces points sont en option, devisés au cas par cas. TJM 500 € HT. Non inclus dans le forfait setup ni dans le loyer mensuel.
     </p>
   </div>
 </section>
@@ -1063,7 +1184,7 @@
 
 <footer>
   <div class="wrap">
-    <div>Bad's Club × ProjectView · Mai 2026</div>
+    <div>Bad's Club × ProjectView · 8 juin 2026</div>
     <div>Bernard Nguyen · Adelin · Lyon</div>
   </div>
 </footer>
