@@ -4,7 +4,8 @@ import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/auth-context";
-import { AuthShell, Field, ErrorBox } from "@/components/auth-shell";
+import { AuthShell, Field, ErrorBox } from "@/components/auth/AuthShell";
+import s from "@/components/auth/AuthShell.module.css";
 
 export default function ConnexionPage() {
   return (
@@ -40,57 +41,49 @@ function ConnexionForm() {
   return (
     <AuthShell
       eyebrow="Espace membre & admin"
-      title={<>Content de te <em className="text-[var(--color-lime)]">revoir.</em></>}
+      title={<>Content de te <em>revoir.</em></>}
       subtitle="Connecte-toi pour réserver un terrain, rejoindre un groupe ou gérer le club."
       footer={
-        <div className="flex items-center justify-between text-[var(--color-muted)]">
+        <>
           <span>Pas encore membre ?</span>
-          <Link href="/inscription" className="text-[var(--color-lime)] hover:underline">
-            Créer un compte →
-          </Link>
-        </div>
+          <Link href="/inscription">Créer un compte →</Link>
+        </>
       }
     >
       {error && <ErrorBox message={error} />}
-      <form onSubmit={onSubmit} className="space-y-4">
+
+      <form onSubmit={onSubmit} className={s.fieldset}>
         <Field label="Email" name="email" type="email" required autoComplete="email" placeholder="ton@email.fr" />
         <Field label="Mot de passe" name="password" type="password" required autoComplete="current-password" placeholder="••••••••" />
 
-        <div className="flex items-center justify-between text-xs">
-          <label className="flex items-center gap-2 text-[var(--color-muted)] cursor-pointer">
-            <input type="checkbox" name="remember" defaultChecked className="accent-[var(--color-lime)]" />
-            Garder ma session
+        <div className={s.formMeta}>
+          <label className={s.checkRow} style={{ gap: '0.5rem' }}>
+            <input type="checkbox" name="remember" defaultChecked />
+            <span>Garder ma session</span>
           </label>
-          <Link href="/mot-de-passe-oublie" className="text-[var(--color-muted)] hover:text-[var(--color-lime)]">
+          <Link href="/mot-de-passe-oublie" className={s.formMetaLink}>
             Mot de passe oublié ?
           </Link>
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="btn-lime w-full py-3.5 rounded-full font-medium disabled:opacity-60 disabled:cursor-wait"
-        >
+        <button type="submit" disabled={loading} className={s.btnPrimary}>
           {loading ? "Connexion…" : "Se connecter →"}
         </button>
 
-        <div className="relative my-6 text-center">
-          <span className="bg-[var(--color-ink)] px-3 text-[10px] font-mono uppercase tracking-widest text-[var(--color-muted)] relative z-10">
-            ou
-          </span>
-          <div className="absolute left-0 right-0 top-1/2 border-t border-white/10 -z-0" />
+        <div className={s.divider}>
+          <span className={s.dividerText}>ou</span>
         </div>
 
-        <button type="button" className="btn-ghost w-full py-3.5 rounded-full font-medium flex items-center justify-center gap-3">
+        <button type="button" className={s.btnSecondary}>
           <GoogleIcon /> Continuer avec Google
         </button>
       </form>
 
-      <div className="mt-8 rounded-xl border border-dashed border-white/10 p-4 text-xs font-mono text-[var(--color-muted)]">
-        <div className="text-[10px] uppercase tracking-widest text-[var(--color-lime)] mb-2">démo · comptes test</div>
-        <div className="space-y-0.5">
-          <div>admin@badsclub.com · admin <span className="text-[var(--color-muted)]/60">(rôle admin)</span></div>
-          <div>lea@example.com · demo <span className="text-[var(--color-muted)]/60">(rôle membre)</span></div>
+      <div className={s.demo}>
+        <span className={s.demoTag}>démo · comptes test</span>
+        <div className={s.demoLine}>
+          admin@badsclub.com · admin <span style={{ opacity: 0.5 }}>(rôle admin)</span><br />
+          lea@example.com · demo <span style={{ opacity: 0.5 }}>(rôle membre)</span>
         </div>
       </div>
     </AuthShell>

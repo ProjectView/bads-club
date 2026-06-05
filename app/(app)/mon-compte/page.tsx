@@ -1,17 +1,17 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/components/auth-context";
-import { NotifPreferences } from "@/components/notif-preferences";
+import s from "./page.module.css";
+
+type NotifPrefs = { inApp: boolean; email: boolean };
+const STORAGE = "bads.notif.prefs";
+const DEFAULT: NotifPrefs = { inApp: true, email: true };
 
 export default function MonComptePage() {
-  return (
-    <Suspense fallback={null}>
-      <Account />
-    </Suspense>
-  );
+  return <Suspense fallback={null}><Account /></Suspense>;
 }
 
 function Account() {
@@ -19,185 +19,176 @@ function Account() {
   const router = useRouter();
   const params = useSearchParams();
   const welcome = params.get("welcome") === "1";
-  const error = params.get("error");
+  const error   = params.get("error");
+  const [prefs, setPrefs] = useState<NotifPrefs>(DEFAULT);
 
-  if (!user) {
-    return (
-      <div className="max-w-md mx-auto py-20 px-6 text-center">
-        <p className="text-[var(--color-muted)] mb-6">Chargement de ton compte…</p>
-      </div>
-    );
+  useEffect(() => {
+    try { setPrefs({ ...DEFAULT, ...JSON.parse(localStorage.getItem(STORAGE) ?? "{}") }); } catch {}
+  }, []);
+
+  function togglePref(key: keyof NotifPrefs) {
+    const next = { ...prefs, [key]: !prefs[key] };
+    setPrefs(next);
+    localStorage.setItem(STORAGE, JSON.stringify(next));
   }
 
-  async function onLogout() {
-    await signOut();
-    router.push("/");
-  }
+  if (!user) return (
+    <div style={{ maxWidth:"28rem", margin:"6rem auto", padding:"0 1.5rem", textAlign:"center" }}>
+      <p style={{ fontFamily:"var(--font-space-mono,monospace)", fontSize:".8rem", color:"rgba(242,237,228,.35)" }}>Chargement…</p>
+    </div>
+  );
+
+  async function onLogout() { await signOut(); router.push("/"); }
 
   return (
-    <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-12">
+    <div className={s.page}>
       {welcome && (
-        <div className="mb-8 border border-[var(--color-lime)]/40 bg-[var(--color-lime)]/5 rounded-2xl p-5 flex items-center gap-4">
-          <div className="text-3xl">🎉</div>
+        <div className={s.bannerSuccess}>
+          <span style={{ fontSize:"2rem" }}>🎉</span>
           <div>
-            <div className="font-display text-2xl">Bienvenue {user.displayName.split(" ")[0]} !</div>
-            <div className="text-sm text-[var(--color-cream-dim)]">Ton compte est créé. Tu peux maintenant réserver et rejoindre des groupes.</div>
+            <div className={s.bannerTitle}>Bienvenue {user.displayName.split(" ")[0]} !</div>
+            <div className={s.bannerSub}>Ton compte est créé. Tu peux maintenant réserver et rejoindre des groupes.</div>
           </div>
         </div>
       )}
       {error === "admin-required" && (
-        <div className="mb-8 border border-[var(--color-amber)]/40 bg-[var(--color-amber)]/5 rounded-2xl p-5">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-amber)] mr-2">accès refusé</span>
-          Cette section est réservée à l&apos;équipe Bad&apos;s Club.
-        </div>
+        <div className={s.bannerError}><span className={s.bannerTag}>accès refusé</span>Cette section est réservée à l'équipe Bad's Club.</div>
       )}
 
-      <div className="grid grid-cols-12 gap-6">
-        {/* Profile card */}
-        <aside className="col-span-12 lg:col-span-3">
-          <div className="rounded-3xl border border-white/10 bg-[var(--color-ink-2)] p-6 sticky top-24">
-            <div className="w-16 h-16 rounded-full bg-[var(--color-lime)] text-[var(--color-ink)] grid place-items-center font-display text-3xl mb-4">
-              {user.displayName.slice(0, 1)}
-            </div>
-            <div className="font-display text-2xl leading-tight">{user.displayName}</div>
-            <div className="text-xs text-[var(--color-muted)] mt-1 font-mono break-all">{user.email}</div>
-            <div className="mt-3 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[var(--color-lime)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
-              {user.role === "admin" ? "Admin Bad's" : "Membre actif"}
-            </div>
-
-            <nav className="mt-6 space-y-1 text-sm">
-              {[
-                ["Réservations", "#reservations"],
-                ["Mes groupes", "#groupes"],
-                ["Abonnement", "#abonnement"],
-                ["Profil", "#profil"],
-              ].map(([l, h]) => (
-                <a key={l} href={h} className="block px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[var(--color-lime)] transition">
-                  {l}
-                </a>
+      <div className={s.grid}>
+        {/* Sidebar */}
+        <aside className={s.sidebar}>
+          <div className={s.profileCard}>
+            <div className={s.avatar}>{user.displayName.slice(0,1).toUpperCase()}</div>
+            <div className={s.profileName}>{user.displayName}</div>
+            <div className={s.profileEmail}>{user.email}</div>
+            <div className={s.badge}><span className={s.badgeDot}/>{user.role==="admin"?"Admin Bad's":"Membre actif"}</div>
+            <nav className={s.navMenu}>
+              {[["Réservations","#reservations"],["Mes groupes","#groupes"],["Abonnement","#abonnement"],["Notifications","#notifications"]].map(([l,h]) => (
+                <a key={l} href={h} className={s.navItem}>{l}</a>
               ))}
-              {user.role === "admin" && (
-                <Link href="/admin" className="block px-3 py-2 rounded-lg text-[var(--color-lime)] hover:bg-[var(--color-lime)]/10">
-                  → Espace admin
-                </Link>
-              )}
-              <button onClick={onLogout} className="w-full text-left px-3 py-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-amber)] hover:bg-white/5 transition mt-3">
-                Se déconnecter
-              </button>
+              {user.role==="admin" && <Link href="/admin" className={`${s.navItem} ${s.navAdmin}`}>→ Espace admin</Link>}
+              <div className={s.navDivider}/>
+              <button onClick={onLogout} className={`${s.navItem} ${s.navLogout}`}>Se déconnecter</button>
             </nav>
           </div>
         </aside>
 
         {/* Main */}
-        <section className="col-span-12 lg:col-span-9 space-y-6">
+        <div className={s.main}>
           <div>
-            <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)] mb-2">
-              Tableau de bord
-            </div>
-            <h1 className="font-display text-5xl lg:text-6xl tracking-tight">
-              Salut {user.displayName.split(" ")[0]} <span className="text-[var(--color-lime)]">↗</span>
-            </h1>
+            <p className={s.eyebrow}>Tableau de bord</p>
+            <h1 className={s.title}>Salut {user.displayName.split(" ")[0]} <span className={s.titleGold}>↗</span></h1>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            {[
-              ["12", "sessions ce mois"],
-              ["3", "groupes actifs"],
-              ["180€", "dépensé · 2026"],
-              ["−20%", "tarif membre"],
-            ].map(([k, l]) => (
-              <div key={l} className="rounded-2xl border border-white/10 bg-[var(--color-ink-2)] p-5">
-                <div className="font-display text-4xl text-[var(--color-lime)]">{k}</div>
-                <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-muted)] mt-1">{l}</div>
+          <div className={s.statsGrid}>
+            {[["12","sessions ce mois"],["3","groupes actifs"],["180€","dépensé · 2026"],["−20%","tarif membre"]].map(([k,l]) => (
+              <div key={l} className={s.statCard}>
+                <div className={s.statNum}>{k}</div>
+                <div className={s.statLabel}>{l}</div>
               </div>
             ))}
           </div>
 
-          {/* Notification preferences */}
-          <NotifPreferences email={user.email} phone={user.phone} />
-
           {/* Reservations */}
-          <div id="reservations" className="rounded-3xl border border-white/10 bg-[var(--color-ink-2)] overflow-hidden">
-            <div className="px-6 py-5 flex items-center justify-between border-b border-white/10">
+          <div id="reservations" className={s.card}>
+            <div className={s.cardHead}>
               <div>
-                <div className="font-display text-2xl">Mes prochaines réservations</div>
-                <div className="text-xs font-mono text-[var(--color-muted)] mt-1">3 à venir</div>
+                <div className={s.cardTitle}>Mes réservations</div>
+                <div className={s.cardSub}>3 à venir</div>
               </div>
-              <Link href="/reservation" className="btn-lime px-5 py-2 rounded-full text-sm">+ Réserver</Link>
+              <Link href="/reservation" className={s.btnGold}>+ Réserver</Link>
             </div>
-            <div className="divide-y divide-white/10">
-              {[
-                ["Jeu. 22 mai", "19h00 → 20h00", "Badminton · BAD—02", "confirmé"],
-                ["Sam. 24 mai", "10h00 → 11h00", "Squash · SQS—04", "confirmé"],
-                ["Lun. 26 mai", "20h00 → 21h00", "Badminton · BAD—01", "en attente"],
-              ].map(([d, h, t, s], i) => (
-                <div key={i} className="flex items-center justify-between px-6 py-4">
-                  <div>
-                    <div className="font-display text-xl">{t}</div>
-                    <div className="text-xs font-mono text-[var(--color-muted)] mt-0.5">{d} · {h}</div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className={`text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full ${
-                      s === "confirmé"
-                        ? "bg-[var(--color-lime)]/10 text-[var(--color-lime)] border border-[var(--color-lime)]/30"
-                        : "bg-[var(--color-amber)]/10 text-[var(--color-amber)] border border-[var(--color-amber)]/30"
-                    }`}>{s}</span>
-                    <button className="text-xs text-[var(--color-muted)] hover:text-[var(--color-amber)]">Annuler</button>
-                  </div>
+            {[
+              ["Jeu. 22 mai","19h00 → 20h00","Badminton · BAD—02","confirmé"],
+              ["Sam. 24 mai","10h00 → 11h00","Squash · SQS—04","confirmé"],
+              ["Lun. 26 mai","20h00 → 21h00","Badminton · BAD—01","en attente"],
+            ].map(([d,h,t,st], i) => (
+              <div key={i} className={s.resa}>
+                <div>
+                  <div className={s.resaName}>{t}</div>
+                  <div className={s.resaDate}>{d} · {h}</div>
                 </div>
-              ))}
-            </div>
+                <div style={{ display:"flex", alignItems:"center", gap:".75rem" }}>
+                  <span className={st==="confirmé" ? s.tagConfirm : s.tagPending}>{st}</span>
+                  <button className={s.cancelBtn}>Annuler</button>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Groups */}
-          <div id="groupes" className="rounded-3xl border border-white/10 bg-[var(--color-ink-2)] p-6">
-            <div className="flex items-center justify-between mb-5">
-              <div className="font-display text-2xl">Mes groupes</div>
-              <Link href="/communaute" className="font-mono text-xs text-[var(--color-lime)] hover:underline">Tous les groupes →</Link>
+          <div id="groupes" className={s.card}>
+            <div className={s.cardHead}>
+              <div className={s.cardTitle}>Mes groupes</div>
+              <Link href="/communaute" className={s.linkGold}>Tous →</Link>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {[
-                ["Double mixte du jeudi", "🏸", 14],
-                ["Squash After-Work", "🎾", 23],
-                ["Pétanque Lounge", "🥖", 31],
-              ].map(([n, e, m], i) => (
-                <Link key={i} href={`/communaute/${["double-mixte-jeudi","squash-after-work","petanque-club-lounge"][i]}`}
-                  className="lift block border border-white/10 rounded-2xl p-4 bg-[var(--color-ink)]">
-                  <div className="flex items-center justify-between">
-                    <div className="text-3xl">{e}</div>
-                    <span className="text-[10px] font-mono text-[var(--color-muted)]">{m} membres</span>
-                  </div>
-                  <div className="mt-3 font-display text-xl">{n}</div>
-                </Link>
-              ))}
+            <div className={s.cardBody}>
+              <div className={s.groupsGrid}>
+                {[["Double mixte du jeudi","🏸","14 membres","double-mixte-jeudi"],["Squash After-Work","🎾","23 membres","squash-after-work"],["Pétanque Lounge","🥖","31 membres","petanque-club-lounge"]].map(([n,e,m,id]) => (
+                  <Link key={id as string} href={`/communaute/${id}`} className={s.groupCard}>
+                    <div className={s.groupEmoji}>{e}</div>
+                    <div className={s.groupName}>{n}</div>
+                    <div className={s.groupMeta}>{m}</div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Subscription */}
-          <div id="abonnement" className="rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--color-ink-2)] to-[var(--color-ink-3)] p-8 relative overflow-hidden">
-            <div className="absolute inset-0 court-lines opacity-20" />
-            <div className="relative grid grid-cols-12 gap-6 items-center">
-              <div className="col-span-12 lg:col-span-7">
-                <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-lime)] mb-2">
-                  Adhésion Bad&apos;s · Active
-                </div>
-                <div className="font-display text-4xl">Formule Annuelle</div>
-                <div className="text-sm text-[var(--color-cream-dim)] mt-2">
-                  Tarifs membres −20%, accès prioritaire aux tournois, 4 invités gratuits par mois.
-                </div>
-                <div className="text-xs font-mono text-[var(--color-muted)] mt-4">
-                  Prochaine échéance · 11 mars 2027 · 240€/an
-                </div>
+          <div id="abonnement" className={s.subCard}>
+            <div className={s.subInner}>
+              <div>
+                <p className={s.subTag}>Adhésion Bad's · Active</p>
+                <div className={s.subName}>Formule Annuelle</div>
+                <div className={s.subDesc}>Tarifs membres −20%, accès prioritaire aux tournois, 4 invités gratuits par mois.</div>
+                <div className={s.subExpiry}>Prochaine échéance · 11 mars 2027 · 240€/an</div>
               </div>
-              <div className="col-span-12 lg:col-span-5 flex flex-col gap-2">
-                <button className="btn-ghost px-5 py-3 rounded-full text-sm">Gérer mon abonnement</button>
-                <button className="btn-ghost px-5 py-3 rounded-full text-sm">Mettre à jour le moyen de paiement</button>
+              <div className={s.subActions}>
+                <button className={s.btnGhost}>Gérer mon abonnement</button>
+                <button className={s.btnGhost}>Moyen de paiement</button>
               </div>
             </div>
           </div>
-        </section>
+
+          {/* Notification prefs */}
+          <div id="notifications" className={s.notifCard}>
+            <div className={s.cardHead}>
+              <div>
+                <div className={s.cardTitle}>Notifications</div>
+                <div className={s.cardSub}>Comment tu veux être prévenu(e) ?</div>
+              </div>
+            </div>
+            {[
+              { key:"inApp", label:"Notifications dans l'app", sub:"Toast + cloche dans la barre de nav", tag:"actif", tagColor:"var(--gold)" },
+              { key:"email", label:"Email", sub:`Envoyés à ${user.email} via Brevo`, tag:"actif", tagColor:"var(--gold)" },
+            ].map(({ key, label, sub, tag, tagColor }) => (
+              <div key={key} className={s.notifRow}>
+                <div>
+                  <div className={s.notifLabel}>
+                    {label}
+                    <span className={s.notifTag} style={{ background:`${tagColor}18`, color:tagColor }}>{tag}</span>
+                  </div>
+                  <div className={s.notifSub}>{sub}</div>
+                </div>
+                <button onClick={() => togglePref(key as keyof NotifPrefs)}
+                  className={`${s.switch} ${prefs[key as keyof NotifPrefs] ? s.switchOn : s.switchOff}`}
+                  role="switch" aria-checked={prefs[key as keyof NotifPrefs]}>
+                  <span className={`${s.switchThumb} ${prefs[key as keyof NotifPrefs] ? s.switchThumbOn : s.switchThumbOff}`}/>
+                </button>
+              </div>
+            ))}
+            <div className={s.notifRow}>
+              <div>
+                <div className={s.notifLabel}>SMS <span className={s.notifTag} style={{background:"rgba(242,237,228,.06)",color:"rgba(242,237,228,.3)"}}>fallback critique</span></div>
+                <div className={s.notifSub}>{user.phone ? `Envoyés au ${user.phone}` : "Renseigne ton tél dans le profil pour activer"}</div>
+              </div>
+              <span style={{fontFamily:"var(--font-space-mono,monospace)",fontSize:".6rem",color:"rgba(242,237,228,.25)"}}>auto</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

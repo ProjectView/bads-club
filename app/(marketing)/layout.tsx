@@ -1,5 +1,5 @@
 import { Bebas_Neue, Space_Mono } from 'next/font/google'
-import Navbar from '@/components/marketing/layout/Navbar'
+import { SiteNav } from '@/components/SiteNav'
 import Footer from '@/components/marketing/layout/Footer'
 import Cursor from '@/components/marketing/ui/Cursor'
 import Background from '@/components/marketing/ui/Background'
@@ -25,7 +25,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <Background />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Cursor />
-        <Navbar />
+        <SiteNav />
         {children}
         <Footer />
       </div>
