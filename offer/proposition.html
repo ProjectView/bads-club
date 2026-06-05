@@ -156,6 +156,140 @@
     }
     .meta strong { color: var(--gold); }
 
+    /* Calculateur interactif */
+    .calc {
+      border: 2px solid var(--gold);
+      background: radial-gradient(circle at 0% 0%, var(--gold-soft), transparent 60%), var(--ink-soft);
+      padding: 40px;
+      margin-top: 32px;
+    }
+    .calc-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px);
+      text-transform: uppercase; letter-spacing: 0.02em;
+      margin: 8px 0 12px; color: var(--cream);
+    }
+    .calc p.calc-intro { color: var(--cream-dim); margin-bottom: 24px; }
+
+    .calc-inputs {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0 0 32px;
+    }
+    @media (max-width: 760px) { .calc-inputs { grid-template-columns: 1fr; } }
+
+    .calc-input { display: flex; flex-direction: column; }
+    .calc-input label {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--cream-dim);
+    }
+    .calc-input input[type="range"] {
+      width: 100%; margin: 14px 0 8px;
+      -webkit-appearance: none; appearance: none;
+      background: var(--border); height: 4px; border-radius: 2px;
+      outline: none; cursor: pointer;
+    }
+    .calc-input input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 22px; height: 22px;
+      background: var(--gold); border-radius: 50%;
+      cursor: pointer; transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 0 0 0 rgba(189, 164, 26, 0);
+    }
+    .calc-input input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.18); box-shadow: 0 0 0 6px rgba(189, 164, 26, 0.18);
+    }
+    .calc-input input[type="range"]::-moz-range-thumb {
+      width: 22px; height: 22px; background: var(--gold);
+      border-radius: 50%; cursor: pointer; border: 0;
+    }
+    .calc-input output {
+      font-family: var(--font-display); font-size: 32px;
+      color: var(--gold); line-height: 1;
+    }
+    .calc-input .unit {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--muted); margin-left: 6px; letter-spacing: 0.1em;
+    }
+
+    .calc-ca {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 12px 18px; background: var(--ink); border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .calc-ca-label {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream-dim);
+    }
+    .calc-ca-value {
+      font-family: var(--font-display); font-size: 22px; color: var(--cream);
+    }
+
+    .calc-toggle {
+      display: flex; background: var(--ink);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 4px; margin-bottom: 16px; gap: 4px;
+    }
+    .calc-toggle button {
+      flex: 1; background: transparent; border: 0; padding: 14px 16px;
+      color: var(--cream-dim); font-family: var(--font-display);
+      font-size: clamp(13px, 1.6vw, 16px); letter-spacing: 0.05em;
+      text-transform: uppercase; cursor: pointer;
+      border-radius: 999px; transition: all .25s ease;
+    }
+    .calc-toggle button.active.scenario-now {
+      background: var(--cream); color: var(--ink);
+    }
+    .calc-toggle button.active.scenario-pulse {
+      background: var(--gold); color: var(--ink);
+    }
+
+    .calc-result {
+      background: var(--ink); border: 1px solid var(--border);
+      padding: 32px; border-radius: 4px; margin-bottom: 16px;
+      transition: border-color .3s;
+    }
+    .calc-result.is-pulse { border-color: var(--gold); }
+    .calc-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--cream-dim); margin-bottom: 12px;
+    }
+    .calc-monthly {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8vw, 96px); line-height: 0.95;
+      color: var(--cream); transition: color .3s;
+    }
+    .calc-result.is-pulse .calc-monthly { color: var(--gold); }
+    .calc-monthly .unit {
+      font-family: var(--font-mono); font-size: 16px;
+      color: var(--muted); margin-left: 10px; letter-spacing: 0.1em;
+    }
+    .calc-annual {
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--muted); margin-top: 10px; letter-spacing: 0.15em;
+    }
+
+    .calc-saving {
+      background: var(--gold); color: var(--ink); padding: 22px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .calc-saving-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700;
+    }
+    .calc-saving-value {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px); letter-spacing: 0.02em;
+    }
+    .calc-disclaimer {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--muted); margin-top: 16px;
+      letter-spacing: 0.12em; text-align: center;
+    }
+
     .compare { border: 1px solid var(--border); overflow: hidden; }
     .compare-row { display: grid; grid-template-columns: 1fr 1.6fr 1.4fr; border-bottom: 1px solid var(--border); }
     .compare-row:last-child { border-bottom: 0; }
@@ -761,47 +895,74 @@
       </div>
     </div>
 
-    <!-- Bloc estimatif détaillé : justifie le chiffre de 22 k€/an -->
-    <div style="margin-top:32px; border:1px solid var(--border); padding:32px; background:var(--ink-soft);">
-      <div class="eyebrow" style="margin-bottom:12px;">Estimation pour Bad's</div>
-      <h3 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); text-transform:uppercase; letter-spacing:0.02em; margin:0 0 16px; color:var(--cream);">
-        Le calcul mensuel.
-      </h3>
-      <p style="margin-bottom:24px;">
-        Sur la base de <strong>100 transactions par jour</strong> avec un
-        <strong>panier moyen de 25 €</strong> — soit environ <strong>75 000 € de CA</strong>
-        encaissés en ligne chaque mois (réservations terrains + bar). Hypothèses à ajuster
-        avec vos chiffres réels.
+    <!-- Calculateur de rentabilité interactif -->
+    <div class="calc">
+      <div class="eyebrow">Calculateur · Faites le calcul avec vos chiffres</div>
+      <h3 class="calc-title">Votre économie sur les commissions.</h3>
+      <p class="calc-intro">
+        Ajustez les 3 paramètres en fonction de votre activité réelle. Le calcul se
+        met à jour en direct, et le curseur bascule l'affichage entre la situation
+        actuelle (Doing Sport / Stripe) et avec Pulse (Crédit Mutuel direct).
       </p>
 
-      <div class="ba-grid" style="margin-bottom:0;">
-        <div class="ba ba-before">
-          <div class="ba-label">Aujourd'hui · Doing Sport (Stripe)</div>
-          <div style="font-family:var(--font-display); font-size:52px; color:var(--cream); line-height:1; margin-top:8px;">
-            2 500 €<span style="font-family:var(--font-mono); font-size:14px; color:var(--muted); margin-left:8px; letter-spacing:0.1em;">/mois</span>
-          </div>
-          <div style="font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:10px; letter-spacing:0.12em;">
-            ~3,3 % effectif · 30 000 €/an de frais
-          </div>
+      <!-- Sliders -->
+      <div class="calc-inputs">
+        <div class="calc-input">
+          <label for="calc-panier">Panier moyen</label>
+          <input type="range" id="calc-panier" min="5" max="100" step="1" value="25">
+          <output for="calc-panier"><span id="calc-panier-val">25</span><span class="unit">€</span></output>
         </div>
-        <div class="ba ba-after">
-          <div class="ba-label">Avec Pulse · Crédit Mutuel direct</div>
-          <div style="font-family:var(--font-display); font-size:52px; color:var(--gold); line-height:1; margin-top:8px;">
-            ~ 700 €<span style="font-family:var(--font-mono); font-size:14px; color:var(--muted); margin-left:8px; letter-spacing:0.1em;">/mois</span>
-          </div>
-          <div style="font-family:var(--font-mono); font-size:11px; color:var(--muted); margin-top:10px; letter-spacing:0.12em;">
-            ~0,8 % effectif (mix perso/pro) · ~8 400 €/an
-          </div>
+        <div class="calc-input">
+          <label for="calc-txday">Réservations par jour</label>
+          <input type="range" id="calc-txday" min="10" max="500" step="5" value="100">
+          <output for="calc-txday"><span id="calc-txday-val">100</span><span class="unit">tx/j</span></output>
+        </div>
+        <div class="calc-input">
+          <label for="calc-pro">% CB pro (vs perso)</label>
+          <input type="range" id="calc-pro" min="0" max="100" step="5" value="20">
+          <output for="calc-pro"><span id="calc-pro-val">20</span><span class="unit">%</span></output>
         </div>
       </div>
 
-      <div style="margin-top:20px; padding:20px 28px; background:var(--gold); color:var(--ink); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-        <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.3em; text-transform:uppercase; font-weight:700;">
-          Économie estimée
+      <!-- CA généré -->
+      <div class="calc-ca">
+        <div class="calc-ca-label">Chiffre d'affaires encaissé</div>
+        <div class="calc-ca-value"><span id="calc-ca-monthly">75 000</span> €/mois · <span id="calc-ca-annual">900 000</span> €/an</div>
+      </div>
+
+      <!-- Toggle scenario -->
+      <div class="calc-toggle" role="tablist">
+        <button type="button" class="active scenario-now" data-scenario="now" role="tab" aria-selected="true">
+          Aujourd'hui · Doing Sport
+        </button>
+        <button type="button" class="scenario-pulse" data-scenario="pulse" role="tab" aria-selected="false">
+          Avec Pulse · Crédit Mutuel
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div class="calc-result" id="calc-result">
+        <div class="calc-label" id="calc-result-label">Aujourd'hui · Doing Sport (Stripe ~3,3 %)</div>
+        <div class="calc-monthly">
+          <span id="calc-cost-monthly">2 500</span> €<span class="unit">/mois</span>
         </div>
-        <div style="font-family:var(--font-display); font-size:clamp(28px,3.5vw,40px); letter-spacing:0.02em;">
-          ~ 1 800 €/mois · ~ 22 000 €/an
+        <div class="calc-annual">
+          <span id="calc-cost-annual">30 000</span> €/an de frais de commission
         </div>
+      </div>
+
+      <!-- Persistent saving -->
+      <div class="calc-saving">
+        <div class="calc-saving-label">Économie estimée avec Pulse</div>
+        <div class="calc-saving-value">
+          <span id="calc-saving-monthly">1 800</span> €/mois ·
+          <span id="calc-saving-annual">22 000</span> €/an
+        </div>
+      </div>
+
+      <div class="calc-disclaimer">
+        Hypothèses : Doing Sport ≈ 3,3 % effectif (Stripe via Doing Sport) ·
+        Crédit Mutuel = 0,7 % CB perso + 1,2 % CB pro · 30 jours/mois
       </div>
     </div>
 
@@ -915,11 +1076,97 @@
 </div>
 
 <script>
+  // Sticky CTA bottom
   const stickyCta = document.getElementById('stickyCta');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 600) stickyCta.classList.add('visible');
     else stickyCta.classList.remove('visible');
   }, { passive: true });
+
+  // ------- Calculateur de rentabilité -------
+  (function () {
+    const STRIPE_RATE = 0.033;  // 3,3 % effectif observé via Doing Sport
+    const CM_PERSO    = 0.007;  // 0,7 % CB perso (Crédit Mutuel)
+    const CM_PRO      = 0.012;  // 1,2 % CB pro
+
+    const elPanier  = document.getElementById('calc-panier');
+    const elTxday   = document.getElementById('calc-txday');
+    const elPro     = document.getElementById('calc-pro');
+    const elPanierV = document.getElementById('calc-panier-val');
+    const elTxdayV  = document.getElementById('calc-txday-val');
+    const elProV    = document.getElementById('calc-pro-val');
+
+    const elCaMon = document.getElementById('calc-ca-monthly');
+    const elCaAnn = document.getElementById('calc-ca-annual');
+
+    const elResult = document.getElementById('calc-result');
+    const elLabel  = document.getElementById('calc-result-label');
+    const elCostM  = document.getElementById('calc-cost-monthly');
+    const elCostY  = document.getElementById('calc-cost-annual');
+
+    const elSavM   = document.getElementById('calc-saving-monthly');
+    const elSavY   = document.getElementById('calc-saving-annual');
+
+    const toggleBtns = document.querySelectorAll('.calc-toggle button');
+    let scenario = 'now';
+
+    const fmt = (n) => Math.round(n).toLocaleString('fr-FR');
+
+    function recalc() {
+      const panier = parseFloat(elPanier.value);
+      const txday  = parseFloat(elTxday.value);
+      const proPct = parseFloat(elPro.value) / 100;
+      const persoPct = 1 - proPct;
+
+      // Met à jour les badges des sliders
+      elPanierV.textContent = panier;
+      elTxdayV.textContent  = txday;
+      elProV.textContent    = elPro.value;
+
+      // CA encaissé
+      const caMonthly = panier * txday * 30;
+      const caAnnual  = caMonthly * 12;
+      elCaMon.textContent = fmt(caMonthly);
+      elCaAnn.textContent = fmt(caAnnual);
+
+      // Coûts dans chaque scénario
+      const stripeCostA = caAnnual * STRIPE_RATE;
+      const cmRate      = (persoPct * CM_PERSO) + (proPct * CM_PRO);
+      const cmCostA     = caAnnual * cmRate;
+
+      // Affichage selon scénario sélectionné
+      const costA   = scenario === 'now' ? stripeCostA : cmCostA;
+      const costM   = costA / 12;
+      elCostM.textContent = fmt(costM);
+      elCostY.textContent = fmt(costA);
+
+      if (scenario === 'now') {
+        elLabel.textContent = 'Aujourd’hui · Doing Sport (Stripe ~3,3 %)';
+        elResult.classList.remove('is-pulse');
+      } else {
+        elLabel.textContent = 'Avec Pulse · Crédit Mutuel direct (~' + (cmRate * 100).toFixed(1).replace('.', ',') + ' % effectif)';
+        elResult.classList.add('is-pulse');
+      }
+
+      // Économie persistante (toujours visible)
+      const savingA = stripeCostA - cmCostA;
+      const savingM = savingA / 12;
+      elSavM.textContent = fmt(savingM);
+      elSavY.textContent = fmt(savingA);
+    }
+
+    [elPanier, elTxday, elPro].forEach(el => el.addEventListener('input', recalc));
+    toggleBtns.forEach(btn => btn.addEventListener('click', () => {
+      scenario = btn.dataset.scenario;
+      toggleBtns.forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      recalc();
+    }));
+
+    recalc();
+  })();
 </script>
 
 </body>
