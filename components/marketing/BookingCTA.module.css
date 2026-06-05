@@ -1,0 +1,95 @@
+.section {
+  padding: 10rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 25vw;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(189, 164, 26, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.title {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.9;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.gold { color: var(--gold); }
+
+.subtitle {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 1.5rem 4rem;
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover::before { transform: scaleY(1); }
+.btn:hover { color: var(--white); }
+.btn span { position: relative; }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+  }
+
+  .btn {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 5rem 1.25rem;
+  }
+}

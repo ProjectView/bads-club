@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bad's Club — Application
 
-## Getting Started
+Refonte digitale du Bad's Club par **ProjectView** : site vitrine + réservation + communauté + paiement + notifications + automatisation contenu.
 
-First, run the development server:
+🌍 **Démo en ligne** : [bads-club.vercel.app](https://bads-club.vercel.app)
+
+---
+
+## Pour Adelin (front & design)
+
+👉 **Lis [`HANDOFF.md`](./HANDOFF.md)** en premier — périmètre, workflow, premières missions.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <URL_DU_REPO> bads-club
+cd bads-club
+npm install
+npm run dev    # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Login démo : `lea@example.com` / `demo` (membre) ou `admin@badsclub.com` / `admin` (admin).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pour Bernard (back & infra)
 
-## Learn More
+Stack cible : **Next.js + Firebase + Brevo + Vercel + Stripe + N8N**.
 
-To learn more about Next.js, take a look at the following resources:
+Docs :
+- [docs/firestore.md](./docs/firestore.md) — modèle de données + security rules + Cloud Functions
+- [docs/notifications.md](./docs/notifications.md) — orchestration N8N + Brevo + FCM
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+État actuel : **maquette cliquable**. Tout est mocké côté données ([lib/booking/repository.ts](./lib/booking/repository.ts), [lib/auth.ts](./lib/auth.ts)). Le swap vers Firebase se fait sans toucher aux composants UI — seules les couches `repository.ts` et `auth.ts` sont à réécrire.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Commandes utiles
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev              # serveur de dev localhost:3000
+npm run build            # build prod (lint + types + bundle)
+npx tsx lib/booking/rules.test.ts   # smoke tests règles métier (21 tests)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Structure
+
+```
+app/
+├── (legal)/         CGU, mentions, RGPD
+├── admin/           Espace admin (dashboard, résa, membres, articles, notifs)
+├── api/             Routes serveur
+├── communaute/      Groupes thématiques + chat
+├── evenements/      Tournois, Olympiade, etc.
+├── mon-compte/      Espace membre
+├── reservation/     Réservation temps réel multi-créneaux
+├── ...              Pages publiques (home, tarifs, actualités, connexion…)
+lib/
+├── booking/         Moteur réservation (config, rules, repository, service, waitlist)
+├── notifications/   Dispatcher events + payload N8N
+└── auth.ts          Auth mock → swap firebase/auth en prod
+components/          UI partagée (nav, modal, toast, install-prompt…)
+public/              Manifest PWA, icons, service worker
+docs/                Docs techniques
+```
+
+---
+
+## Stack
+
+- **Next.js 15** App Router
+- **React 19**
+- **Tailwind v4 beta**
+- **TypeScript 5**
+
+Déployé sur Vercel.
+
+---
+
+## Démarche commerciale
+
+L'offre commerciale au client = la maquette en ligne + setup 3 000 € + abonnement 500 €/mois (cf. [offer/](./offer/) pour le PDF généré).
+
+Procédure de passation Bernard ↔ Adelin : [HANDOFF.md](./HANDOFF.md).

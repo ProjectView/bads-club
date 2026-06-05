@@ -1,0 +1,133 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(8, 8, 8, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(189, 164, 26, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoImg {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.logoText {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 1.8rem;
+  color: var(--white);
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  line-height: 1;
+}
+
+.logoSub {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.links a {
+  color: var(--white);
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--yellow);
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(189, 164, 26, 0.4);
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+
+.ctaSecondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.cta {
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 0.15s, background 0.15s;
+  display: inline-block;
+}
+
+.cta:hover {
+  background: var(--yellow);
+  transform: skew(-3deg);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.85rem 1.25rem;
+  }
+
+  .logoText {
+    font-size: 1.5rem;
+  }
+
+  .logoSub {
+    display: none;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .ctaSecondary {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .cta {
+    padding: 0.55rem 1rem;
+    font-size: 0.72rem;
+  }
+}

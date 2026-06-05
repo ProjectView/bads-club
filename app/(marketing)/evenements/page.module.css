@@ -1,0 +1,527 @@
+.main {
+  padding-top: 80px; /* navbar height */
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  padding: 6rem 3rem 5rem;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: 'EVENTS';
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 20vw;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(189, 164, 26, 0.04);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.heroLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: clamp(5rem, 14vw, 12rem);
+  line-height: 0.88;
+  margin-bottom: 2rem;
+}
+
+.gold { color: var(--gold); }
+
+.heroSub {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.5);
+  letter-spacing: 0.05em;
+  max-width: 480px;
+}
+
+/* ── SECTION WRAPPER ──────────────────────────── */
+.section {
+  padding: 5rem 3rem;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.sectionPast {
+  padding: 5rem 3rem;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.05em;
+}
+
+.sectionCount {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── SHARED: VISUAL PLACEHOLDER ──────────────── */
+.visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.visualOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.visualGhost {
+  position: absolute;
+  bottom: -0.5rem;
+  left: -0.5rem;
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 5rem;
+  opacity: 0.18;
+  white-space: nowrap;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.visualAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  z-index: 2;
+}
+
+.visualImg {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.75) saturate(0.8);
+}
+
+/* ── SHARED: TAG ──────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  color: var(--black);
+  font-weight: 700;
+}
+
+/* ── FEATURED ─────────────────────────────────── */
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(245, 240, 232, 0.08);
+  min-height: 480px;
+  margin-bottom: 3rem;
+}
+
+.featured .visual {
+  min-height: 480px;
+}
+
+.featuredContent {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  border-left: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+.featuredMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dateTag {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 232, 0.45);
+  text-transform: uppercase;
+}
+
+.featuredTitle {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+}
+
+.featuredSub {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.45);
+}
+
+.featuredDesc {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: rgba(245, 240, 232, 0.65);
+  max-width: 420px;
+}
+
+.featuredInfo {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.infoChip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 232, 0.6);
+  border: 1px solid rgba(245, 240, 232, 0.1);
+  padding: 0.4rem 0.9rem;
+}
+
+.infoIcon {
+  color: var(--gold);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.86rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+  align-self: flex-start;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--yellow);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover::before { transform: translateX(0); }
+.btn:hover { transform: skew(-2deg); }
+.btn span { position: relative; }
+
+/* ── GRID (other upcoming events) ────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: rgba(245, 240, 232, 0.06);
+}
+
+.card {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+}
+
+.card .visual {
+  height: 220px;
+  flex-shrink: 0;
+}
+
+.cardContent {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.cardDate {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 232, 0.4);
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 2rem;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.cardSub {
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.4);
+}
+
+.cardDesc {
+  font-size: 0.8rem;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.6);
+  flex: 1;
+}
+
+.cardPrice {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.cardBtn {
+  display: inline-block;
+  border: 1px solid rgba(189, 164, 26, 0.35);
+  color: var(--gold);
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  align-self: flex-start;
+  position: relative;
+}
+
+.cardBtn span { position: relative; }
+.cardBtn:hover { background: var(--gold); color: var(--black); }
+
+/* ── PAST EVENTS ──────────────────────────────── */
+.pastGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.pastCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pastVisualWrap {
+  position: relative;
+  height: 180px;
+}
+
+.pastVisualWrap .visual {
+  height: 100%;
+}
+
+.pastOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.5);
+}
+
+.pastBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(245, 240, 232, 0.25);
+  padding: 0.25rem 0.6rem;
+  color: rgba(245, 240, 232, 0.45);
+}
+
+.pastContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pastDate {
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.35);
+}
+
+.pastTitle {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: rgba(245, 240, 232, 0.6);
+}
+
+.pastDesc {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.4);
+}
+
+/* ── CTA PRIVATISATION ────────────────────────── */
+.ctaSection {
+  padding: 8rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: 'PRIVE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 22vw;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(189, 164, 26, 0.04);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.ctaLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.ctaTitle {
+  font-family: var(--font-bebas), sans-serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.ctaSub {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.5);
+  max-width: 500px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+  position: relative;
+}
+
+.ctaBtn {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 1.25rem 3.5rem;
+  font-family: var(--font-bebas), sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+
+.ctaBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ctaBtn:hover::before { transform: scaleY(1); }
+.ctaBtn:hover { color: var(--black); }
+.ctaBtn span { position: relative; }
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 900px) {
+  .featured {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .featured .visual {
+    min-height: 280px;
+  }
+
+  .featuredContent {
+    border-left: none;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    padding: 2rem;
+  }
+
+  .pastGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .pastVisualWrap {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1.25rem 3rem;
+  }
+
+  .section,
+  .sectionPast {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection {
+    padding: 5rem 1.25rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
