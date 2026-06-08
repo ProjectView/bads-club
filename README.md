@@ -79,6 +79,6 @@ Déployé sur Netlify.
 
 ## Démarche commerciale
 
-L'offre commerciale au client = la maquette en ligne + setup 3 000 € + abonnement 500 €/mois (cf. [offer/](./offer/) pour le PDF généré).
+L'offre commerciale au client = la maquette en ligne + setup **8 000 € HT** + loyer **500 €/mois HT** (cf. [offer/proposition.html](./offer/proposition.html) — HTML standalone avec calculateur interactif).
 
 Procédure de passation Bernard ↔ Adelin : [HANDOFF.md](./HANDOFF.md).
