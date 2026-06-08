@@ -176,7 +176,17 @@
       grid-template-columns: repeat(3, 1fr);
       margin: 0 0 32px;
     }
-    @media (max-width: 760px) { .calc-inputs { grid-template-columns: 1fr; } }
+    .calc-inputs-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 760px) { .calc-inputs, .calc-inputs-2 { grid-template-columns: 1fr; } }
+
+    .calc-pro-note {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--cream-dim); margin-top: 16px;
+      padding: 10px 14px; background: rgba(189, 164, 26, 0.08);
+      border-left: 2px solid var(--gold); border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+    .calc-pro-note span { color: var(--gold); font-weight: 700; }
 
     .calc-input { display: flex; flex-direction: column; }
     .calc-input label {
@@ -418,7 +428,7 @@
       <div class="kpi">
         <div class="kpi-value">+22 000 €</div>
         <div class="kpi-label">Économie par an</div>
-        <div class="kpi-sub">Stripe ~3,3 % → CM ~0,8 %</div>
+        <div class="kpi-sub">Stripe ~3,3 % → CM 0,7 %</div>
       </div>
       <div class="kpi">
         <div class="kpi-value">6</div>
@@ -739,68 +749,6 @@
         <div>Code propre à Bad's · <strong>évolutions à la demande</strong></div>
       </div>
     </div>
-
-    <!-- Zoom facturation : Zervent vs Pulse -->
-    <div style="margin-top:48px;">
-      <div class="eyebrow" style="margin-bottom:16px;">Zoom · système de facturation</div>
-      <h3 style="font-family:var(--font-display); font-size:clamp(28px,4vw,40px); text-transform:uppercase; letter-spacing:0.02em; margin:0 0 16px; color:var(--cream);">
-        Zervent <span style="color:var(--muted);">vs</span> Pulse.
-      </h3>
-      <p style="color:var(--cream-dim); margin-bottom:24px;">
-        Aujourd'hui, la facturation est gérée à part dans Zervent, en saisie manuelle.
-        Pulse l'intègre nativement à chaque réservation pour supprimer les doubles saisies
-        et accélérer le traitement entreprises / remboursements.
-      </p>
-
-      <div class="compare" style="border:1px solid var(--border);">
-        <div class="compare-row compare-head">
-          <div>Étape</div>
-          <div>Aujourd'hui · Zervent</div>
-          <div>Avec Pulse</div>
-        </div>
-        <div class="compare-row">
-          <div>Génération facture</div>
-          <div>Manuelle, créée à la demande dans Zervent après la résa</div>
-          <div><strong>Automatique</strong> à chaque résa confirmée</div>
-        </div>
-        <div class="compare-row">
-          <div>Numéro / série</div>
-          <div>Attribué à la main, risque de doublon ou de saut</div>
-          <div><strong>Séquence auto incrémentée</strong>, conforme aux exigences fiscales</div>
-        </div>
-        <div class="compare-row">
-          <div>Envoi au client</div>
-          <div>Téléchargement + email manuel (ou impression)</div>
-          <div><strong>Email auto</strong> avec PDF joint dès la confirmation de paiement</div>
-        </div>
-        <div class="compare-row">
-          <div>Factures entreprises</div>
-          <div>Saisie complète des coordonnées à chaque facture</div>
-          <div><strong>Profil entreprise</strong> mémorisé · SIRET, TVA, adresse pré-remplis</div>
-        </div>
-        <div class="compare-row">
-          <div>Remboursements (annulations)</div>
-          <div>Avoir manuel à émettre dans Zervent + remboursement via Stripe</div>
-          <div><strong>Avoir + remboursement Crédit Mutuel</strong> émis en 1 clic depuis Pulse</div>
-        </div>
-        <div class="compare-row">
-          <div>Export comptable</div>
-          <div>Export CSV depuis Zervent, retraitement avant import</div>
-          <div><strong>Export comptable</strong> formaté pour Sage / Cegid / Quadratus</div>
-        </div>
-        <div class="compare-row">
-          <div>Recherche d'une facture</div>
-          <div>Recherche dans Zervent à part de la résa</div>
-          <div><strong>Liée à la fiche membre et à la réservation</strong>, accès direct admin</div>
-        </div>
-      </div>
-
-      <p style="margin-top:16px; font-size:14px; color:var(--cream-dim);">
-        <strong style="color:var(--cream);">À noter :</strong> si Bad's souhaite conserver Zervent pour la comptabilité,
-        Pulse peut continuer à pousser les factures vers Zervent via son API (selon disponibilité).
-        L'objectif n'est pas de tuer Zervent mais de supprimer la double saisie côté équipe Bad's.
-      </p>
-    </div>
   </div>
 </section>
 
@@ -1006,7 +954,7 @@
         <div class="price-when">One-shot · à la signature</div>
         <div class="price-label">Setup Pulse</div>
         <div><span class="price-amount">8 000 €</span><span class="price-unit">HT</span></div>
-        <p>Couvre les 6 livrables : plateforme Pulse (front + back), paiement Crédit Mutuel direct (terrains + bar), chatbot 24/7, app de réservation + messagerie + base users filtrable, automatisation marketing IA, application mobile PWA. Inclus : conception, développement, mise en ligne, formation, bascule depuis Doing Sport, migration des 20 000 clients.</p>
+        <p>Couvre les 6 livrables : plateforme Pulse (front + back), paiement Crédit Mutuel direct (terrains + bar), chatbot 24/7, app de réservation + messagerie + base users filtrable, application mobile PWA. Inclus : conception, développement, mise en ligne, formation, bascule depuis Doing Sport, migration des 20 000 clients.</p>
       </div>
       <div class="price featured">
         <div class="price-when">À partir du 2ème mois</div>
@@ -1027,7 +975,7 @@
       </p>
 
       <!-- Sliders -->
-      <div class="calc-inputs">
+      <div class="calc-inputs calc-inputs-2">
         <div class="calc-input">
           <label for="calc-panier">Panier moyen</label>
           <input type="range" id="calc-panier" min="5" max="100" step="1" value="25">
@@ -1037,11 +985,6 @@
           <label for="calc-txday">Réservations par jour</label>
           <input type="range" id="calc-txday" min="10" max="500" step="5" value="100">
           <output for="calc-txday"><span id="calc-txday-val">100</span><span class="unit">tx/j</span></output>
-        </div>
-        <div class="calc-input">
-          <label for="calc-pro">% CB pro (vs perso)</label>
-          <input type="range" id="calc-pro" min="0" max="100" step="5" value="20">
-          <output for="calc-pro"><span id="calc-pro-val">20</span><span class="unit">%</span></output>
         </div>
       </div>
 
@@ -1070,6 +1013,10 @@
         <div class="calc-annual">
           <span id="calc-cost-annual">30 000</span> €/an de frais de commission
         </div>
+        <div class="calc-pro-note" id="calc-pro-note" hidden>
+          → Sur du CB pro (1,2 %) : <span id="calc-cost-pro-monthly">900</span> €/mois ·
+          <span id="calc-cost-pro-annual">10 800</span> €/an
+        </div>
       </div>
 
       <!-- Persistent saving -->
@@ -1082,8 +1029,8 @@
       </div>
 
       <div class="calc-disclaimer">
-        Hypothèses : Doing Sport ≈ 3,3 % effectif (Stripe via Doing Sport) ·
-        Crédit Mutuel = 0,7 % CB perso + 1,2 % CB pro · 30 jours/mois
+        Hypothèses : Doing Sport ≈ 3,3 % effectif · Crédit Mutuel = 0,7 % en CB perso ·
+        1,2 % en CB pro · 30 jours/mois
       </div>
     </div>
 
@@ -1093,7 +1040,7 @@
         <div>
           <div class="roi-cell-label">Économie commissions / an</div>
           <div class="roi-cell-value">+22 000 €</div>
-          <div class="roi-cell-sub">Stripe ~3,3 % → CM ~0,8 %</div>
+          <div class="roi-cell-sub">Stripe ~3,3 % → CM 0,7 %</div>
         </div>
         <div>
           <div class="roi-cell-label">Coût Pulse · an 1</div>
@@ -1173,7 +1120,7 @@
         <a class="btn btn-gold" href="mailto:bernard@projectview.fr?subject=Validation%20de%20l'offre%20Bad's%20Club%20%C3%97%20ProjectView&body=Bonjour%20Bernard%2C%0A%0AOn%20valide%20l'offre%20telle%20que%20pr%C3%A9sent%C3%A9e.%20Quelle%20est%20la%20suite%20concr%C3%A8te%20%3F%0A%0A%E2%80%94%20Bad's%20Club">
           Valider par email →
         </a>
-        <a class="btn btn-ghost" href="tel:0472715050">04 72 71 50 50</a>
+        <a class="btn btn-ghost" href="tel:0777300658">07 77 30 06 58</a>
       </div>
       <p style="margin-top:24px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.25em; color:var(--muted); text-transform:uppercase;">
         Proposition valable 30 jours · Tous montants HT · Conditions générales sur demande
@@ -1207,15 +1154,13 @@
   // ------- Calculateur de rentabilité -------
   (function () {
     const STRIPE_RATE = 0.033;  // 3,3 % effectif observé via Doing Sport
-    const CM_PERSO    = 0.007;  // 0,7 % CB perso (Crédit Mutuel)
-    const CM_PRO      = 0.012;  // 1,2 % CB pro
+    const CM_PERSO    = 0.007;  // 0,7 % CB perso (Crédit Mutuel) — taux de référence
+    const CM_PRO      = 0.012;  // 1,2 % CB pro (Crédit Mutuel)
 
     const elPanier  = document.getElementById('calc-panier');
     const elTxday   = document.getElementById('calc-txday');
-    const elPro     = document.getElementById('calc-pro');
     const elPanierV = document.getElementById('calc-panier-val');
     const elTxdayV  = document.getElementById('calc-txday-val');
-    const elProV    = document.getElementById('calc-pro-val');
 
     const elCaMon = document.getElementById('calc-ca-monthly');
     const elCaAnn = document.getElementById('calc-ca-annual');
@@ -1224,6 +1169,10 @@
     const elLabel  = document.getElementById('calc-result-label');
     const elCostM  = document.getElementById('calc-cost-monthly');
     const elCostY  = document.getElementById('calc-cost-annual');
+
+    const elProNote = document.getElementById('calc-pro-note');
+    const elCostProM = document.getElementById('calc-cost-pro-monthly');
+    const elCostProY = document.getElementById('calc-cost-pro-annual');
 
     const elSavM   = document.getElementById('calc-saving-monthly');
     const elSavY   = document.getElementById('calc-saving-annual');
@@ -1236,13 +1185,10 @@
     function recalc() {
       const panier = parseFloat(elPanier.value);
       const txday  = parseFloat(elTxday.value);
-      const proPct = parseFloat(elPro.value) / 100;
-      const persoPct = 1 - proPct;
 
       // Met à jour les badges des sliders
       elPanierV.textContent = panier;
       elTxdayV.textContent  = txday;
-      elProV.textContent    = elPro.value;
 
       // CA encaissé
       const caMonthly = panier * txday * 30;
@@ -1250,33 +1196,38 @@
       elCaMon.textContent = fmt(caMonthly);
       elCaAnn.textContent = fmt(caAnnual);
 
-      // Coûts dans chaque scénario
+      // Coûts dans chaque scénario (taux fixes)
       const stripeCostA = caAnnual * STRIPE_RATE;
-      const cmRate      = (persoPct * CM_PERSO) + (proPct * CM_PRO);
-      const cmCostA     = caAnnual * cmRate;
+      const cmPersoCostA = caAnnual * CM_PERSO;
+      const cmProCostA   = caAnnual * CM_PRO;
 
       // Affichage selon scénario sélectionné
-      const costA   = scenario === 'now' ? stripeCostA : cmCostA;
-      const costM   = costA / 12;
+      const costA = scenario === 'now' ? stripeCostA : cmPersoCostA;
+      const costM = costA / 12;
       elCostM.textContent = fmt(costM);
       elCostY.textContent = fmt(costA);
 
       if (scenario === 'now') {
-        elLabel.textContent = 'Aujourd’hui · Doing Sport (Stripe ~3,3 %)';
+        elLabel.textContent = 'Aujourd’hui · Doing Sport (Stripe ~3,3 % effectif)';
         elResult.classList.remove('is-pulse');
+        elProNote.hidden = true;
       } else {
-        elLabel.textContent = 'Avec Pulse · Crédit Mutuel direct (~' + (cmRate * 100).toFixed(1).replace('.', ',') + ' % effectif)';
+        elLabel.textContent = 'Avec Pulse · Crédit Mutuel direct (0,7 % en CB perso)';
         elResult.classList.add('is-pulse');
+        // Affiche la note CB pro (1,2 %)
+        elCostProM.textContent = fmt(cmProCostA / 12);
+        elCostProY.textContent = fmt(cmProCostA);
+        elProNote.hidden = false;
       }
 
-      // Économie persistante (toujours visible)
-      const savingA = stripeCostA - cmCostA;
+      // Économie persistante (toujours visible, base CB perso à 0,7 %)
+      const savingA = stripeCostA - cmPersoCostA;
       const savingM = savingA / 12;
       elSavM.textContent = fmt(savingM);
       elSavY.textContent = fmt(savingA);
     }
 
-    [elPanier, elTxday, elPro].forEach(el => el.addEventListener('input', recalc));
+    [elPanier, elTxday].forEach(el => el.addEventListener('input', recalc));
     toggleBtns.forEach(btn => btn.addEventListener('click', () => {
       scenario = btn.dataset.scenario;
       toggleBtns.forEach(b => {
