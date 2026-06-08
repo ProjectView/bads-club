@@ -26,8 +26,8 @@ export default function AdminMembresPage() {
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)] mb-2">
             Communauté Bad&apos;s · {ADMIN_MEMBERS.length} membres affichés
           </div>
-          <h1 className="font-display text-5xl tracking-tight">
-            Membres <em className="text-[var(--color-lime)]">du club</em>
+          <h1 className="font-display text-5xl">
+            Membres <span className="text-[var(--color-lime)]">du club</span>
           </h1>
         </div>
         <div className="flex items-center gap-2">

@@ -4,6 +4,7 @@ import { AuthProvider } from "@/components/auth-context";
 import { PwaProvider } from "@/components/pwa-provider";
 import { InstallPrompt } from "@/components/install-prompt";
 import { ToastHost } from "@/components/toast-host";
+import { ChatWidget } from "@/components/chatbot/ChatWidget";
 
 export const metadata: Metadata = {
   title: "Bad's Club — Sport & Lounge depuis 1999",
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <ToastHost />
           <InstallPrompt />
+          <ChatWidget />
         </AuthProvider>
       </body>
     </html>

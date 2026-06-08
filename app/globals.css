@@ -11,18 +11,19 @@
 }
 
 @theme {
-  --color-ink: #0b0f1a;
-  --color-ink-2: #141a2b;
-  --color-ink-3: #1d2540;
-  --color-cream: #f4ede0;
-  --color-cream-dim: #e6ddc8;
+  /* Aligned with marketing palette — pure black, warm tones */
+  --color-ink: #080808;
+  --color-ink-2: #141414;
+  --color-ink-3: #1d1d1d;
+  --color-cream: #f2ede4;
+  --color-cream-dim: rgba(242, 237, 228, 0.6);
   --color-lime: #d6ff3e;
   --color-lime-deep: #a8d423;
   --color-amber: #ff8a3c;
   --color-clay: #c14d2a;
-  --color-muted: #8b91a5;
+  --color-muted: rgba(242, 237, 228, 0.38);
 
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "Bebas Neue", ui-sans-serif, sans-serif;
   --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
@@ -38,8 +39,8 @@
   ::selection { background: var(--color-lime); color: var(--color-ink); }
 }
 
-.font-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
-.font-mono    { font-family: var(--font-mono); }
+.font-display { font-family: var(--font-bebas, 'Bebas Neue', sans-serif); font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; }
+.font-mono    { font-family: var(--font-space-mono, var(--font-mono), monospace); }
 
 /* Grainy texture overlay */
 .grain::before {

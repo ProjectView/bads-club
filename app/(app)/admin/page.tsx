@@ -5,6 +5,57 @@ import Link from "next/link";
 import { ADMIN_STATS, TODAY_BOOKINGS } from "@/lib/mock";
 import { notifications } from "@/lib/notifications/dispatcher";
 
+/* Icônes SVG (remplacent les emojis pour rester raccord avec le design) */
+function IconPlanning(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="3" y="4.5" width="18" height="16" rx="2.5" />
+      <path d="M3 9.5h18" />
+      <path d="M8 3v3M16 3v3" />
+      <path d="M7.5 13.5h2M11 13.5h2M14.5 13.5h2M7.5 17h2M11 17h2" />
+    </svg>
+  );
+}
+
+function IconAnalytics(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M4 20V10M10 20V5M16 20v-7M21 20H3" />
+    </svg>
+  );
+}
+
+function IconBookings(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="3" y="4.5" width="18" height="16" rx="2.5" />
+      <path d="M3 9.5h18M8 3v3M16 3v3" />
+      <path d="M8.5 14.5l1.8 1.8 3.7-3.8" />
+    </svg>
+  );
+}
+
+function IconBar(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M5 4h14l-1.5 4.5a5 5 0 0 1-9 0L7 4" />
+      <path d="M12 12.5V19M9 19h6" />
+      <path d="M16.5 6.5h2.7" />
+    </svg>
+  );
+}
+
+function IconMembers(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M3.5 19.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" />
+      <path d="M15.5 5.5c1.5.3 2.6 1.6 2.6 3.1 0 1.5-1.1 2.8-2.6 3.1" />
+      <path d="M16 14.8c2.4.4 4 2.1 4 4.5" />
+    </svg>
+  );
+}
+
 export default function AdminHubPage() {
   const [demoSent, setDemoSent] = useState(false);
 
@@ -49,8 +100,8 @@ export default function AdminHubPage() {
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)] mb-2">
             Espace admin · Bad&apos;s Studio
           </div>
-          <h1 className="font-display text-5xl lg:text-7xl tracking-tight">
-            Bonjour <em className="text-[var(--color-lime)]">Caroline.</em>
+          <h1 className="font-display text-5xl lg:text-7xl">
+            Bonjour <span className="text-[var(--color-lime)]">Jonathan.</span>
           </h1>
           <p className="text-[var(--color-cream-dim)] mt-2">
             Voici ce qui se passe au club aujourd&apos;hui · {new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })}
@@ -78,14 +129,45 @@ export default function AdminHubPage() {
       </div>
 
       {/* Quick links grid */}
-      <div className="grid md:grid-cols-3 gap-4 mb-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <QuickCard
+          href="/admin/commandes"
+          title="Commandes bar"
+          subtitle="Commandes passées via QR code aux tables, suivi en direct"
+          k="2"
+          unit="prêtes à servir"
+          icon={<IconBar className="w-6 h-6" />}
+          accent="#d6ff3e"
+          highlight
+        />
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <QuickCard
+          href="/admin/planning"
+          title="Planning"
+          subtitle="Vue terrains en temps réel, blocages, occupation"
+          k={`${ADMIN_STATS.occupancyRate}%`}
+          unit="d'occupation"
+          icon={<IconPlanning className="w-6 h-6" />}
+          accent="#3498db"
+        />
+        <QuickCard
+          href="/admin/analytics"
+          title="Analytics"
+          subtitle="CA, taux d'occupation, heatmap, top membres"
+          k={`${ADMIN_STATS.revenueThisMonth.toLocaleString("fr-FR")} €`}
+          unit="ce mois"
+          icon={<IconAnalytics className="w-6 h-6" />}
+          accent="#27ae60"
+        />
         <QuickCard
           href="/admin/reservations"
           title="Réservations"
-          subtitle="Vue détaillée du planning, annulations, no-shows"
+          subtitle="Liste filtrée, annulations, no-shows, export"
           k={ADMIN_STATS.bookingsToday}
           unit="aujourd'hui"
-          icon="📅"
+          icon={<IconBookings className="w-6 h-6" />}
+          accent="#ff8a3c"
         />
         <QuickCard
           href="/admin/membres"
@@ -93,16 +175,8 @@ export default function AdminHubPage() {
           subtitle="Liste, filtres, profils, abonnements"
           k={`+${ADMIN_STATS.newMembersThisMonth}`}
           unit="ce mois"
-          icon="👥"
-        />
-        <QuickCard
-          href="/admin/articles"
-          title="Studio articles"
-          subtitle="Rédige, reformate IA, publie sur les réseaux"
-          k={ADMIN_STATS.pendingArticles}
-          unit="en attente"
-          icon="✍️"
-          highlight={ADMIN_STATS.pendingArticles > 0}
+          icon={<IconMembers className="w-6 h-6" />}
+          accent="#a36bff"
         />
       </div>
 
@@ -142,8 +216,8 @@ export default function AdminHubPage() {
             <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-lime)] mb-2">
               Studio article · Automatisation IA
             </div>
-            <h2 className="font-display text-3xl lg:text-5xl tracking-tight">
-              Un article. <em className="text-[var(--color-lime)]">Tous tes réseaux.</em>
+            <h2 className="font-display text-3xl lg:text-5xl">
+              Un article. <span className="text-[var(--color-lime)]">Tous tes réseaux.</span>
             </h2>
             <p className="text-[var(--color-cream-dim)] mt-3 max-w-xl">
               Rédige une fois. L&apos;IA reformate pour Instagram, Facebook et LinkedIn. Programme la publication.
@@ -176,8 +250,8 @@ function StatCard({ k, l, color, trend }: { k: string | number; l: string; color
 }
 
 function QuickCard({
-  href, title, subtitle, k, unit, icon, highlight,
-}: { href: string; title: string; subtitle: string; k: string | number; unit: string; icon: string; highlight?: boolean }) {
+  href, title, subtitle, k, unit, icon, accent, highlight,
+}: { href: string; title: string; subtitle: string; k: string | number; unit: string; icon: React.ReactNode; accent?: string; highlight?: boolean }) {
   return (
     <Link href={href} className={`lift block rounded-3xl border p-6 transition-all ${
       highlight
@@ -185,7 +259,16 @@ function QuickCard({
         : "border-white/10 bg-[var(--color-ink-2)]"
     }`}>
       <div className="flex items-start justify-between mb-4">
-        <span className="text-3xl">{icon}</span>
+        <span
+          className="grid place-items-center w-11 h-11 rounded-xl border"
+          style={{
+            color: highlight ? "var(--color-amber)" : (accent ?? "var(--color-lime)"),
+            borderColor: `color-mix(in srgb, ${highlight ? "var(--color-amber)" : (accent ?? "var(--color-lime)")} 30%, transparent)`,
+            background: `color-mix(in srgb, ${highlight ? "var(--color-amber)" : (accent ?? "var(--color-lime)")} 10%, transparent)`,
+          }}
+        >
+          {icon}
+        </span>
         <div className="text-right">
           <div className="font-display text-3xl" style={{ color: highlight ? "var(--color-amber)" : "var(--color-lime)" }}>{k}</div>
           <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-muted)]">{unit}</div>

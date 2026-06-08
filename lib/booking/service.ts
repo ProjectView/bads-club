@@ -359,7 +359,7 @@ async function loadRecipient(userId: string): Promise<RecipientSnapshot> {
     return { uid: userId, displayName: "Léa Martin", email: "lea@example.com", phone: "06 12 34 56 78" };
   }
   if (userId === "admin-001") {
-    return { uid: userId, displayName: "Caroline · Admin", email: "admin@badsclub.com" };
+    return { uid: userId, displayName: "Jonathan · Admin", email: "admin@badsclub.com" };
   }
   return { uid: userId, displayName: "Membre Bad's", email: `${userId}@example.com` };
 }

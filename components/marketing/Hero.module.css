@@ -1,9 +1,10 @@
 .hero {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 4rem);
+  min-height: 560px;
   display: flex;
   align-items: flex-end;
-  padding: 4rem 3rem;
+  padding: 4rem 3rem 8rem;
   overflow: hidden;
 }
 
@@ -195,7 +196,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 1.25rem 3rem;
+    padding: 2rem 1.25rem 4.5rem;
   }
 
   .grid {

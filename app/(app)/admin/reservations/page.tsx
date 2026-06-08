@@ -21,7 +21,7 @@ export default function AdminReservationsPage() {
           <div className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-muted)] mb-2">
             Pilotage opérationnel
           </div>
-          <h1 className="font-display text-5xl tracking-tight">Réservations</h1>
+          <h1 className="font-display text-5xl">Réservations</h1>
         </div>
         <div className="flex items-center gap-2">
           <button className="btn-ghost px-4 py-2 rounded-full text-sm">Export CSV</button>

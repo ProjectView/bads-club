@@ -77,6 +77,17 @@
 
 .link:hover { color: var(--gold); }
 
+/* Séparateur vertical entre liens marketing et liens app */
+.separator {
+  display: inline-block;
+  width: 1px;
+  height: 1.1rem;
+  background: rgba(189, 164, 26, 0.25);
+  margin: 0 0.4rem;
+  flex-shrink: 0;
+  align-self: center;
+}
+
 .linkAdmin {
   color: var(--gold);
   display: flex;

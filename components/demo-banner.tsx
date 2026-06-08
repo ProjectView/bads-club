@@ -97,7 +97,7 @@ function DemoModal({ onClose, currentUser }: { onClose: () => void; currentUser:
           />
           <DemoAccount
             role="Admin"
-            name="Caroline · Admin"
+            name="Jonathan · Admin"
             email="admin@badsclub.com"
             password="admin"
             description="Voit toutes les réservations, gère les articles avec reformatage IA, monitore le feed notifications."

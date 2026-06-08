@@ -41,25 +41,25 @@ export function SiteNav() {
   const initial = user?.displayName?.[0]?.toUpperCase() ?? "?";
   const firstName = user?.displayName?.split(" ")[0] ?? "";
 
-  /* ── Desktop links vary by auth state ── */
-  const desktopLinks = user ? (
-    <>
-      <Link href="/reservation" className={s.link}>Réserver</Link>
-      <Link href="/evenements" className={s.link}>Évènements</Link>
-      <Link href="/communaute" className={s.link}>Communauté</Link>
-      <Link href="/tarifs" className={s.link}>Tarifs</Link>
-      {isAdmin && (
-        <Link href="/admin" className={`${s.link} ${s.linkAdmin}`}>
-          <span className={s.adminDot}/>Admin
-        </Link>
-      )}
-    </>
-  ) : (
+  /* ── Desktop links — marketing toujours visibles, app links si connecté ── */
+  const desktopLinks = (
     <>
       <Link href="/sport" className={s.link}>Sport</Link>
       <Link href="/bar" className={s.link}>Bar</Link>
       <Link href="/evenements" className={s.link}>Évènements</Link>
       <Link href="/tarifs" className={s.link}>Tarifs</Link>
+      {!loading && user && (
+        <>
+          <span className={s.separator}/>
+          <Link href="/reservation" className={s.link}>Réserver</Link>
+          <Link href="/communaute" className={s.link}>Communauté</Link>
+          {isAdmin && (
+            <Link href="/admin" className={`${s.link} ${s.linkAdmin}`}>
+              <span className={s.adminDot}/>Admin
+            </Link>
+          )}
+        </>
+      )}
     </>
   );
 
@@ -121,38 +121,44 @@ export function SiteNav() {
     </>
   );
 
-  /* ── Drawer links (mobile) ── */
-  const drawerLinks = user ? (
+  /* ── Drawer links (mobile) — marketing toujours visibles ── */
+  const drawerLinks = (
     <>
-      <Link href="/reservation" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Réserver</Link>
-      <Link href="/evenements" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Évènements</Link>
-      <Link href="/communaute" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Communauté</Link>
-      <Link href="/tarifs" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Tarifs</Link>
-      {isAdmin && <Link href="/admin" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Admin</Link>}
-      <div className={s.drawerDivider}/>
-      <Link href="/mon-compte" className={s.drawerProfile} onClick={() => setDrawerOpen(false)}>
-        <div className={s.avatar}>{initial}</div>
-        <span style={{ fontSize: "0.85rem" }}>{user.displayName}</span>
-      </Link>
-      <button
-        className={s.drawerLink}
-        style={{ textAlign: "left", background: "none", border: "none", cursor: "pointer", width: "100%" }}
-        onClick={async () => { await signOut(); setDrawerOpen(false); }}
-      >
-        Déconnexion
-      </button>
-    </>
-  ) : (
-    <>
+      {/* Liens marketing — toujours accessibles */}
       <Link href="/sport" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Sport</Link>
       <Link href="/bar" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Bar</Link>
       <Link href="/evenements" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Évènements</Link>
       <Link href="/tarifs" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Tarifs</Link>
-      <div className={s.drawerDivider}/>
-      <div className={s.drawerButtons}>
-        <Link href="/connexion" className={s.drawerBtnGhost} onClick={() => setDrawerOpen(false)}>Connexion</Link>
-        <Link href="/inscription" className={s.drawerBtnGold} onClick={() => setDrawerOpen(false)}>Rejoindre</Link>
-      </div>
+
+      {!loading && user ? (
+        <>
+          {/* Séparation + liens app */}
+          <div className={s.drawerDivider}/>
+          <Link href="/reservation" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Réserver</Link>
+          <Link href="/communaute" className={s.drawerLink} onClick={() => setDrawerOpen(false)}>Communauté</Link>
+          {isAdmin && <Link href="/admin" className={s.drawerLink} style={{ color: "var(--gold)" }} onClick={() => setDrawerOpen(false)}>Admin</Link>}
+          <div className={s.drawerDivider}/>
+          <Link href="/mon-compte" className={s.drawerProfile} onClick={() => setDrawerOpen(false)}>
+            <div className={s.avatar}>{initial}</div>
+            <span style={{ fontSize: "0.85rem" }}>{user.displayName}</span>
+          </Link>
+          <button
+            className={s.drawerLink}
+            style={{ textAlign: "left", background: "none", border: "none", cursor: "pointer", width: "100%" }}
+            onClick={async () => { await signOut(); setDrawerOpen(false); }}
+          >
+            Déconnexion
+          </button>
+        </>
+      ) : (
+        <>
+          <div className={s.drawerDivider}/>
+          <div className={s.drawerButtons}>
+            <Link href="/connexion" className={s.drawerBtnGhost} onClick={() => setDrawerOpen(false)}>Connexion</Link>
+            <Link href="/inscription" className={s.drawerBtnGold} onClick={() => setDrawerOpen(false)}>Rejoindre</Link>
+          </div>
+        </>
+      )}
     </>
   );
 

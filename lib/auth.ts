@@ -32,7 +32,7 @@ const DEMO_USERS: Record<string, { password: string; user: User }> = {
     user: {
       uid: "admin-001",
       email: "admin@badsclub.com",
-      displayName: "Caroline · Admin",
+      displayName: "Jonathan · Admin",
       role: "admin",
       createdAt: Date.now(),
     },

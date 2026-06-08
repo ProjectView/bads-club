@@ -55,8 +55,8 @@ export default function AdminNotificationsPage() {
           <Link href="/admin" className="font-mono text-xs text-[var(--color-muted)] hover:text-[var(--color-lime)]">
             ← Admin
           </Link>
-          <h1 className="font-display text-5xl lg:text-6xl tracking-tight mt-2">
-            Feed <em className="text-[var(--color-lime)]">notifications</em>
+          <h1 className="font-display text-5xl lg:text-6xl mt-2">
+            Feed <span className="text-[var(--color-lime)]">notifications</span>
           </h1>
           <p className="text-[var(--color-cream-dim)] mt-2 max-w-2xl">
             Toutes les notifications envoyées via N8N — temps réel.
