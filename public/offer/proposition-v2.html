@@ -1,0 +1,1226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bad's Club × ProjectView — Proposition commerciale</title>
+  <meta name="description" content="Refonte digitale du Bad's Club : plateforme web et mobile Pulse sur mesure, paiement Crédit Mutuel direct, communauté, marketing IA — jusqu'à 22 000 €/an de marge sur les commissions." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #080808;
+      --ink-soft: #1a1a1a;
+      --cream: #f5f0e8;
+      --cream-dim: #c4bfb8;
+      --gold: #bda41a;
+      --gold-soft: #bda41a1f;
+      --muted: #f5f0e866;
+      --border: #f5f0e81a;
+      --danger: #c14d2a;
+      --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+      --font-mono: "Space Mono", ui-monospace, monospace;
+      --font-body: Georgia, "Times New Roman", serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--ink); color: var(--cream);
+      font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+    header.top {
+      border-bottom: 1px solid var(--border); padding: 18px 0;
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(8, 8, 8, 0.92); backdrop-filter: blur(12px);
+    }
+    .top-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--gold); position: relative; }
+    .brand-mark::after { content: ""; position: absolute; inset: 8px; background: var(--gold); border-radius: 50%; }
+    .brand-name { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.03em; }
+    .brand-x { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+    .ref { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+
+    .hero { padding: 96px 0 64px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; background: var(--gold); opacity: 0.08;
+      filter: blur(120px); border-radius: 50%; pointer-events: none;
+    }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 32px; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(56px, 9vw, 132px); line-height: 0.92; letter-spacing: 0.01em; margin: 0 0 24px; text-transform: uppercase; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-tag { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.25em; color: var(--cream-dim); text-transform: uppercase; margin-bottom: 32px; }
+    .hero-tag span { color: var(--gold); }
+    .hero-lead { font-size: 19px; line-height: 1.6; color: var(--cream-dim); max-width: 720px; margin: 0 0 56px; }
+    .hero-lead strong { color: var(--gold); font-weight: 700; }
+
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+    .kpi { background: var(--ink); padding: 28px 24px; }
+    .kpi-value { font-family: var(--font-display); font-size: clamp(36px, 5vw, 56px); color: var(--gold); line-height: 1; }
+    .kpi-label { font-size: 14px; margin-top: 8px; color: var(--cream); }
+    .kpi-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
+
+    section.bloc { padding: 96px 0; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    h2 { font-family: var(--font-display); font-size: clamp(44px, 6vw, 88px); line-height: 0.92; letter-spacing: 0.01em; margin: 0 0 40px; text-transform: uppercase; }
+    h2 em { color: var(--gold); font-style: normal; }
+    p { margin: 0 0 18px; color: var(--cream-dim); }
+    p.lead { font-size: 19px; color: var(--cream-dim); max-width: 780px; }
+    p strong { color: var(--cream); }
+
+    .cards { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+    .card { background: var(--ink-soft); border: 1px solid var(--border); padding: 28px; transition: border-color .2s ease, transform .2s ease; }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .card-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    .card.warn .card-tag { color: var(--danger); }
+    .card-title { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 8px; }
+    .card p { margin: 0; font-size: 15px; }
+
+    .pillars { display: grid; gap: 12px; }
+    .pillar { display: grid; grid-template-columns: 80px 1fr; gap: 20px; padding: 24px; background: var(--ink-soft); border: 1px solid var(--border); }
+    .pillar-num { font-family: var(--font-display); font-size: 56px; color: var(--gold); line-height: 1; }
+    .pillar-title { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.02em; text-transform: uppercase; }
+    .pillar p { margin: 8px 0 0; font-size: 15px; }
+
+    /* Livrables avant/après */
+    .livrables { display: grid; gap: 32px; }
+    .livrable {
+      background: var(--ink-soft); border: 1px solid var(--border);
+      padding: 32px;
+    }
+    .livrable-head {
+      display: grid; grid-template-columns: 100px 1fr; gap: 24px;
+      padding-bottom: 24px; border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      align-items: start;
+    }
+    .livrable-num {
+      font-family: var(--font-display); font-size: 84px;
+      color: var(--gold); line-height: 0.9;
+    }
+    .livrable-tag {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em;
+      color: var(--gold); text-transform: uppercase; margin-bottom: 6px;
+    }
+    .livrable-title {
+      font-family: var(--font-display); font-size: 32px;
+      text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05;
+    }
+    .livrable-sub {
+      font-family: var(--font-mono); font-size: 12px; color: var(--cream-dim);
+      margin-top: 6px; letter-spacing: 0.05em;
+    }
+    .ba-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 760px) { .ba-grid { grid-template-columns: 1fr; } }
+    .ba { padding: 20px; border: 1px solid var(--border); background: var(--ink); }
+    .ba-before { border-left: 3px solid var(--danger); }
+    .ba-after { border-left: 3px solid var(--gold); background: var(--gold-soft); }
+    .ba-label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .ba-before .ba-label { color: var(--danger); }
+    .ba-after .ba-label { color: var(--gold); }
+    .ba p { margin: 0; font-size: 14px; color: var(--cream-dim); line-height: 1.55; }
+    .ba-after p { color: var(--cream); }
+    .meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    @media (max-width: 760px) { .meta-grid { grid-template-columns: 1fr; } }
+    .meta {
+      padding: 14px 18px; background: var(--ink);
+      border: 1px solid var(--border);
+      font-size: 14px; color: var(--cream-dim); line-height: 1.55;
+    }
+    .meta-tag {
+      display: inline-block;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-right: 12px;
+      padding: 2px 8px; border: 1px solid var(--gold); border-radius: 2px;
+      vertical-align: middle;
+    }
+    .meta strong { color: var(--gold); }
+
+    /* Calculateur interactif */
+    .calc {
+      border: 2px solid var(--gold);
+      background: radial-gradient(circle at 0% 0%, var(--gold-soft), transparent 60%), var(--ink-soft);
+      padding: 40px;
+      margin-top: 32px;
+    }
+    .calc-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px);
+      text-transform: uppercase; letter-spacing: 0.02em;
+      margin: 8px 0 12px; color: var(--cream);
+    }
+    .calc p.calc-intro { color: var(--cream-dim); margin-bottom: 24px; }
+
+    .calc-inputs {
+      display: grid; gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0 0 32px;
+    }
+    .calc-inputs-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 760px) { .calc-inputs, .calc-inputs-2 { grid-template-columns: 1fr; } }
+
+    .calc-pro-note {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--cream-dim); margin-top: 16px;
+      padding: 10px 14px; background: rgba(189, 164, 26, 0.08);
+      border-left: 2px solid var(--gold); border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+    .calc-pro-note span { color: var(--gold); font-weight: 700; }
+
+    .calc-input { display: flex; flex-direction: column; }
+    .calc-input label {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--cream-dim);
+    }
+    .calc-input input[type="range"] {
+      width: 100%; margin: 14px 0 8px;
+      -webkit-appearance: none; appearance: none;
+      background: var(--border); height: 4px; border-radius: 2px;
+      outline: none; cursor: pointer;
+    }
+    .calc-input input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 22px; height: 22px;
+      background: var(--gold); border-radius: 50%;
+      cursor: pointer; transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 0 0 0 rgba(189, 164, 26, 0);
+    }
+    .calc-input input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.18); box-shadow: 0 0 0 6px rgba(189, 164, 26, 0.18);
+    }
+    .calc-input input[type="range"]::-moz-range-thumb {
+      width: 22px; height: 22px; background: var(--gold);
+      border-radius: 50%; cursor: pointer; border: 0;
+    }
+    .calc-input output {
+      font-family: var(--font-display); font-size: 32px;
+      color: var(--gold); line-height: 1;
+    }
+    .calc-input .unit {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--muted); margin-left: 6px; letter-spacing: 0.1em;
+    }
+
+    .calc-ca {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 12px 18px; background: var(--ink); border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .calc-ca-label {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream-dim);
+    }
+    .calc-ca-value {
+      font-family: var(--font-display); font-size: 22px; color: var(--cream);
+    }
+
+    .calc-toggle {
+      display: flex; background: var(--ink);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 4px; margin-bottom: 16px; gap: 4px;
+    }
+    .calc-toggle button {
+      flex: 1; background: transparent; border: 0; padding: 14px 16px;
+      color: var(--cream-dim); font-family: var(--font-display);
+      font-size: clamp(13px, 1.6vw, 16px); letter-spacing: 0.05em;
+      text-transform: uppercase; cursor: pointer;
+      border-radius: 999px; transition: all .25s ease;
+    }
+    .calc-toggle button.active.scenario-now {
+      background: var(--cream); color: var(--ink);
+    }
+    .calc-toggle button.active.scenario-pulse {
+      background: var(--gold); color: var(--ink);
+    }
+
+    .calc-result {
+      background: var(--ink); border: 1px solid var(--border);
+      padding: 32px; border-radius: 4px; margin-bottom: 16px;
+      transition: border-color .3s;
+    }
+    .calc-result.is-pulse { border-color: var(--gold); }
+    .calc-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--cream-dim); margin-bottom: 12px;
+    }
+    .calc-monthly {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8vw, 96px); line-height: 0.95;
+      color: var(--cream); transition: color .3s;
+    }
+    .calc-result.is-pulse .calc-monthly { color: var(--gold); }
+    .calc-monthly .unit {
+      font-family: var(--font-mono); font-size: 16px;
+      color: var(--muted); margin-left: 10px; letter-spacing: 0.1em;
+    }
+    .calc-annual {
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--muted); margin-top: 10px; letter-spacing: 0.15em;
+    }
+
+    .calc-saving {
+      background: var(--gold); color: var(--ink); padding: 22px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .calc-saving-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase; font-weight: 700;
+    }
+    .calc-saving-value {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px); letter-spacing: 0.02em;
+    }
+    .calc-disclaimer {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--muted); margin-top: 16px;
+      letter-spacing: 0.12em; text-align: center;
+    }
+
+    .compare { border: 1px solid var(--border); overflow: hidden; }
+    .compare-row { display: grid; grid-template-columns: 1fr 1.6fr 1.4fr; border-bottom: 1px solid var(--border); }
+    .compare-row:last-child { border-bottom: 0; }
+    .compare-row > div { padding: 18px 20px; }
+    .compare-head { background: var(--ink-soft); }
+    .compare-head > div { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em; color: var(--cream); text-transform: uppercase; }
+    .compare-head > div:last-child { color: var(--gold); }
+    .compare-row > div:first-child { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .compare-row > div:nth-child(2) { color: var(--cream-dim); font-size: 14px; border-left: 1px solid var(--border); }
+    .compare-row > div:last-child { color: var(--cream); font-size: 14px; border-left: 1px solid var(--border); }
+    .compare-row > div:last-child strong { color: var(--gold); font-weight: 700; }
+    @media (max-width: 760px) {
+      .compare-row { grid-template-columns: 1fr; }
+      .compare-row > div { border-left: 0 !important; border-top: 1px solid var(--border); }
+      .compare-row > div:first-child { background: var(--ink-soft); border-top: 0; }
+    }
+
+    .roi { border: 2px solid var(--gold); padding: 40px; background: radial-gradient(circle at 100% 0%, var(--gold-soft) 0%, transparent 60%), var(--ink-soft); }
+    .roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 24px; }
+    @media (max-width: 720px) { .roi-grid { grid-template-columns: 1fr; } }
+    .roi-cell-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+    .roi-cell-value { font-family: var(--font-display); font-size: 56px; color: var(--gold); line-height: 1; }
+    .roi-cell-sub { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 6px; }
+    .roi p { margin: 0; color: var(--cream); }
+
+    .price-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    @media (max-width: 720px) { .price-duo { grid-template-columns: 1fr; } }
+    .price { background: var(--ink-soft); border: 1px solid var(--border); padding: 32px; }
+    .price.featured { border-color: var(--gold); background: linear-gradient(135deg, var(--gold-soft), transparent); }
+    .price-when { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+    .price-label { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 18px; }
+    .price-amount { font-family: var(--font-display); font-size: 80px; color: var(--cream); line-height: 1; }
+    .price.featured .price-amount { color: var(--gold); }
+    .price-unit { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-left: 6px; }
+    .price p { margin: 18px 0 0; font-size: 14px; }
+
+    .phases { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 720px) { .phases { grid-template-columns: 1fr; } }
+    .phase { background: var(--ink-soft); border: 1px solid var(--border); padding: 28px; }
+    .phase-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+    .phase-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; }
+    .phase-duration { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+    .phase-title { font-family: var(--font-display); font-size: 26px; text-transform: uppercase; letter-spacing: 0.02em; margin: 6px 0 16px; }
+    .phase ul { margin: 0; padding: 0; list-style: none; }
+    .phase li { padding: 6px 0; font-size: 14px; color: var(--cream-dim); border-top: 1px solid var(--border); }
+    .phase li:first-child { border-top: 0; }
+    .phase li::before { content: "→ "; color: var(--gold); }
+
+    .ip-row { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 0; border-bottom: 1px solid var(--border); }
+    .ip-row:last-child { border-bottom: 0; }
+    .ip-row > div { padding: 18px 20px; }
+    .ip-head { background: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--cream); }
+    .ip-row > div:nth-child(2) { color: var(--gold); font-family: var(--font-display); letter-spacing: 0.03em; text-transform: uppercase; font-size: 18px; }
+    .ip-row > div:nth-child(3) { color: var(--cream-dim); font-size: 14px; border-left: 1px solid var(--border); }
+    .ip-row > div:first-child { color: var(--cream); font-size: 14px; border-right: 1px solid var(--border); }
+    @media (max-width: 760px) {
+      .ip-row { grid-template-columns: 1fr; }
+      .ip-row > div { border: 0 !important; border-top: 1px solid var(--border) !important; }
+    }
+
+    .steps { list-style: none; padding: 0; margin: 0; }
+    .step { display: grid; grid-template-columns: 64px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--border); }
+    .step:last-child { border-bottom: 1px solid var(--border); }
+    .step-num { font-family: var(--font-display); font-size: 44px; color: var(--gold); line-height: 1; }
+    .step-title { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .step p { margin: 6px 0 0; font-size: 15px; }
+
+    .cta { background: radial-gradient(circle at 0% 100%, var(--gold-soft) 0%, transparent 60%), var(--ink-soft); border: 1px solid var(--gold); padding: 56px 40px; margin-top: 40px; }
+    .cta-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(40px, 5vw, 72px); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 20px; }
+    .cta-title em { color: var(--gold); font-style: normal; }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 28px; text-decoration: none; font-family: var(--font-display); font-size: 18px; letter-spacing: 0.05em; text-transform: uppercase; transition: transform .2s ease, box-shadow .2s ease; }
+    .btn-gold { background: var(--gold); color: var(--ink); }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 40px -10px var(--gold); }
+    .btn-ghost { border: 1px solid var(--cream-dim); color: var(--cream); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    footer { padding: 56px 0; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(8, 8, 8, 0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--gold); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; z-index: 40; transform: translateY(110%); transition: transform .4s ease; }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta-info { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }
+    .sticky-cta-info span { color: var(--gold); }
+    .sticky-cta .btn { padding: 12px 22px; font-size: 15px; }
+    @media (max-width: 640px) { .sticky-cta-info { display: none; } }
+
+    @media print {
+      body { background: white; color: black; }
+      .sticky-cta, .top { display: none; }
+      h2, .hero h1, .cta-title { color: black; }
+      h2 em, .hero h1 em, .cta-title em { color: var(--gold); }
+      .card, .pillar, .phase, .price, .roi { background: #fafafa; border-color: #e0e0e0; color: black; }
+      p, p.lead { color: #333; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">BAD'S × PROJECTVIEW</div>
+      <div class="brand-x">Proposition commerciale</div>
+    </div>
+    <div class="ref">Réf. PV-BADS-2026-001</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">8 juin 2026 · Validité 30 jours · Plateforme Pulse</div>
+    <h1>Une plateforme.<br><em>À l'image du Bad's.</em></h1>
+    <div class="hero-tag">PLATEFORME · APP PWA · PAIEMENT DIRECT · CHATBOT · IA · <span>BAD'S</span></div>
+    <p class="hero-lead">
+      <strong>Pulse</strong> est la plateforme digitale que ProjectView construit sur mesure
+      pour le Bad's : site vitrine + menu restaurant, paiement Crédit Mutuel direct,
+      application de réservation terrain, chatbot 24/7, assistance SEO à la rédaction
+      d'article &amp; publication réseaux, application mobile PWA avec messagerie communautaire. Six livrables pensés pour
+      porter l'identité du club, fluidifier l'exploitation et libérer environ
+      <strong>22 000 € par an</strong> sur les commissions de paiement.
+    </p>
+
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-value">+22 000 €</div>
+        <div class="kpi-label">Économie par an</div>
+        <div class="kpi-sub">Stripe ~3,3 % → CM 0,7 %</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">6</div>
+        <div class="kpi-label">Livrables Pulse</div>
+        <div class="kpi-sub">Plateforme complète clé en main</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">20 000</div>
+        <div class="kpi-label">Clients migrés</div>
+        <div class="kpi-sub">Base Doing Sport reprise intégralement</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">8-10 sem.</div>
+        <div class="kpi-label">Mise en production</div>
+        <div class="kpi-sub">Du kick-off au go-live</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="defi">
+  <div class="wrap">
+    <div class="eyebrow">Le contexte · audit du 20 mai 2026</div>
+    <h2>Bad's aujourd'hui.<br><em>6 axes d'évolution.</em></h2>
+    <p class="lead">
+      Depuis 3 ans, Doing Sport accompagne le Bad's sur les réservations, la caisse et l'app
+      mobile. L'outil est stable et bien installé : 20 000 clients en base,
+      ~1 500 transactions par mois, jusqu'à 100 % d'occupation le week-end. L'audit du 20 mai
+      a mis en évidence 6 axes sur lesquels une plateforme dédiée pourrait apporter
+      un complément de valeur.
+    </p>
+
+    <div class="cards" style="margin-top:32px">
+      <div class="card">
+        <div class="card-tag">Marge d'économie</div>
+        <div class="card-title">Commissions de paiement</div>
+        <p>La solution actuelle s'appuie sur Stripe (~2 % de commission). La convention monétique négociée par Bad's auprès du Crédit Mutuel offre 0,6 % en direct. Un branchement direct sur cette convention permettrait de récupérer environ 12 k€/an.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Cash-flow</div>
+        <div class="card-title">Délais d'encaissement</div>
+        <p>L'encaissement se fait aujourd'hui sous 10 jours. Un paiement direct ramènerait ce délai à 24-48 h, conformément au standard interbancaire.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Service client</div>
+        <div class="card-title">File d'attente</div>
+        <p>Cette fonctionnalité existait sur l'ancien outil ExtraClub et n'a pas été reconduite. Sa remise en place permettrait de désengorger l'accueil des appels pour les créneaux libérés.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Facturation</div>
+        <div class="card-title">Génération automatique</div>
+        <p>Aujourd'hui, la facturation est gérée en parallèle via Zervent. Une génération native de factures simplifierait le suivi entreprises et remboursements.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Identité</div>
+        <div class="card-title">Marque Bad's</div>
+        <p>L'interface actuelle est partagée avec d'autres clubs. Une plateforme dédiée valoriserait pleinement l'identité visuelle et le ton du Bad's, en cohérence avec le nouveau site vitrine d'Adelin.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Évolutivité</div>
+        <div class="card-title">Périmètre fonctionnel</div>
+        <p>Le périmètre de Doing Sport est défini par sa roadmap commune à tous ses clients. Une plateforme propre à Bad's permet d'ajouter les fonctionnalités souhaitées à la demande (chatbot, marketing IA, nouvelles intégrations…).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="pulse">
+  <div class="wrap">
+    <div class="eyebrow">Notre proposition · plateforme Pulse</div>
+    <h2>6 livrables.<br><em>1 plateforme.</em></h2>
+    <p class="lead">
+      Pulse couvre tout l'écosystème digital du Bad's. Pour chaque livrable, voici la
+      situation actuelle avec Doing Sport et la situation proposée — avec les avantages
+      techniques et les bénéfices business correspondants.
+    </p>
+
+    <div class="livrables" style="margin-top:48px">
+
+      <!-- 01 - Plateforme Pulse -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">01</div>
+          <div>
+            <div class="livrable-tag">Site & espace membre</div>
+            <div class="livrable-title">Plateforme Pulse</div>
+            <div class="livrable-sub">Site vitrine · menu restaurant · blog &amp; événements · accès membre</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">Aujourd'hui · Doing Sport</div>
+            <p>Interface partagée avec d'autres clubs, sur laquelle l'identité Bad's est intégrée par-dessus. Pas de page menu restaurant dynamique, pas de blog éditorial, pas d'espace membre véritablement personnalisé. Dashboard généraliste, commun à tous les clients Doing Sport.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">Avec Pulse</div>
+            <p><strong>Site vitrine</strong> 100 % Bad's, <strong>menu restaurant</strong> éditable et toujours à jour, <strong>blog &amp; agenda</strong> des événements avec inscription. <strong>Espace membre</strong> personnel : profil, historique de réservations, factures, préférences.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Identité brand 100 %, menu resto autonome (plus de PDF à imprimer), blog référencé Google, espace membre clair (profil, historique, factures).</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Image de marque renforcée, attraction de nouveaux adhérents et clients restaurant, gain de temps administratif, différenciation vs autres clubs lyonnais.</div>
+        </div>
+      </article>
+
+      <!-- 02 - Paiement Crédit Mutuel -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">02</div>
+          <div>
+            <div class="livrable-tag">Paiement Crédit Mutuel direct</div>
+            <div class="livrable-title">Paiement réservation terrain</div>
+            <div class="livrable-sub">CB · Apple Pay · Google Pay · factures automatiques</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">Aujourd'hui · Doing Sport</div>
+            <p>Encaissements via Stripe intégré à Doing Sport. Sur le volume actuel du Bad's, le coût représente <strong>plus de 30 000 € par an</strong> de commissions (~3,3 % effectif). Délai d'encaissement de 10 jours. Facturation prise en charge en parallèle via Zervent.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">Avec Pulse</div>
+            <p>Convention monétique Crédit Mutuel négociée par Bad's : <strong>0,6-0,7 % CB perso · 1,2 % CB pro</strong>, sans commission fixe. Encaissement 24-48 h. Factures auto générées.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Commission divisée par 3, cash-flow accéléré, factures conformes générées auto, paiement intégré au compte membre.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span><strong>+22 000 €/an récupérés</strong> sur les commissions de paiement, trésorerie restaurée (24-48 h vs 10 jours), comptabilité simplifiée.</div>
+        </div>
+      </article>
+
+      <!-- 03 - Application réservation Terrain -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">03</div>
+          <div>
+            <div class="livrable-tag">Réservation terrain</div>
+            <div class="livrable-title">Application de réservation Terrain</div>
+            <div class="livrable-sub">Multi-créneaux · multi-sport · file d'attente auto · zones tarifaires</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">Aujourd'hui · Doing Sport</div>
+            <p>La réservation terrain est opérationnelle, mais l'interface est mutualisée avec d'autres clubs. Pas de file d'attente automatique (supprimée depuis ExtraClub), pas de réservation multi-créneaux fluide, pas de couplage natif avec un paiement direct Crédit Mutuel.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">Avec Pulse</div>
+            <p>Module de réservation 100 % Bad's : badminton, squash, pétanque, tennis de table, baseball. <strong>Multi-créneaux</strong> en 1 transaction. <strong>Zones tarifaires</strong> (Rouge / Bleue / Verte) appliquées automatiquement. <strong>File d'attente auto</strong> : notification + réservation au 1er en file quand un créneau se libère.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Interface dédiée Bad's, file d'attente automatique, paiement Crédit Mutuel couplé, rappels push J-1, gestion des annulations en temps réel.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Meilleur taux d'occupation des terrains, moins de créneaux perdus, expérience membre fluide, équipe accueil déchargée des appels de réservation.</div>
+        </div>
+      </article>
+
+      <!-- 04 - Chatbot -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">04</div>
+          <div>
+            <div class="livrable-tag">Service client 24/7</div>
+            <div class="livrable-title">Chatbot</div>
+            <div class="livrable-sub">Réponses immédiates aux questions récurrentes</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">Aujourd'hui · Doing Sport</div>
+            <p>L'accueil traite quotidiennement les mêmes questions par téléphone : « suis-je bien inscrit ? », « comment payer ? », « ma résa est-elle confirmée ? ». Ces demandes occupent du temps qui pourrait être consacré au service en salle.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">Avec Pulse</div>
+            <p>Chatbot disponible 24/7 sur le site et l'app. Connecté aux données réelles (réservations, paiements, événements). Répond instantanément aux 80 % de questions récurrentes. Bascule vers humain si besoin complexe.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Disponibilité 24/7, désengorge le standard, réponses contextuelles (chaque user voit ses propres données), apprend des nouvelles questions.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Moins d'appels (gain de temps accueil), meilleure satisfaction adhérent (réponse immédiate), équipe disponible pour le service de qualité en salle.</div>
+        </div>
+      </article>
+
+      <!-- 05 - Assistance SEO + studio éditorial IA -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">05</div>
+          <div>
+            <div class="livrable-tag">SEO &amp; studio éditorial</div>
+            <div class="livrable-title">Assistance SEO à la rédaction d'article &amp; publication réseaux</div>
+            <div class="livrable-sub">1 article SEO → posts IG / FB &amp; newsletter publiés</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">Aujourd'hui · Doing Sport</div>
+            <p>Pas d'outil marketing ni de module SEO dans Doing Sport. Les articles et publications sont produits manuellement, avec l'appui d'un prestataire vidéo. Chaque réseau (Instagram, Facebook, newsletter) demande une adaptation manuelle. Référencement Google subi, pas piloté.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">Avec Pulse</div>
+            <p>Éditeur d'articles avec <strong>analyse SEO temps réel</strong> (mots-clés « badminton Lyon 7 », « bar sport Lyon »…). À chaque publication, <strong>l'IA reformate automatiquement pour Instagram, Facebook et la newsletter</strong> (ton, longueur, hashtags adaptés). Programmation horaire + statistiques de portée.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>SEO piloté (Bad's remonte sur Google), 1 article = N publications sans travail supplémentaire, ton adapté par canal, statistiques de portée intégrées.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Acquisition organique gratuite, présence digitale renforcée, capture d'audience BtoB (Orange, RTE, Foto), libération du temps de l'équipe, image plus pro.</div>
+        </div>
+      </article>
+
+      <!-- 06 - App PWA + messagerie communautaire -->
+      <article class="livrable">
+        <div class="livrable-head">
+          <div class="livrable-num">06</div>
+          <div>
+            <div class="livrable-tag">Application mobile</div>
+            <div class="livrable-title">PWA + messagerie communautaire</div>
+            <div class="livrable-sub">Installable iOS &amp; Android · notifs push · groupes &amp; chat</div>
+          </div>
+        </div>
+        <div class="ba-grid">
+          <div class="ba ba-before">
+            <div class="ba-label">Aujourd'hui · Doing Sport</div>
+            <p>App native iOS + Android distribuée via les stores. Double maintenance et délai de validation (1 à 2 semaines) à chaque mise à jour. Pas de module communauté ni de messagerie entre membres : les adhérents ne se trouvent pas entre eux pour combler les créneaux.</p>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-label">Avec Pulse</div>
+            <p>Progressive Web App installable en 2 clics depuis le site. Notifications push système (confirmations, rappels J-1, libérations de créneau). Mode offline pour consulter ses résa. <strong>Messagerie communautaire</strong> intégrée : groupes par sport ou créneau, fil de discussion, recherche de partenaires, alertes événements.</p>
+          </div>
+        </div>
+        <div class="meta-grid">
+          <div class="meta"><span class="meta-tag">Avantages</span>Une codebase à maintenir, déploiement instantané (pas de validation Apple / Google), install ultra-rapide pour l'utilisateur, communauté active dans la même app.</div>
+          <div class="meta"><span class="meta-tag">Bénéfices</span>Mises à jour visibles immédiatement, taux d'adoption élevé (95 %+ chez clubs comparables), engagement adhérent renforcé, occupation des créneaux creux (les membres se trouvent entre eux), ambassadeurs naturels.</div>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="margin-top:48px; padding:24px; background:var(--ink-soft); border:1px solid var(--gold); display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;">
+      <div>
+        <div class="card-tag" style="margin-bottom:4px;">Démo en ligne</div>
+        <div class="card-title" style="margin:0;">bads-club.netlify.app</div>
+        <p style="margin:6px 0 0; font-size:14px;">Maquette navigable · cliquez partout, tout fonctionne · comptes test visibles dans le bandeau</p>
+      </div>
+      <a class="btn btn-gold" href="https://bads-club.netlify.app/" target="_blank" rel="noopener">Ouvrir la démo →</a>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="comparatif">
+  <div class="wrap">
+    <div class="eyebrow">Vue d'ensemble</div>
+    <h2>Aujourd'hui<br><em>· demain avec Pulse.</em></h2>
+    <p class="lead">
+      Vue synthétique des fonctionnalités existantes côté Doing Sport et de ce que Pulse
+      apporte en complément, point par point. L'objectif n'est pas un remplacement frontal
+      mais un alignement progressif sur les axes identifiés à l'audit.
+    </p>
+
+    <div class="compare" style="margin-top:32px">
+      <div class="compare-row compare-head">
+        <div>Critère</div>
+        <div>Doing Sport (actuel)</div>
+        <div>App Bad's</div>
+      </div>
+      <div class="compare-row">
+        <div>Commissions paiement</div>
+        <div>Stripe via Doing Sport · ~3,3 % effectif · 30 000 €+/an</div>
+        <div>Crédit Mutuel direct · <strong>0,6-0,7 % CB perso · 1,2 % CB pro</strong></div>
+      </div>
+      <div class="compare-row">
+        <div>Délai d'encaissement</div>
+        <div>10 jours de décalage</div>
+        <div><strong>24-48 h</strong> · cash-flow restauré</div>
+      </div>
+      <div class="compare-row">
+        <div>Liste d'attente</div>
+        <div>Supprimée depuis migration</div>
+        <div><strong>Automatique</strong> · notification + résa auto au 1er en file</div>
+      </div>
+      <div class="compare-row">
+        <div>Branding</div>
+        <div>Interface mutualisée · logo en surimpression</div>
+        <div><strong>Identité Bad's 100 %</strong> · typo, couleurs, ton sur mesure</div>
+      </div>
+      <div class="compare-row">
+        <div>Communauté / groupes</div>
+        <div>Aucun module</div>
+        <div><strong>Groupes thématiques · chat · récurrence · résa collective</strong></div>
+      </div>
+      <div class="compare-row">
+        <div>Notifications</div>
+        <div>Email basique</div>
+        <div>Push PWA + email + SMS · <strong>alerte place libérée auto</strong></div>
+      </div>
+      <div class="compare-row">
+        <div>App mobile</div>
+        <div>Stores iOS + Android</div>
+        <div><strong>PWA installable</strong> directement depuis le site · push natives</div>
+      </div>
+      <div class="compare-row">
+        <div>Marketing / contenus</div>
+        <div>Outils externes manuels</div>
+        <div><strong>Studio article · IA reformate</strong> pour Instagram / Facebook / LinkedIn</div>
+      </div>
+      <div class="compare-row">
+        <div>Chatbot</div>
+        <div>Aucun · appels accueil pour questions récurrentes</div>
+        <div><strong>Chatbot 24/7</strong> connecté aux données réelles du membre</div>
+      </div>
+      <div class="compare-row">
+        <div>Évolutivité</div>
+        <div>Périmètre défini par la roadmap commune Doing Sport</div>
+        <div>Code propre à Bad's · <strong>évolutions à la demande</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="planning">
+  <div class="wrap">
+    <div class="eyebrow">3 phases · 8 à 10 semaines</div>
+    <h2>Le planning.</h2>
+    <p class="lead">
+      Chaque phase est livrée et validée en démo avant la suivante. Vous conservez la
+      possibilité d'arrêter le projet entre deux phases.
+    </p>
+
+    <div class="phases" style="margin-top:32px">
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Phase 1</div><div class="phase-duration">3-4 semaines</div></div>
+        <div class="phase-title">MVP en ligne</div>
+        <ul>
+          <li>Site vitrine refondu</li>
+          <li>Auth membre / admin</li>
+          <li>Réservation temps réel + paiement Crédit Mutuel</li>
+          <li>Notifications email + push</li>
+          <li>Espace membre + admin</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Phase 2</div><div class="phase-duration">2-3 semaines</div></div>
+        <div class="phase-title">Communauté</div>
+        <ul>
+          <li>Groupes thématiques</li>
+          <li>Chat temps réel</li>
+          <li>Récurrence des sessions</li>
+          <li>File d'attente automatique</li>
+          <li>Réservation collective</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Phase 3</div><div class="phase-duration">2 semaines</div></div>
+        <div class="phase-title">Studio comm'</div>
+        <ul>
+          <li>Éditeur d'articles</li>
+          <li>Reformatage IA pour IG / FB / LinkedIn</li>
+          <li>Publication automatique</li>
+          <li>Journal public</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-head"><div class="phase-tag">Go-live</div><div class="phase-duration">1 semaine</div></div>
+        <div class="phase-title">Migration & bascule</div>
+        <ul>
+          <li>Migration des données Doing Sport</li>
+          <li>Domaine custom</li>
+          <li>Communication adhérents</li>
+          <li>Formation admin</li>
+          <li>Bascule en parallèle 1 semaine</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="quickwins">
+  <div class="wrap">
+    <div class="eyebrow">Au-delà des 6 livrables</div>
+    <h2>Autres points<br><em>d'optimisation.</em></h2>
+    <p class="lead">
+      Au-delà du périmètre du setup, plusieurs pistes peuvent être adressées progressivement
+      sur Pulse — issues de l'audit du 20 mai et de notre lecture du marché Lyon. Voici les
+      idées de développements futurs que nous pourrions construire ensemble.
+    </p>
+
+    <!-- Idées de développements futurs (regroupées) -->
+    <div class="eyebrow" style="margin-top:48px; margin-bottom:12px;">Idées de développements futurs</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tag">BtoB</div>
+        <div class="card-title">Mailing entreprises locales</div>
+        <p>Campagnes ciblées Orange, RTE, Foto. Pack after-work + restauration. 15-25 couverts actuels pour 60 places de capacité au lounge = forte marge de croissance.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Avis Google Business</div>
+        <div class="card-title">Incitation post-séance</div>
+        <p>Après chaque séance jouée, Pulse envoie une notification au membre l'invitant à laisser un avis sur la fiche Google Business du Bad's. Possibilité d'incentive (boisson offerte au 1er avis). <strong style="color:var(--cream);">But</strong> : noyer les anciens avis négatifs hérités d'ExtraClub (4,2/5), faire remonter la note et la visibilité Google Maps.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Fidélité</div>
+        <div class="card-title">Programme de fidélisation</div>
+        <p>Système de points par résa, badges (10ᵉ session, 100ᵉ session, ambassadeur), récompenses (boisson, séance offerte, accès tournoi VIP). Augmente la fréquence de venue et l'engagement émotionnel.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Sponsoring</div>
+        <div class="card-title">Module partenaires & sponsors</div>
+        <p>Gestion des partenariats (visibilité, contreparties, factures sponsoring auto). Mise en avant des partenaires sur l'app et le site. Tracking des engagements et des renouvellements.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Compétition</div>
+        <div class="card-title">Tournois & interclubs FFBaD</div>
+        <p>Module dédié aux compétitions homologuées : inscriptions tableaux, classements live, brackets, scores en direct. Centralise ce qui est aujourd'hui géré sur des outils tiers ou en Excel.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Coaching</div>
+        <div class="card-title">Cours coachs particuliers</div>
+        <p>Planning individuel par coach (cours collectifs, perfectionnement, cours enfants). Réservation + paiement directs membre ↔ coach, revenus partagés selon convention club.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Comptabilité</div>
+        <div class="card-title">Intégration Sage / Cegid / Quadratus</div>
+        <p>Export comptable formaté automatique vers le logiciel comptable du club, en complément de Zervent. Économise des heures de retraitement chaque mois pour l'équipe administrative.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Analytics</div>
+        <div class="card-title">Dashboard analytique avancé</div>
+        <p>Cohortes membres, taux d'occupation par terrain et créneau, panier moyen, lifetime value adhérent, prédiction de churn. Aide à la décision sur les tarifs, les créneaux et les campagnes.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Multi-langue</div>
+        <div class="card-title">EN / FR pour clientèle internationale</div>
+        <p>Version anglaise pour cibler les expatriés et entreprises internationales lyonnaises. Réservation, communication et facturation en 2 langues, switch automatique selon le profil.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:32px; font-family:var(--font-mono); font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.2em;">
+      Ces points sont en option, devisés au cas par cas. TJM 500 € HT. Non inclus dans le forfait setup ni dans le loyer mensuel.
+    </p>
+  </div>
+</section>
+
+<section class="bloc" id="ip">
+  <div class="wrap">
+    <div class="eyebrow">Le club est propriétaire</div>
+    <h2>Propriété<br><em>intellectuelle.</em></h2>
+    <p class="lead">
+      Bad's Club est intégralement propriétaire de la solution livrée : code, design, données,
+      comptes des services tiers. ProjectView ne conserve aucune dépendance bloquante.
+    </p>
+
+    <div class="compare" style="margin-top:32px">
+      <div class="ip-row ip-head">
+        <div>Élément</div>
+        <div>Propriétaire</div>
+        <div>Conditions</div>
+      </div>
+      <div class="ip-row">
+        <div>Code source applicatif</div>
+        <div>Bad's Club</div>
+        <div>Dépôt Git transféré · licence d'exploitation perpétuelle</div>
+      </div>
+      <div class="ip-row">
+        <div>Design, maquettes, identité visuelle</div>
+        <div>Bad's Club</div>
+        <div>Cession totale des droits patrimoniaux au règlement final</div>
+      </div>
+      <div class="ip-row">
+        <div>Comptes services tiers (Firebase, Netlify, Brevo, Crédit Mutuel)</div>
+        <div>Bad's Club</div>
+        <div>Créés, configurés et maintenus par ProjectView dans le cadre du loyer mensuel · transférables intégralement à Bad's en fin d'abonnement sur simple demande</div>
+      </div>
+      <div class="ip-row">
+        <div>Données utilisateurs et données métier</div>
+        <div>Bad's Club</div>
+        <div>Responsable de traitement RGPD · export libre à tout moment</div>
+      </div>
+      <div class="ip-row">
+        <div>Templates email / SMS / posts réseaux</div>
+        <div>Bad's Club</div>
+        <div>Modifiables librement par le client après livraison</div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px; font-size:15px;">
+      <strong style="color:var(--cream);">En clair :</strong> si Bad's Club décide à terme de changer de prestataire,
+      vous partez avec le code, la donnée et les comptes. Aucune relocation, aucune renégociation, aucun verrouillage.
+    </p>
+  </div>
+</section>
+
+<section class="bloc" id="tarification">
+  <div class="wrap">
+    <div class="eyebrow">Transparent et prévisible</div>
+    <h2>La tarification.</h2>
+    <p class="lead">
+      Maintenant que vous avez vu la valeur — 6 livrables, environ +22 000 € récupérés par an,
+      cash-flow restauré, communauté, marketing automatisé — voici le modèle économique :
+      un coût unique de mise en service, puis un loyer mensuel fixe. Aucun frais caché.
+    </p>
+
+    <div class="price-duo" style="margin-top:32px">
+      <div class="price">
+        <div class="price-when">One-shot · à la signature</div>
+        <div class="price-label">Setup Pulse</div>
+        <div><span class="price-amount">8 000 €</span><span class="price-unit">HT</span></div>
+        <p>Couvre les 6 livrables : plateforme Pulse (site vitrine + menu restaurant + blog/événements + espace membre), paiement Crédit Mutuel direct, application de réservation terrain, chatbot 24/7, assistance SEO à la rédaction d'article & publication réseaux, application mobile PWA avec messagerie communautaire. Inclus : conception, développement, mise en ligne, formation, bascule depuis Doing Sport, migration des 20 000 clients.</p>
+      </div>
+      <div class="price featured">
+        <div class="price-when">Dès mise en production</div>
+        <div class="price-label">Loyer Pulse</div>
+        <div><span class="price-amount">500 €</span><span class="price-unit">HT / mois</span></div>
+        <p>Hébergement Netlify, gestion de la base Firebase, gestion et supervision du chatbot, maintenance corrective et mises à jour sécurité. Support via email et messagerie sous 48 h ouvrées. <strong style="color:var(--cream);">Engagement initial de 24 mois, puis renouvellement tacite annuel.</strong> <strong style="color:var(--cream);">Le montant du loyer peut évoluer selon les développements et fonctionnalités ajoutés à la plateforme dans le futur.</strong></p>
+      </div>
+    </div>
+
+    <!-- Calculateur de rentabilité interactif -->
+    <div class="calc">
+      <div class="eyebrow">Calculateur · Faites le calcul avec vos chiffres</div>
+      <h3 class="calc-title">Votre économie sur les commissions.</h3>
+      <p class="calc-intro">
+        Ajustez les 3 paramètres en fonction de votre activité réelle. Le calcul se
+        met à jour en direct, et le curseur bascule l'affichage entre la situation
+        actuelle (Doing Sport / Stripe) et avec Pulse (Crédit Mutuel direct).
+      </p>
+
+      <!-- Sliders -->
+      <div class="calc-inputs calc-inputs-2">
+        <div class="calc-input">
+          <label for="calc-panier">Panier moyen</label>
+          <input type="range" id="calc-panier" min="5" max="100" step="1" value="25">
+          <output for="calc-panier"><span id="calc-panier-val">25</span><span class="unit">€</span></output>
+        </div>
+        <div class="calc-input">
+          <label for="calc-txday">Réservations par jour</label>
+          <input type="range" id="calc-txday" min="0" max="200" step="1" value="100">
+          <output for="calc-txday"><span id="calc-txday-val">100</span><span class="unit">tx/j</span></output>
+        </div>
+      </div>
+
+      <!-- CA généré -->
+      <div class="calc-ca">
+        <div class="calc-ca-label">Chiffre d'affaires encaissé</div>
+        <div class="calc-ca-value"><span id="calc-ca-monthly">75 000</span> €/mois · <span id="calc-ca-annual">900 000</span> €/an</div>
+      </div>
+
+      <!-- Toggle scenario -->
+      <div class="calc-toggle" role="tablist">
+        <button type="button" class="active scenario-now" data-scenario="now" role="tab" aria-selected="true">
+          Aujourd'hui · Doing Sport
+        </button>
+        <button type="button" class="scenario-pulse" data-scenario="pulse" role="tab" aria-selected="false">
+          Avec Pulse · Crédit Mutuel
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div class="calc-result" id="calc-result">
+        <div class="calc-label" id="calc-result-label">Aujourd'hui · Doing Sport (Stripe ~3,3 %)</div>
+        <div class="calc-monthly">
+          <span id="calc-cost-monthly">2 500</span> €<span class="unit">/mois</span>
+        </div>
+        <div class="calc-annual">
+          <span id="calc-cost-annual">30 000</span> €/an de frais de commission
+        </div>
+        <div class="calc-pro-note" id="calc-pro-note" hidden>
+          → Sur du CB pro (1,2 %) : <span id="calc-cost-pro-monthly">900</span> €/mois ·
+          <span id="calc-cost-pro-annual">10 800</span> €/an
+        </div>
+      </div>
+
+      <!-- Persistent saving -->
+      <div class="calc-saving">
+        <div class="calc-saving-label">Économie estimée avec Pulse</div>
+        <div class="calc-saving-value">
+          <span id="calc-saving-monthly">1 800</span> €/mois ·
+          <span id="calc-saving-annual">22 000</span> €/an
+        </div>
+      </div>
+
+      <div class="calc-disclaimer">
+        Hypothèses : Doing Sport ≈ 3,3 % effectif · Crédit Mutuel = 0,7 % en CB perso ·
+        1,2 % en CB pro · 30 jours/mois
+      </div>
+    </div>
+
+    <div class="roi" style="margin-top:32px">
+      <div class="eyebrow" style="margin-bottom:24px;">Retour sur investissement</div>
+      <div class="roi-grid">
+        <div>
+          <div class="roi-cell-label">Économie commissions / an</div>
+          <div class="roi-cell-value">+22 000 €</div>
+          <div class="roi-cell-sub">Stripe ~3,3 % → CM 0,7 %</div>
+        </div>
+        <div>
+          <div class="roi-cell-label">Coût Pulse · an 1</div>
+          <div class="roi-cell-value">−14 000 €</div>
+          <div class="roi-cell-sub">8 000 € setup + 12 × 500 €</div>
+        </div>
+        <div>
+          <div class="roi-cell-label">Bénéfice net dès l'an 1</div>
+          <div class="roi-cell-value">+8 000 €</div>
+          <div class="roi-cell-sub">Hors valeur fonctionnelle</div>
+        </div>
+      </div>
+      <p>
+        <strong>L'économie sur les commissions de paiement couvre largement
+        l'investissement de la 1ère année</strong> et laisse un bénéfice net immédiat.
+        Dès l'année 2, le ROI est de
+        <em style="color:var(--gold); font-style:normal;">+16 000 €/an</em>
+        (22 000 € d'économie − 6 000 € de loyer Pulse).
+        Et tout le reste — communauté, listes d'attente, facturation auto, marketing IA,
+        chatbot, cash-flow restauré — est <em style="color:var(--gold); font-style:normal;">en plus</em>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" id="next" style="border-bottom:0;">
+  <div class="wrap">
+    <div class="eyebrow">Prochaines étapes</div>
+    <h2>Et <em>après</em> ?</h2>
+
+    <ol class="steps">
+      <li class="step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Validation de l'offre</div>
+          <p>Retour de Bad's Club sur cette proposition — signature ou demande d'ajustements.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Création des comptes services</div>
+          <p>Bad's Club crée les comptes Firebase, Brevo et active la convention monétique Crédit Mutuel. ProjectView assiste sur chaque étape.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Kick-off projet</div>
+          <p>Réunion de lancement, finalisation des derniers points : tarifs Tennis de table / Baseball, choix du sous-domaine, export données Doing Sport, désignation des admins.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Démarrage Phase 1</div>
+          <p>Wiring Firebase, intégration paiement Crédit Mutuel, mise en place des notifications. Démo intermédiaire à mi-parcours.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">05</div>
+        <div>
+          <div class="step-title">Mise en production</div>
+          <p>Fonctionnement en parallèle avec Doing Sport pendant 1 semaine pour sécuriser la transition, communication aux adhérents, formation des admins, puis bascule complète sur Pulse.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="cta">
+      <div class="cta-eyebrow">On y va ?</div>
+      <div class="cta-title">Prêts à passer<br><em>à Pulse ?</em></div>
+      <p>
+        Si l'offre vous convient, un mail suffit pour démarrer. On vous prépare ensuite le bon
+        de commande et les accès aux services tiers.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-gold" href="https://axonaut.com/document/APA23P2XD9KCJLSS1B6H41AQDCTH288S" target="_blank" rel="noopener">
+          Valider l'offre →
+        </a>
+        <a class="btn btn-ghost" href="tel:0777300658">07 77 30 06 58</a>
+      </div>
+      <p style="margin-top:24px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.25em; color:var(--muted); text-transform:uppercase;">
+        Proposition valable 30 jours · Tous montants HT · Conditions générales sur demande
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Bad's Club × ProjectView · 8 juin 2026</div>
+    <div>Bernard Nguyen · Adelin · Lyon</div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-info">
+    Plateforme Pulse · 6 livrables · <span>+ 22 000 €/an</span> récupérés
+  </div>
+  <a class="btn btn-gold" href="https://axonaut.com/document/APA23P2XD9KCJLSS1B6H41AQDCTH288S" target="_blank" rel="noopener">Valider l'offre →</a>
+</div>
+
+<script>
+  // Sticky CTA bottom
+  const stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) stickyCta.classList.add('visible');
+    else stickyCta.classList.remove('visible');
+  }, { passive: true });
+
+  // ------- Calculateur de rentabilité -------
+  (function () {
+    const STRIPE_RATE = 0.033;  // 3,3 % effectif observé via Doing Sport
+    const CM_PERSO    = 0.007;  // 0,7 % CB perso (Crédit Mutuel) — taux de référence
+    const CM_PRO      = 0.012;  // 1,2 % CB pro (Crédit Mutuel)
+
+    const elPanier  = document.getElementById('calc-panier');
+    const elTxday   = document.getElementById('calc-txday');
+    const elPanierV = document.getElementById('calc-panier-val');
+    const elTxdayV  = document.getElementById('calc-txday-val');
+
+    const elCaMon = document.getElementById('calc-ca-monthly');
+    const elCaAnn = document.getElementById('calc-ca-annual');
+
+    const elResult = document.getElementById('calc-result');
+    const elLabel  = document.getElementById('calc-result-label');
+    const elCostM  = document.getElementById('calc-cost-monthly');
+    const elCostY  = document.getElementById('calc-cost-annual');
+
+    const elProNote = document.getElementById('calc-pro-note');
+    const elCostProM = document.getElementById('calc-cost-pro-monthly');
+    const elCostProY = document.getElementById('calc-cost-pro-annual');
+
+    const elSavM   = document.getElementById('calc-saving-monthly');
+    const elSavY   = document.getElementById('calc-saving-annual');
+
+    const toggleBtns = document.querySelectorAll('.calc-toggle button');
+    let scenario = 'now';
+
+    const fmt = (n) => Math.round(n).toLocaleString('fr-FR');
+
+    function recalc() {
+      const panier = parseFloat(elPanier.value);
+      const txday  = parseFloat(elTxday.value);
+
+      // Met à jour les badges des sliders
+      elPanierV.textContent = panier;
+      elTxdayV.textContent  = txday;
+
+      // CA encaissé
+      const caMonthly = panier * txday * 30;
+      const caAnnual  = caMonthly * 12;
+      elCaMon.textContent = fmt(caMonthly);
+      elCaAnn.textContent = fmt(caAnnual);
+
+      // Coûts dans chaque scénario (taux fixes)
+      const stripeCostA = caAnnual * STRIPE_RATE;
+      const cmPersoCostA = caAnnual * CM_PERSO;
+      const cmProCostA   = caAnnual * CM_PRO;
+
+      // Affichage selon scénario sélectionné
+      const costA = scenario === 'now' ? stripeCostA : cmPersoCostA;
+      const costM = costA / 12;
+      elCostM.textContent = fmt(costM);
+      elCostY.textContent = fmt(costA);
+
+      if (scenario === 'now') {
+        elLabel.textContent = 'Aujourd’hui · Doing Sport (Stripe ~3,3 % effectif)';
+        elResult.classList.remove('is-pulse');
+        elProNote.hidden = true;
+      } else {
+        elLabel.textContent = 'Avec Pulse · Crédit Mutuel direct (0,7 % en CB perso)';
+        elResult.classList.add('is-pulse');
+        // Affiche la note CB pro (1,2 %)
+        elCostProM.textContent = fmt(cmProCostA / 12);
+        elCostProY.textContent = fmt(cmProCostA);
+        elProNote.hidden = false;
+      }
+
+      // Économie persistante (toujours visible, base CB perso à 0,7 %)
+      const savingA = stripeCostA - cmPersoCostA;
+      const savingM = savingA / 12;
+      elSavM.textContent = fmt(savingM);
+      elSavY.textContent = fmt(savingA);
+    }
+
+    [elPanier, elTxday].forEach(el => el.addEventListener('input', recalc));
+    toggleBtns.forEach(btn => btn.addEventListener('click', () => {
+      scenario = btn.dataset.scenario;
+      toggleBtns.forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      recalc();
+    }));
+
+    recalc();
+  })();
+</script>
+
+</body>
+</html>
